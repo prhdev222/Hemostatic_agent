@@ -509,6 +509,18 @@ body {
   text-decoration: none;
 }
 .footer a:hover { text-decoration: underline; color: var(--text-dim); }
+.footer-disclaimer {
+  max-width: 520px;
+  margin: 0 auto 18px;
+  line-height: 1.65;
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.92;
+}
+.footer-credit {
+  margin-top: 4px;
+  font-size: 12px;
+}
 
 /* Empty State */
 .empty-state {
@@ -632,7 +644,8 @@ body {
 </div>
 
 <div class="footer">
-  © 2026 directed by <a href="mailto:Uradev222@gmail.com">Uradev</a>
+  <p class="footer-disclaimer">เนื้อหานี้เป็นแนวทางอ้างอิงเท่านั้น ไม่ทดแทนดุลยพินิจแพทย์ผู้รักษา — ใช้ตามบริบทผู้ป่วยและหลักฐาน<br>ให้ผู้ใช้พิจารณาหลักฐานทางการแพทย์ที่ทันสมัยประกอบด้วย เนื่องจากข้อมูลในที่นี้อาจไม่ได้รับการอัปเดตเสมอ<br><strong>ทางกฎหมาย:</strong> ผู้จัดทำปฏิเสธความรับผิดชอบต่อความถูกต้องของข้อมูลและความเสียหายใด ๆ จากการเข้าถึงหรือนำไปใช้</p>
+  <div class="footer-credit">© 2026 directed by <a href="mailto:Uradev222@gmail.com">Uradev</a></div>
 </div>
 
 <script>
@@ -751,7 +764,7 @@ const agents = [
         { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal warfarin (VKA)', href: 'docs/PCC_warfarin.pdf' },
         { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal DOAC', href: 'docs/PCC_DOAC.pdf' }
       ],
-      caution: 'เสี่ยง thromboembolism (มากกว่า FFP เล็กน้อย), ไม่ต้อง blood group matching, ผ่าน viral inactivation (steam treatment + nanofiltration), ให้ Vitamin K ร่วมด้วยเสมอเพื่อ sustained effect',
+      caution: 'เสี่ยง thromboembolism (มากกว่า FFP เล็กน้อย), ไม่ต้อง blood group matching, ผ่าน viral inactivation (steam treatment + nanofiltration), การใช้ Vitamin K ร่วม reversal warfarin ขึ้นกับบริบท (โรคร่วม เช่น VHD, AF, bleeding vs thrombosis risk) — ไม่ใช่ชุดเดียวกันทุกเคส',
       vsFFP: 'เทียบ FFP: ปริมาตรน้อยกว่า ~30 เท่า, ออกฤทธิ์เร็วกว่า, ไม่ต้อง blood group, ไม่เสี่ยง TRALI, ไม่ทำ hypocalcemia แต่เสี่ยง thrombosis มากกว่าเล็กน้อย'
     }
   },
@@ -895,16 +908,16 @@ const agents = [
     detail: {
       mechanism: 'เป็น cofactor ใน hepatic carboxylation ของ vitamin K-dependent factors (II, VII, IX, X) และ Protein C, S → ฟื้นฟูการสร้าง active coagulation factors ในตับ',
       indications: [
-        'VKA (Warfarin) reversal — ให้ร่วมกับ 4F-PCC เสมอในกรณี major bleeding',
+        'VKA (Warfarin) reversal — พิจารณา IV/PO ตามบริบท (อาจร่วม PCC/FFP ในภาวะ bleed รุนแรง; dose ไม่เท่ากันทุกเคส เช่น VHD)',
         'Supratherapeutic INR โดยไม่มีเลือดออก',
         'Vitamin K deficiency (malabsorption, prolonged antibiotics)'
       ],
       dosing: [
-        { scenario: 'Major VKA bleeding + PCC', dose: 'IV 10 mg slow push', note: 'ให้พร้อม 4F-PCC' },
+        { scenario: 'Major VKA bleeding + PCC/FFP', dose: 'Vit K ตาม protocol / ทีมดูแล', note: 'ไม่ fix IV 10 mg — ขึ้นกับโรคร่วมและ thrombosis risk' },
         { scenario: 'INR 4.5-10 (ไม่มีเลือดออก)', dose: 'Hold warfarin ± PO Vit K 1-2.5 mg', note: 'Recheck INR 24h' },
         { scenario: 'INR >10 (ไม่มีเลือดออก)', dose: 'PO Vit K 2.5-5 mg', note: 'Recheck INR 24-48h' }
       ],
-      caution: 'ออกฤทธิ์ช้า 6-24 ชม. → ไม่เพียงพอในภาวะเร่งด่วน ต้องให้ร่วมกับ PCC หรือ FFP, IV push เร็วเสี่ยง anaphylactoid reaction, ให้ Vit K ร่วม PCC เสมอเพื่อ sustained reversal'
+      caution: 'ออกฤทธิ์ช้า 6-24 ชม. → ไม่เพียงพอในภาวะเร่งด่วนเพียงอย่างเดียว, มักใช้ร่วมกับ PCC หรือ FFP ในภาวะ bleed รุนแรง, IV push เร็วเสี่ยง anaphylactoid reaction, dose/route Vit K ไม่ fix — พิจารณาตามโรคร่วมและ protocol'
     }
   },
   {
@@ -1592,16 +1605,16 @@ const agents = [
         '• TTP — therapeutic plasma exchange',
         '• กังวลเรื่อง thrombosis risk จาก PCC',
         '',
-        '<b>ให้ Vitamin K ร่วมเสมอ:</b>',
-        '• IV Vit K 10 mg ร่วมกับ PCC หรือ FFP',
-        '• PCC = immediate but temporary, Vit K = delayed (6-24h) but sustained'
+        '<b>Vitamin K ร่วม reversal warfarin:</b>',
+        '• ไม่ fix dose/route ในทุกเคส — พิจารณาโรคร่วม (เช่น VHD, AF) และ thrombosis vs bleeding risk',
+        '• PCC/FFP = reversal เชิงรุกเร็ว; Vit K (ถ้าให้) = sustained แต่ช้า — สั่งแยกตามแนวทางทีมดูแล'
       ],
       evidence: 'Sarode et al. (Circulation 2013): RCT, N=216, 4F-PCC vs FFP\n• Rapid INR ≤1.3 at 0.5h: 4F-PCC 62.2% vs FFP 9.6%\n• 69% ได้ INR <1.3 ภายใน 1h หลัง 4F-PCC\n• Hemostatic efficacy at 4h: PCC 82.6% vs FFP 50.0%\n• Fluid overload: PCC 5% vs FFP 14%\n• Thromboembolism: ไม่ต่างกัน\n\nMeta-analysis (Thromb Haemost 2023): 4F-PCC vs 3F-PCC\n• INR achievement (1.3-1.5): OR 3.50 [1.88-6.52] favors 4F-PCC\n• Thromboembolism: RD 0.01 [-0.01, 0.03] ไม่ต่างกัน',
       attachments: [
         { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal warfarin (VKA)', href: 'docs/PCC_warfarin.pdf' },
         { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal DOAC', href: 'docs/PCC_DOAC.pdf' }
       ],
-      caution: 'ให้ Vitamin K IV 10 mg ร่วมกับ PCC เสมอ เพื่อ sustained reversal (PCC ออกฤทธิ์ทันทีแต่ชั่วคราว, Vit K ออกฤทธิ์ 6-24h แต่ยาวนาน), 4F-PCC เป็น drug of choice สำหรับ VKA reversal ในภาวะ life-threatening bleeding, ถ้าไม่มี 4F-PCC → ใช้ 3F-PCC + FFP (เพิ่ม FVII) หรือ FFP อย่างเดียว'
+      caution: 'การใช้ Vitamin K ร่วม PCC/FFP ขึ้นกับบริบท (ไม่บังคับชุดเดียวกัน — เช่น VHD อาจไม่ใช้ dose สูง), PCC ออกฤทธิ์ทันทีแต่ชั่วคราว, Vit K ช้าแต่ยาวถ้าให้, 4F-PCC เป็น drug of choice สำหรับ VKA reversal ในภาวะ life-threatening bleeding, ถ้าไม่มี 4F-PCC → ใช้ 3F-PCC + FFP (เพิ่ม FVII) หรือ FFP อย่างเดียว'
     }
   },
   {
@@ -2204,17 +2217,17 @@ const orderTemplates = {
         const v=Math.round(12*bw), u=Math.ceil(v/150);
         return [`Leukodepleted Fresh Frozen Plasma (LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min → เพิ่มได้ถ้าทน`,`หมายเหตุ: LDFFP มี FVIII ≥0.7 IU/mL, WBC <1×10⁶, ต้อง ABO compatible`,`Thaw ก่อนให้ ~30 นาที (ให้เสร็จภายใน 4 ชม.หลัง thaw)`,`Recheck PT/INR, aPTT หลังให้เสร็จ`];
       }},
-      { title:'FFP — VKA Reversal (INR 2-4) + Vit K', sub:'10 mL/kg', gen: bw => {
+      { title:'FFP — VKA Reversal (INR 2-4)', sub:'10 mL/kg', gen: bw => {
         const v=Math.round(10*bw), u=Math.ceil(v/150);
-        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`หมายเหตุ: ต้อง ABO compatible, thaw ~30 นาที`,`Recheck INR หลังให้เสร็จ`];
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`หมายเหตุ: ต้อง ABO compatible, thaw ~30 นาที`,`Recheck INR หลังให้เสร็จ`,`Vitamin K: สั่งแยกตามบริบท (โรคร่วม เช่น VHD, AF, bleeding risk) — ไม่ fix dose/route ในที่นี้`];
       }},
-      { title:'FFP — VKA Reversal (INR 4-6) + Vit K', sub:'12 mL/kg', gen: bw => {
+      { title:'FFP — VKA Reversal (INR 4-6)', sub:'12 mL/kg', gen: bw => {
         const v=Math.round(12*bw), u=Math.ceil(v/150);
-        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`];
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`Vitamin K: สั่งแยกตามบริบท — ไม่ fix dose/route ในที่นี้`];
       }},
-      { title:'FFP — VKA Reversal (INR >6) + Vit K', sub:'15 mL/kg (max 1500 mL)', gen: bw => {
+      { title:'FFP — VKA Reversal (INR >6)', sub:'15 mL/kg (max 1500 mL)', gen: bw => {
         const v=Math.min(Math.round(15*bw),1500), u=Math.ceil(v/150);
-        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min (max 1500 mL)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`];
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min (max 1500 mL)`,`Vitamin K: สั่งแยกตามบริบท — ไม่ fix dose/route ในที่นี้`];
       }},
       { title:'CRP (Cryo-Removed Plasma) — สำหรับ TTP/PE', sub:'1-1.5x plasma volume', gen: bw => {
         const pv=Math.round(40*bw);
@@ -2248,15 +2261,15 @@ const orderTemplates = {
     scenarios: [
       { title:'VKA Reversal — INR 2.0-3.9', sub:'25 IU/kg', gen: bw => {
         const d=Math.round(25*bw), v=Math.ceil(d/500);
-        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (reconstitute 500 IU ใน sterile water 17 mL)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ (เป้า INR ≤1.3)`];
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (reconstitute 500 IU ใน sterile water 17 mL)`,`Recheck INR 30 min หลังให้เสร็จ (เป้า INR ≤1.3)`,`Vitamin K: สั่งแยกตามบริบท (โรคร่วม เช่น VHD, AF, bleeding vs thrombosis risk) — ไม่ fix dose/route ในที่นี้`];
       }},
       { title:'VKA Reversal — INR 4.0-6.0', sub:'35 IU/kg', gen: bw => {
         const d=Math.round(35*bw), v=Math.ceil(d/500);
-        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ`];
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min`,`Recheck INR 30 min หลังให้เสร็จ`,`Vitamin K: สั่งแยกตามบริบท — ไม่ fix dose/route ในที่นี้`];
       }},
       { title:'VKA Reversal — INR >6.0', sub:'50 IU/kg (max 5000 IU)', gen: bw => {
         const d=Math.min(Math.round(50*bw),5000), v=Math.ceil(d/500);
-        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (max dose 5000 IU)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ`];
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (max dose 5000 IU)`,`Recheck INR 30 min หลังให้เสร็จ`,`Vitamin K: สั่งแยกตามบริบท — ไม่ fix dose/route ในที่นี้`];
       }},
       { title:'DOAC Reversal (off-label)', sub:'50 IU/kg', gen: bw => {
         const d=Math.min(Math.round(50*bw),5000), v=Math.ceil(d/500);
@@ -2344,10 +2357,11 @@ const orderTemplates = {
   vitk: {
     name: 'Vitamin K1',
     scenarios: [
-      { title:'Major VKA Bleeding (+ PCC)', sub:'IV 10 mg', gen: bw => [
-        `Vitamin K1 (Phytonadione) 10 mg + NSS 50 mL IV drip over 20 min STAT`,
-        `หมายเหตุ: ให้พร้อมกับ 4F-PCC, ห้าม IV push เร็ว (anaphylactoid)`,
-        `Recheck INR at 6h, 24h`
+      { title:'VKA reversal — Vit K (case-by-case)', sub:'ไม่ fix IV dose ในที่นี้', gen: bw => [
+        `พิจารณา Vitamin K1 (IV หรือ PO) แยกตามข้อบ่งชี้ โรคร่วม (เช่น VHD, AF) และ hospital protocol`,
+        `Reversal ด้วย PCC/FFP กับการใช้/ขนาด Vit K ไม่ใช่ชุดเดียวกันทุกเคส`,
+        `ถ้าใช้ IV: ห้าม push เร็ว (เสี่ยง anaphylactoid) — dilute + drip ตาม protocol`,
+        `Recheck INR ตามแนวทางทีมดูแล`
       ]},
       { title:'INR >10 ไม่มีเลือดออก', sub:'PO 2.5-5 mg', gen: bw => [
         `Vitamin K1 (Phytonadione) 5 mg PO x 1 dose`,
@@ -2773,7 +2787,7 @@ const orderTemplates = {
         `6. Urgent endoscopy ภายใน 12 ชม.`,
         ``,
         `--- ถ้า Non-variceal + on anticoagulant ---`,
-        `• Warfarin: 4F-PCC (ตาม INR) + Vit K 10 mg IV`,
+        `• Warfarin: 4F-PCC (ตาม INR) — Vit K สั่งแยกตามบริบท/โรคร่วม`,
         `• DOAC: 4F-PCC 50 IU/kg หรือ specific antidote`,
         ``,
         `--- Lab ---`,
