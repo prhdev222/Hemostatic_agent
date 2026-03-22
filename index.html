@@ -135,11 +135,67 @@ html[data-font-step="3"] body { zoom: 1.35; }
     padding: 12px 14px;
   }
   .header-inner {
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
-    align-items: flex-start;
+  }
+  .logo {
+    width: 100%;
+    flex: none;
+    max-width: 100%;
   }
   .header-tools {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .font-size-control {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    padding: 3px;
+    gap: 2px;
+  }
+  .font-size-control button {
+    min-width: 40px;
+    min-height: 42px;
+    padding: 0 8px;
+    font-size: 16px;
+  }
+  .font-size-label {
+    font-size: 11px;
+    min-width: 0;
+    flex: 1;
+    min-width: 3.2em;
+  }
+  .theme-toggle {
+    padding: 8px 12px;
+    font-size: 13px;
     flex-shrink: 0;
+  }
+  .theme-toggle #themeToggleLabel {
+    display: none;
+  }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+  .logo-text-line1,
+  .logo-text-line2 {
+    display: block;
+  }
+  .logo-text-line1::after {
+    content: none;
+  }
+  .logo-text-line1 {
+    line-height: 1.15;
+  }
+  .logo-text-line2 {
+    white-space: nowrap;
+    line-height: 1.1;
   }
 }
 
@@ -261,7 +317,20 @@ html[data-font-step="3"] body { zoom: 1.35; }
   letter-spacing: -0.5px;
   line-height: 1.15;
   word-wrap: break-word;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+.logo-text-line1,
+.logo-text-line2 {
+  display: inline;
+}
+@media (min-width: 640px) {
+  .logo-text {
+    display: inline;
+  }
+  .logo-text-line1::after {
+    content: ' ';
+  }
 }
 
 .logo-sub {
@@ -960,7 +1029,9 @@ html[data-font-step="3"] .footer { zoom: 0.740740741; }
     <div class="logo">
       <div class="logo-icon">🩸</div>
       <div class="logo-titles">
-        <span class="logo-text">Hemostatic & Transfusion</span>
+        <span class="logo-text">
+          <span class="logo-text-line1">Hemostatic &</span><span class="logo-text-line2">Transfusion</span>
+        </span>
         <span class="logo-sub">Quick Reference</span>
       </div>
     </div>
@@ -3864,14 +3935,19 @@ function autoCalcBSA() {
   if (!dec || !inc || !label) return;
   const LABELS = ['ปกติ', 'ใหญ่ขึ้น', 'ใหญ่มาก', 'ใหญ่สุด'];
   const ZOOM_PCT = ['100%', '110%', '122%', '135%'];
+  const mqNarrow = window.matchMedia('(max-width: 639px)');
   function getStep() {
     const s = document.documentElement.getAttribute('data-font-step');
     const n = parseInt(s, 10);
     return (s === null || s === '' || Number.isNaN(n)) ? 0 : Math.min(3, Math.max(0, n));
   }
+  function labelText(step) {
+    if (mqNarrow.matches) return LABELS[step];
+    return LABELS[step] + ' · ' + ZOOM_PCT[step];
+  }
   function apply(step) {
     document.documentElement.setAttribute('data-font-step', String(step));
-    label.textContent = LABELS[step] + ' · ' + ZOOM_PCT[step];
+    label.textContent = labelText(step);
     dec.disabled = step <= 0;
     inc.disabled = step >= 3;
     try { localStorage.setItem('hemostatic_font_step', String(step)); } catch (e) {}
@@ -3879,6 +3955,12 @@ function autoCalcBSA() {
   apply(getStep());
   dec.addEventListener('click', () => apply(Math.max(0, getStep() - 1)));
   inc.addEventListener('click', () => apply(Math.min(3, getStep() + 1)));
+  function onNarrowChange() { apply(getStep()); }
+  if (typeof mqNarrow.addEventListener === 'function') {
+    mqNarrow.addEventListener('change', onNarrowChange);
+  } else if (typeof mqNarrow.addListener === 'function') {
+    mqNarrow.addListener(onNarrowChange);
+  }
 })();
 
 renderCategories();
