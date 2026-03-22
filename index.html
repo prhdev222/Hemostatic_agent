@@ -606,6 +606,12 @@ body {
 }
 @keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
 .order-note { font-size:12px; color:var(--text-muted); margin-top:10px; line-height:1.5; }
+.order-disclaimer {
+  font-size:11px; line-height:1.6; color:var(--text-dim);
+  background:rgba(255,159,67,0.07); border:1px solid rgba(255,159,67,0.22);
+  border-radius:10px; padding:12px 14px; margin-bottom:14px;
+}
+.order-disclaimer strong { color:var(--warning); font-weight:600; }
 </style>
 </head>
 <body>
@@ -2102,7 +2108,7 @@ function showDetail(id) {
 
   // Add order button if orderTemplates exist for this agent
   if (orderTemplates[a.id]) {
-    const btnText = a.id === 'plt_refract' ? '🧮 CCI Calculator — คำนวณ Platelet Refractoriness' : '📋 สั่งยา — Generate Order Text';
+    const btnText = a.id === 'plt_refract' ? '🧮 CCI Calculator — คำนวณ Platelet Refractoriness' : '📋 Example order — ตัวอย่างข้อความสั่งยา (ตรวจสอบก่อนใช้จริง)';
     html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border)">
       <button onclick="event.stopPropagation();closeDetail();openOrder('${a.id}')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;font-size:15px;padding:14px">
         ${btnText}
@@ -2134,26 +2140,26 @@ function showDetail(id) {
   if (a.id === 'hemo_a_scenario') {
     html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
       <button onclick="event.stopPropagation();closeDetail();openOrder('hemo_a_calc')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">🧮 Hemophilia A Calculator — คำนวณ FVIII/Cryo/HTFDC</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('fviii')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order FVIII Concentrate</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Cryoprecipitate / HTFDC</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('rfviia')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order rFVIIa (Inhibitor)</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order aPCC/FEIBA (Inhibitor)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('fviii')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — FVIII Concentrate</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — Cryoprecipitate / HTFDC</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('rfviia')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — rFVIIa (Inhibitor)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — aPCC/FEIBA (Inhibitor)</button>
     </div>`;
   }
   if (a.id === 'vwd_scenario') {
     html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
       <button onclick="event.stopPropagation();closeDetail();openOrder('vwd_calc')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">🧮 vWD Calculator — คำนวณ DDAVP/vWF-FVIII/Cryo</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('ddavp')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order DDAVP</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Cryoprecipitate / HTFDC</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Tranexamic acid</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('ddavp')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — DDAVP</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — Cryoprecipitate / HTFDC</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — Tranexamic acid</button>
     </div>`;
   }
   if (a.id === 'doac_reversal' || a.id === 'idarucizumab' || a.id === 'andexanet') {
     html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
-      <button onclick="event.stopPropagation();closeDetail();openOrder('idarucizumab')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">📋 Order Idarucizumab (Dabigatran reversal)</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('4fpcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order 4F-PCC (FXa inhibitor / non-specific)</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order aPCC/FEIBA (non-specific)</button>
-      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Tranexamic acid</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('idarucizumab')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">📋 Example order — Idarucizumab (Dabigatran reversal)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('4fpcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — 4F-PCC (FXa inhibitor / non-specific)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — aPCC/FEIBA (non-specific)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Example order — Tranexamic acid</button>
     </div>`;
   }
 
@@ -2822,6 +2828,8 @@ let currentOrderId = null;
 let currentOrderBW = 60;
 let selectedScenarioIdx = null;
 
+const orderExampleDisclaimerCalc = `<div class="order-disclaimer">ผลลัพธ์เป็น <strong>ตัวอย่างประกอบการคำนวณ</strong> เท่านั้น — ไม่ใช่คำสั่งทางการแพทย์ <strong>การอ้างอิงเว็บไซต์นี้ไม่ลดความรับผิดชอบ</strong>ของผู้ใช้ ผู้จัดทำไม่รับผิดชอบต่อความเสียหายจากการใช้หรืออ้างอิง</div>`;
+
 function openOrder(id) {
   currentOrderId = id;
   selectedScenarioIdx = null;
@@ -2841,10 +2849,15 @@ function openOrder(id) {
   }
   panel.innerHTML = `
     <div class="order-top">
-      <h2>📋 ${t.name}</h2>
+      <h2>📋 Example order — ${t.name}</h2>
       <button class="close-btn" onclick="closeOrder()">✕</button>
     </div>
     <div class="order-body">
+      <div class="order-disclaimer">
+        ข้อความที่สร้างเป็น <strong>ตัวอย่างคำสั่ง (example order)</strong> เท่านั้น ไม่ใช่คำสั่งทางการแพทย์ที่สมบูรณ์ — อาจมีความผิดพลาดหรือไม่สอดคล้องกับผู้ป่วย / protocol ของหน่วยงาน<br>
+        <strong>การอ้างอิงเว็บไซต์นี้</strong> (รวมถึงการคัดลอกข้อความไปใช้) <strong>ไม่ช่วยลดความรับผิดชอบ</strong>ของผู้สั่งยา — ผู้ใช้ต้องตรวจสอบและรับผิดชอบเองก่อนนำไปใช้จริง<br>
+        ผู้จัดทำไม่รับผิดชอบต่อความเสียหายใด ๆ จากการใช้หรืออ้างอิงข้อความจากระบบนี้
+      </div>
       <div class="order-bw-row">
         <label>น้ำหนัก (BW):</label>
         <input type="number" id="orderBW" value="${currentOrderBW}" min="1" max="250" oninput="updateOrderBW(this.value)" />
@@ -2860,13 +2873,13 @@ function openOrder(id) {
         `).join('')}
       </div>
       <div class="order-result" id="orderResult">
-        <span class="placeholder">← เลือกสถานการณ์เพื่อ generate order</span>
+        <span class="placeholder">← เลือกสถานการณ์เพื่อสร้างตัวอย่างข้อความ</span>
       </div>
       <div class="copy-row">
-        <button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button>
-        <button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Copy Plain Text</button>
+        <button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button>
+        <button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain text</button>
       </div>
-      <div class="order-note">⚠️ Order text เป็นแนวทางเท่านั้น — กรุณาตรวจสอบขนาดยา ข้อห้ามใช้ และปรับตาม clinical context ก่อนสั่งจริง</div>
+      <div class="order-note">⚠️ ตรวจสอบขนาดยา ข้อห้ามใช้ allergy และปรับตาม clinical context / นโยบายโรงพยาบาลก่อนสั่งจริง — ข้อความนี้ไม่แทน order ที่ลงนามแล้ว</div>
     </div>
   `;
   document.getElementById('orderOverlay').classList.add('active');
@@ -2909,13 +2922,13 @@ function getOrderText() {
 
 function copyOrder() {
   const text = getOrderText();
-  if (!text || text.includes('เลือกสถานการณ์')) return;
+  if (!text || text.includes('เลือกสถานการณ์') || text.includes('สร้างตัวอย่าง')) return;
   navigator.clipboard.writeText(text).then(() => showToast('✅ Copied to clipboard!')).catch(() => fallbackCopy(text));
 }
 
 function copyOrderPlain() {
   const text = getOrderText();
-  if (!text || text.includes('เลือกสถานการณ์')) return;
+  if (!text || text.includes('เลือกสถานการณ์') || text.includes('สร้างตัวอย่าง')) return;
   // strip emoji for HIS
   const plain = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').replace(/  +/g,' ').trim();
   navigator.clipboard.writeText(plain).then(() => showToast('✅ Copied (plain text)!')).catch(() => fallbackCopy(plain));
@@ -2940,7 +2953,7 @@ function showToast(msg) {
 
 function showCalcPanel(title, body) {
   const panel = document.getElementById('orderPanel');
-  panel.innerHTML = `<div class="order-top"><h2>${title}</h2><button class="close-btn" onclick="closeOrder()">✕</button></div><div class="order-body">${body}</div>`;
+  panel.innerHTML = `<div class="order-top"><h2>${title}</h2><button class="close-btn" onclick="closeOrder()">✕</button></div><div class="order-body">${orderExampleDisclaimerCalc}${body}</div>`;
   document.getElementById('orderOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -2957,7 +2970,7 @@ function openCCICalc() {
     <div class="order-bw-row"><label>Plt transfused:</label><input type="number" id="cciPltDose" value="3.3" step="0.1" style="width:80px" oninput="calcCCI()"/><label>×10¹¹</label>
       <span style="color:var(--text-muted);font-size:11px;margin-left:8px">(LDPPC ≈2.4, SDP ≈2.4-3.0)</span></div>
     <div class="order-result" id="orderResult" style="font-size:14px;line-height:2"><span class="placeholder">กำลังคำนวณ...</span></div>
-    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy</button></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button></div>
     <div class="order-note">CCI <5,000 ที่ 1h ≥2 ครั้ง = Platelet Refractoriness</div>
   `);
   calcCCI();
@@ -2977,7 +2990,7 @@ function openPltCalc() {
       <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPltScenario(100000,'Neurosurgery / Eye surgery')">Neurosurgery<br><small>target >100,000</small></button>
     </div>
     <div class="order-result" id="orderResult" style="font-size:14px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
-    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
     <div class="order-note">⚠️ ค่าประมาณ — Expected increment จริงขึ้นกับ spleen size, fever, DIC, alloimmunization</div>
   `);
   calcPlt();
@@ -3071,7 +3084,7 @@ function openPrcCalc() {
       </select>
     </div>
     <div class="order-result" id="orderResult" style="font-size:14px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
-    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
     <div class="order-note">⚠️ 1 unit PRC เพิ่ม Hb ~1 g/dL (ผู้ใหญ่ 70 kg) — ปรับตาม BW, ongoing bleeding, hemolysis</div>
   `);
   calcPrc();
@@ -3142,7 +3155,7 @@ function openHemoACalc() {
       </select>
     </div>
     <div class="order-result" id="orderResult" style="font-size:13px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
-    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
     <div class="order-note">FVIII 1 U/kg → เพิ่ม FVIII activity 2% | t½ SHL ~8-12h → ให้ซ้ำ q 8-12h | Check peak (30 min) & trough</div>
   `);
   calcHemoA();
@@ -3245,7 +3258,7 @@ function openVWDCalc() {
       <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setVWDScenario('menorrhagia')">Menorrhagia<br><small>TXA ± DDAVP</small></button>
     </div>
     <div class="order-result" id="orderResult" style="font-size:13px;line-height:1.9"><span class="placeholder">เลือก type และสถานการณ์...</span></div>
-    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy example order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
     <div class="order-note">DDAVP ใช้ได้เฉพาะ Type 1 (และบาง 2A, 2M, 2N) — ห้ามใช้ใน Type 2B & Type 3 | ทำ DDAVP trial ก่อนใช้จริง</div>
   `);
 }
