@@ -295,6 +295,73 @@ html[data-font-step="3"] body { zoom: 1.35; }
 }
 
 /* Category Tabs */
+.categories-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cat-menu-toggle {
+  display: none;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+}
+.cat-menu-toggle:hover {
+  border-color: var(--accent);
+}
+.cat-menu-toggle .cat-menu-current {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+.cat-menu-toggle .cat-menu-current strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.hamburger-icon span {
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.cat-menu-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  background: var(--detail-overlay-bg);
+  backdrop-filter: blur(2px);
+  -webkit-tap-highlight-color: transparent;
+}
+.categories-wrap.open .cat-menu-backdrop {
+  display: block;
+}
+
 .categories {
   max-width: 1200px;
   margin: 0 auto;
@@ -328,6 +395,68 @@ html[data-font-step="3"] body { zoom: 1.35; }
   border-color: var(--accent);
   color: var(--accent);
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .cat-menu-toggle {
+    display: flex;
+    margin: 0 16px 0;
+    width: calc(100% - 32px);
+  }
+  .categories-wrap {
+    padding-bottom: 8px;
+  }
+  .categories {
+    display: none;
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: calc(100% + 4px);
+    z-index: 90;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 10px;
+    margin: 0 auto;
+    max-height: min(70vh, 480px);
+    overflow-y: auto;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    gap: 6px;
+  }
+  .categories-wrap.open .categories {
+    display: flex;
+  }
+  .cat-btn {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    white-space: normal;
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width: 769px) {
+  .cat-menu-toggle,
+  .cat-menu-backdrop {
+    display: none !important;
+  }
+  .categories {
+    display: flex !important;
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+  }
 }
 
 /* Main Grid */
@@ -791,7 +920,14 @@ html[data-font-step="3"] body { zoom: 1.35; }
   <div class="search-hint">พิมพ์ชื่อยา ข้อบ่งใช้ หรือสถานการณ์ (เช่น ITP, anemia, platelet, warfarin, hemophilia)</div>
 </div>
 
-<div class="categories" id="categories"></div>
+<div class="categories-wrap" id="categoriesWrap">
+  <button type="button" class="cat-menu-toggle" id="catMenuToggle" aria-expanded="false" aria-controls="categories" aria-haspopup="true">
+    <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="cat-menu-current" id="catMenuCurrent"><strong>หมวดหมู่:</strong> ทั้งหมด</span>
+  </button>
+  <div class="cat-menu-backdrop" id="catMenuBackdrop" aria-hidden="true"></div>
+  <div class="categories" id="categories" role="navigation" aria-label="หมวดหมู่ยาและสถานการณ์"></div>
+</div>
 
 <div class="main">
   <div class="results-count" id="resultsCount"></div>
@@ -2110,14 +2246,44 @@ let currentCategory = 'all';
 function renderCategories() {
   const el = document.getElementById('categories');
   el.innerHTML = categoryList.map(c =>
-    `<button class="cat-btn ${c.key === currentCategory ? 'active' : ''}" onclick="setCategory('${c.key}')">${c.label}</button>`
+    `<button type="button" class="cat-btn ${c.key === currentCategory ? 'active' : ''}" onclick="setCategory('${c.key}')">${c.label}</button>`
   ).join('');
+  const cur = categoryList.find(c => c.key === currentCategory);
+  const curEl = document.getElementById('catMenuCurrent');
+  if (curEl && cur) {
+    curEl.innerHTML = '<strong>หมวดหมู่:</strong> ' + cur.label;
+  }
+}
+
+function closeCategoryMenu() {
+  const wrap = document.getElementById('categoriesWrap');
+  const btn = document.getElementById('catMenuToggle');
+  const bd = document.getElementById('catMenuBackdrop');
+  if (wrap) wrap.classList.remove('open');
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+  if (bd) bd.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function toggleCategoryMenu() {
+  const wrap = document.getElementById('categoriesWrap');
+  const btn = document.getElementById('catMenuToggle');
+  const bd = document.getElementById('catMenuBackdrop');
+  if (!wrap || !btn) return;
+  const open = !wrap.classList.contains('open');
+  wrap.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (bd) bd.setAttribute('aria-hidden', open ? 'false' : 'true');
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
 }
 
 function setCategory(cat) {
   currentCategory = cat;
   renderCategories();
   renderGrid();
+  closeCategoryMenu();
 }
 
 function getFiltered() {
@@ -2336,7 +2502,11 @@ document.getElementById('detailOverlay').addEventListener('click', function(e) {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeDetail(); closeOrder(); }
+  if (e.key === 'Escape') {
+    closeCategoryMenu();
+    closeDetail();
+    closeOrder();
+  }
 });
 
 document.getElementById('searchInput').addEventListener('input', renderGrid);
@@ -3606,6 +3776,19 @@ function autoCalcBSA() {
     }
     syncThemeToggle();
   });
+})();
+
+(function initCategoryMenu() {
+  const toggle = document.getElementById('catMenuToggle');
+  const backdrop = document.getElementById('catMenuBackdrop');
+  if (!toggle) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleCategoryMenu();
+  });
+  if (backdrop) {
+    backdrop.addEventListener('click', () => closeCategoryMenu());
+  }
 })();
 
 (function initFontSizeControl() {
