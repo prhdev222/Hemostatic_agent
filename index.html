@@ -1,0 +1,3401 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Hemostatic Agents & Transfusion Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg2: #111729;
+  --bg3: #1a2038;
+  --card: #161d33;
+  --card-hover: #1c2545;
+  --border: #2a3456;
+  --text: #e8ecf4;
+  --text-dim: #8892b0;
+  --text-muted: #5a6480;
+  --accent: #64ffda;
+  --accent2: #f0c040;
+  --accent3: #ff6b8a;
+  --accent4: #7b93ff;
+  --tag-bg: rgba(100, 255, 218, 0.08);
+  --tag-border: rgba(100, 255, 218, 0.2);
+  --warning: #ff9f43;
+  --danger: #ff6b6b;
+  --success: #26de81;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--accent), var(--accent4));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  margin-left: 8px;
+}
+
+/* Search */
+.search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 16px;
+}
+
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 20px 16px 52px;
+  background: var(--bg2);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.1);
+}
+
+.search-box input::placeholder { color: var(--text-muted); }
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+.search-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Category Tabs */
+.categories {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 24px 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cat-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cat-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cat-btn.active {
+  background: rgba(100, 255, 218, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Main Grid */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.results-count {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 420px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+  background: var(--card-hover);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.card-stripe {
+  height: 4px;
+  width: 100%;
+}
+
+.card-body { padding: 20px; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.card-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.card-badge {
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.badge-blood { background: rgba(255, 107, 138, 0.15); color: var(--accent3); border: 1px solid rgba(255, 107, 138, 0.3); }
+.badge-factor { background: rgba(123, 147, 255, 0.15); color: var(--accent4); border: 1px solid rgba(123, 147, 255, 0.3); }
+.badge-bypass { background: rgba(240, 192, 64, 0.15); color: var(--accent2); border: 1px solid rgba(240, 192, 64, 0.3); }
+.badge-anti { background: rgba(100, 255, 218, 0.15); color: var(--accent); border: 1px solid rgba(100, 255, 218, 0.3); }
+.badge-reversal { background: rgba(255, 159, 67, 0.15); color: var(--warning); border: 1px solid rgba(255, 159, 67, 0.3); }
+.badge-accent3 { background: rgba(255, 107, 138, 0.15); color: var(--accent3); border: 1px solid rgba(255, 107, 138, 0.3); }
+
+.card-aka {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  padding: 3px 10px;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.card-expand-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* Expanded Detail */
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+.detail-overlay.active { display: flex; }
+
+.detail-panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-top {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg2);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+}
+
+.close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.close-btn:hover { border-color: var(--accent3); color: var(--accent3); }
+
+.detail-content { padding: 24px 28px; }
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-attachment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.doc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.doc-link:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.doc-link::before { content: '📄'; font-size: 16px; }
+
+.detail-section h3::before {
+  content: '';
+  width: 12px;
+  height: 2px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.detail-section p, .detail-section li {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-section li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+
+.detail-section li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.dose-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.dose-table th {
+  background: var(--bg3);
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.dose-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.dose-table tr:hover td {
+  background: rgba(100, 255, 218, 0.03);
+}
+
+.alert-box {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.alert-warning {
+  background: rgba(255, 159, 67, 0.08);
+  border: 1px solid rgba(255, 159, 67, 0.2);
+  color: var(--warning);
+}
+
+.alert-info {
+  background: rgba(123, 147, 255, 0.08);
+  border: 1px solid rgba(123, 147, 255, 0.2);
+  color: var(--accent4);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state p { color: var(--text-muted); font-size: 15px; }
+
+/* Animations */
+.card { animation: fadeIn 0.4s ease both; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Order Modal */
+.order-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+  z-index: 300; display:none; justify-content:center; align-items:flex-start;
+  padding: 30px 16px; overflow-y:auto;
+}
+.order-overlay.active { display: flex; }
+.order-panel {
+  background: var(--bg2); border:1px solid var(--border); border-radius:16px;
+  max-width:680px; width:100%; max-height:calc(100vh - 60px); overflow-y:auto;
+  animation: slideUp 0.3s ease;
+}
+.order-top {
+  padding:20px 24px; border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+  position:sticky; top:0; background:var(--bg2); z-index:10;
+}
+.order-top h2 { font-family:'Instrument Serif',serif; font-size:22px; }
+.order-body { padding:20px 24px; }
+.order-bw-row {
+  display:flex; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap;
+}
+.order-bw-row label { font-size:13px; color:var(--text-dim); white-space:nowrap; }
+.order-bw-row input {
+  width:90px; padding:10px 12px; background:var(--bg3); border:1px solid var(--border);
+  border-radius:8px; color:var(--accent2); font-size:16px; font-family:'IBM Plex Mono',monospace;
+  outline:none; text-align:center;
+}
+.order-bw-row input:focus { border-color:var(--accent); }
+.order-scenario-btn {
+  display:block; width:100%; text-align:left; padding:14px 16px;
+  background:var(--bg3); border:1px solid var(--border); border-radius:10px;
+  color:var(--text); font-size:14px; font-family:'DM Sans',sans-serif;
+  cursor:pointer; transition:all 0.2s; margin-bottom:8px;
+}
+.order-scenario-btn:hover { border-color:var(--accent); background:var(--card-hover); }
+.order-scenario-btn.selected { border-color:var(--accent); background:rgba(100,255,218,0.06); }
+.order-scenario-btn .scn-title {
+  font-weight:600; margin-bottom:4px; color:var(--text);
+}
+.order-scenario-btn .scn-sub { font-size:12px; color:var(--text-muted); }
+.order-result {
+  background:#0d1117; border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin-top:16px; position:relative;
+  font-family:'IBM Plex Mono',monospace; font-size:13px; line-height:1.8;
+  color:#c9d1d9; white-space:pre-wrap; word-break:break-word;
+  min-height:60px;
+}
+.order-result .placeholder { color:var(--text-muted); font-style:italic; }
+.copy-row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.copy-btn {
+  padding:10px 20px; border-radius:8px; border:none;
+  font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600;
+  cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:6px;
+}
+.copy-btn-main { background:var(--accent); color:#0a0e1a; }
+.copy-btn-main:hover { background:#8affe8; }
+.copy-btn-alt { background:var(--bg3); color:var(--text-dim); border:1px solid var(--border); }
+.copy-btn-alt:hover { border-color:var(--accent); color:var(--accent); }
+.copied-toast {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+  background:var(--accent); color:#0a0e1a; padding:10px 24px;
+  border-radius:10px; font-weight:600; font-size:14px;
+  z-index:999; animation: toastIn 0.3s ease; pointer-events:none;
+}
+@keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+.order-note { font-size:12px; color:var(--text-muted); margin-top:10px; line-height:1.5; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🩸</div>
+      <span class="logo-text">Hemostatic & Transfusion</span>
+      <span class="logo-sub">Quick Reference</span>
+    </div>
+  </div>
+</div>
+
+<div class="search-container">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="ค้นหายา, ข้อบ่งใช้, สถานการณ์... (เช่น warfarin, ICH, hemophilia)" />
+  </div>
+  <div class="search-hint">พิมพ์ชื่อยา ข้อบ่งใช้ หรือสถานการณ์ (เช่น ITP, anemia, platelet, warfarin, hemophilia)</div>
+</div>
+
+<div class="categories" id="categories"></div>
+
+<div class="main">
+  <div class="results-count" id="resultsCount"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-panel" id="detailPanel"></div>
+</div>
+
+<div class="order-overlay" id="orderOverlay">
+  <div class="order-panel" id="orderPanel"></div>
+</div>
+
+<div class="footer">
+  Ref: Pisa Phiphitaporn, MD (KKU) · Pirun Saelue, MD, PhD (PSU) + supplementary hematology references · สรุปเพื่อการศึกษาเท่านั้น
+</div>
+
+<script>
+const agents = [
+  {
+    id: 'txa',
+    name: 'Tranexamic Acid (TXA)',
+    aka: 'Transamin, Lysteda, Cyklokapron',
+    category: 'Antifibrinolytic',
+    badge: 'anti',
+    tags: ['antifibrinolytic', 'trauma', 'PPH', 'dental', 'menorrhagia'],
+    shortDesc: 'Lysine analogue ยับยั้ง fibrinolysis โดยบล็อก lysine binding site ของ plasminogen ป้องกัน plasmin ย่อย fibrin clot',
+    detail: {
+      mechanism: 'จับกับ lysine binding site บน plasminogen ทำให้ plasminogen ไม่สามารถจับกับ partially-digested fibrin จึงชะลอการสลายลิ่มเลือด (fibrinolysis) ไม่ได้เพิ่ม factor แต่ช่วยรักษา clot ที่เกิดแล้ว',
+      indications: [
+        'Major Trauma — IV 1g over 10 min → 1g over 8h (ภายใน 3 ชม.หลังบาดเจ็บ) [CRASH-2]',
+        'Postpartum Hemorrhage (PPH) — IV 1g over 10 min ± repeat (ภายใน 3 ชม.) [WOMAN Trial]',
+        'Traumatic Brain Injury (TBI) — IV 1g → 1g over 8h (ภายใน 3 ชม.) [CRASH-3]',
+        'Total Hip/Knee Arthroplasty — IV 1g pre-incision หรือ topical 1–3g',
+        'Cardiac Surgery — IV 10 mg/kg bolus → 1 mg/kg/h infusion',
+        'Epistaxis (topical) — 500 mg soaked pledget 10–15 นาที',
+        'Heavy Menstrual Bleeding — PO 1300 mg TID × ≤5 วัน (FDA-approved)',
+        'Hemophilia (Dental procedure) — PO 1g TID หรือ 25 mg/kg TID เสริมร่วมกับ factor'
+      ],
+      dosing: [
+        { scenario: 'Trauma/PPH/TBI', dose: 'IV 1g loading → 1g/8h', note: 'ให้ภายใน 3 ชม.' },
+        { scenario: 'Orthopedic surgery', dose: 'IV 1g pre-op ± topical 1-3g', note: 'ลด blood loss' },
+        { scenario: 'Heavy menstruation (PO)', dose: '1300 mg TID × ≤5 days', note: 'ปรับ dose ถ้า renal impairment' },
+        { scenario: 'Dental/Hemophilia', dose: 'PO 25 mg/kg TID', note: 'ร่วมกับ factor replacement' }
+      ],
+      renalAdjust: 'Cr >1.4 mg/dL: ลดขนาดยา — Cr 1.4-2.8: 1300 mg BID / Cr 2.8-5.7: 1300 mg OD / Cr >5.7: 650 mg OD',
+      caution: 'ระวังในผู้ป่วย hyperfibrinolysis (ดู ROTEM: ML >15%), หลีกเลี่ยงหาก active thromboembolic disease, seizure risk ที่ high dose (cardiac surgery)',
+      rotem: 'ROTEM ช่วยวินิจฉัย hyperfibrinolysis: EXTEM/INTEM มี maximum lysis (ML) สูง, APTEM แก้ไขได้ → บ่งชี้ใช้ TXA'
+    }
+  },
+  {
+    id: 'ffp',
+    name: 'Fresh Frozen Plasma (FFP)',
+    aka: 'FFP, LDFFP (Leukodepleted FFP), CRP (Cryo-Removed Plasma) — ศูนย์บริการโลหิตแห่งชาติ สภากาชาดไทย',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['all factors', 'coagulopathy', 'VKA reversal', 'DIC', 'LDFFP', 'CRP'],
+    shortDesc: 'พลาสมาแช่แข็ง มี coagulation factors ทุกตัว ≈1 IU/mL — NBC: Volume ≥150 mL, FVIII ≥0.7 IU/mL, เก็บ ≤−20°C, อายุ 1 ปี',
+    detail: {
+      mechanism: 'มี coagulation factors ทุกชนิดที่ความเข้มข้น ~1 IU/mL รวมถึง fibrinogen, natural anticoagulants (Protein C, S, AT)',
+      content: '<b>ผลิตภัณฑ์จาก NBC สภากาชาดไทย:</b><br><br><b>1. FFP (Fresh Frozen Plasma)</b><br>Volume: ≥150 mL | FVIII: ≥0.7 IU/mL | เก็บ: ≤−20°C | อายุ: 1 ปี<br><br><b>2. LDFFP (Leukodepleted FFP)</b><br>Volume: ≥150 mL | FVIII: ≥0.7 IU/mL | เก็บ: ≤−20°C | อายุ: 1 ปี<br>(ลด WBC → ลด febrile reaction, CMV, HLA alloimmunization)<br><br><b>3. CRP (Cryo-Removed Plasma)</b><br>Volume: ≥150 mL | เก็บ: ≤−20°C | อายุ: 1 ปี<br>(เป็น plasma ที่เอา cryoprecipitate ออกแล้ว → ไม่มี fibrinogen/FVIII สูง)<br>ข้อบ่งใช้: TTP plasma exchange (ไม่มี large vWF multimers)<br><br><b>4. Single Donor FFP / Quarantine Plasma (Apheresis)</b><br>Volume: ≥500 mL | Residual leukocyte: <1×10⁶ | เก็บ: ≤−20°C | อายุ: 3 ปี',
+      indications: [
+        'Multiple factor deficiency (เช่น liver disease, DIC)',
+        'VKA reversal เมื่อไม่มี PCC (10-15 mL/kg)',
+        'Massive transfusion protocol',
+        'TTP — therapeutic plasma exchange',
+        'Hemophilia A/B เมื่อไม่มี factor concentrate'
+      ],
+      dosing: [
+        { scenario: 'VKA reversal (INR 2-4)', dose: '10 mL/kg', note: 'ช้ากว่า PCC มาก' },
+        { scenario: 'VKA reversal (INR 4-6)', dose: '12 mL/kg', note: 'ต้องรอ thaw ~30 นาที' },
+        { scenario: 'VKA reversal (INR >6)', dose: '15 mL/kg', note: 'Max ~1500 mL' },
+        { scenario: 'DIC / coagulopathy', dose: '10-20 mL/kg', note: 'Repeat ตาม lab' }
+      ],
+      caution: 'ปริมาตรสูง (~30 เท่าของ PCC) → เสี่ยง volume overload & TRALI, ต้อง ABO compatible, ต้องรอ thaw ≥30 นาที, เสี่ยง citrate-induced hypocalcemia',
+      vsPCC: 'เทียบ PCC: ปริมาตรมากกว่า, ช้ากว่า, ต้อง blood group match, เสี่ยง TRALI/fluid overload สูงกว่า แต่มี factor ครบทุกตัว'
+    }
+  },
+  {
+    id: 'cryo',
+    name: 'Cryoprecipitate / HTFDC',
+    aka: 'Cryo, HTFDC (Heat Treated Freeze Dried Cryoprecipitate) — NBC สภากาชาดไทย',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['fibrinogen', 'FVIII', 'FXIII', 'vWF', 'hemophilia A', 'HTFDC', 'NBC'],
+    shortDesc: 'NBC: Cryo — FVIII ≥70 IU, Fibrinogen ≥140 mg/unit, Vol <15 mL, เก็บ ≤−20°C | HTFDC — FVIII ≥200 IU, Fibrinogen >420 mg/bottle, เก็บ 2-8°C',
+    detail: {
+      mechanism: 'ได้จากการ thaw FFP ที่ 1-6°C แล้วแยกเอา precipitate ที่มี fibrinogen, FVIII, FXIII, vWF เข้มข้น',
+      content: '<b>ผลิตภัณฑ์จาก NBC สภากาชาดไทย:</b><br><br><b>1. Cryoprecipitate (Frozen)</b><br>Volume: <15 mL | FVIII: ≥70 IU/unit | Fibrinogen: ≥140 mg/unit<br>เก็บ: ≤−20°C | อายุ: 1 ปี<br><br><b>2. HTFDC (Heat Treated Freeze Dried Cryoprecipitate)</b> — PDMP<br>FVIII: ≥200 IU/bottle | Fibrinogen: >420 mg/bottle<br>Volume: 50 mL (หลัง reconstitute) | เก็บ: 2-8°C (ห้ามแช่แข็ง, เก็บพ้นแสง)<br>อายุ: 1 ปี<br>ข้อดี: ผ่าน heat treatment → ปลอดภัยจากไวรัสมากขึ้น, เก็บตู้เย็นปกติได้',
+      indications: [
+        'Hypofibrinogenemia (fibrinogen <100 mg/dL)',
+        'Hemophilia A — เมื่อไม่มี FVIII concentrate (FVIII 80-120 IU/unit)',
+        'von Willebrand Disease — เมื่อไม่มี specific vWF/FVIII concentrate',
+        'Factor XIII deficiency',
+        'DIC ที่มี fibrinogen ต่ำ',
+        'Massive transfusion-associated coagulopathy'
+      ],
+      dosing: [
+        { scenario: 'Fibrinogen replacement', dose: '1 unit/5-10 kg BW', note: 'เพิ่ม fibrinogen ~50-70 mg/dL' },
+        { scenario: 'Hemophilia A (if no conc.)', dose: 'คำนวณจาก FVIII content', note: '80-120 IU FVIII/unit' }
+      ],
+      content: 'แต่ละ unit มี: Fibrinogen >150 mg, FVIII 80-120 IU, vWF 80-150 IU, FXIII',
+      caution: 'ไม่มี FIX → ใช้ไม่ได้ใน Hemophilia B, ต้อง ABO compatible (ควร), เสี่ยงติดเชื้อจาก blood product'
+    }
+  },
+  {
+    id: '4fpcc',
+    name: '4-Factor PCC (4F-PCC)',
+    aka: 'Cofact, Beriplex, Kcentra, Octaplex',
+    category: 'PCC / Reversal',
+    badge: 'reversal',
+    tags: ['FII', 'FVII', 'FIX', 'FX', 'VKA reversal', 'warfarin', 'DOAC'],
+    shortDesc: 'Prothrombin Complex Concentrate ที่มี Factor II, VII, IX, X + Protein C, S, AT สำหรับ reverse VKA (warfarin) อย่างรวดเร็ว',
+    detail: {
+      mechanism: 'มี Factor II (30 IU/mL), VII (25 IU/mL), IX (30 IU/mL), X (30 IU/mL) + Protein C (>20), Protein S (14-16), Antithrombin (0.75-1.5), Heparin (15.5)',
+      indications: [
+        'VKA (Warfarin) reversal — ข้อบ่งใช้หลัก (FDA-approved ในไทย)',
+        'DOACs reversal (off-label) — เมื่อไม่มี specific antidote',
+        'Consumptive coagulopathy (off-label)',
+        'Urgent surgery ในผู้ป่วย warfarin ที่ INR สูง'
+      ],
+      dosing: [
+        { scenario: 'INR 2.0-3.9', dose: '25 IU/kg', note: 'Max 2500 IU (if <100 kg)' },
+        { scenario: 'INR 4.0-6.0', dose: '35 IU/kg', note: 'Max 3500 IU' },
+        { scenario: 'INR >6.0', dose: '50 IU/kg', note: 'Max 5000 IU' },
+        { scenario: 'DOAC reversal (off-label)', dose: '50 IU/kg', note: 'เมื่อไม่มี specific antidote' }
+      ],
+      admin: 'ละลาย 500 IU ใน sterile water 17 mL ด้วย Mix2Vial → IV push max rate 2 mL/min, พร้อมใช้ทันที (ไม่ต้องรอ thaw เหมือน FFP)',
+      evidence: 'Sarode et al. (Circulation 2013): 4F-PCC vs FFP — INR ≤1.3 at 0.5h: 62.2% vs 9.6%, hemostatic efficacy 82.6% vs 50%, fluid overload น้อยกว่า (5% vs 14%), thromboembolism ไม่ต่างกัน',
+      attachments: [
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal warfarin (VKA)', href: 'docs/PCC_warfarin.pdf' },
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal DOAC', href: 'docs/PCC_DOAC.pdf' }
+      ],
+      caution: 'เสี่ยง thromboembolism (มากกว่า FFP เล็กน้อย), ไม่ต้อง blood group matching, ผ่าน viral inactivation (steam treatment + nanofiltration), ให้ Vitamin K ร่วมด้วยเสมอเพื่อ sustained effect',
+      vsFFP: 'เทียบ FFP: ปริมาตรน้อยกว่า ~30 เท่า, ออกฤทธิ์เร็วกว่า, ไม่ต้อง blood group, ไม่เสี่ยง TRALI, ไม่ทำ hypocalcemia แต่เสี่ยง thrombosis มากกว่าเล็กน้อย'
+    }
+  },
+  {
+    id: '3fpcc',
+    name: '3-Factor PCC (3F-PCC)',
+    aka: 'Profilnine SD, Factor IX Complex',
+    category: 'PCC / Factor',
+    badge: 'factor',
+    tags: ['FII', 'FIX', 'FX', 'hemophilia B'],
+    shortDesc: 'PCC ที่มี Factor II, IX, X (ไม่มี FVII therapeutic level) — FDA approved สำหรับ Hemophilia B',
+    detail: {
+      mechanism: 'มี Factor II (15 IU/mL), IX (10 IU/mL), X (10 IU/mL) แต่มี FVII ในระดับ non-therapeutic — ไม่มี Protein C, S, AT',
+      indications: [
+        'Hemophilia B (Factor IX deficiency) — FDA approved indication',
+        'ไม่ควรใช้แทน 4F-PCC สำหรับ VKA reversal เนื่องจากขาด FVII'
+      ],
+      dosing: [
+        { scenario: 'Hemophilia B (minor bleed)', dose: '25-40 IU/kg', note: 'Target FIX 20-40%' },
+        { scenario: 'Hemophilia B (major bleed)', dose: '60-100 IU/kg', note: 'Target FIX 60-100%' }
+      ],
+      vs4F: 'เทียบ 4F-PCC: ไม่มี FVII therapeutic level, ไม่มี Protein C/S/AT, ใช้ Solvent Detergent แทน Steam treatment, ไม่มี heparin',
+      evidenceINR: 'Meta-analysis (Thromb Haemost 2023): 4F-PCC ดีกว่า 3F-PCC ในการลด INR ถึงเป้า (OR 3.50 [1.88-6.52]) โดย thromboembolism ไม่ต่างกัน (RD 0.01 [-0.01, 0.03])',
+      caution: 'ไม่เหมาะสำหรับ warfarin reversal (ขาด FVII), FDA approved เฉพาะ Hemophilia B'
+    }
+  },
+  {
+    id: 'rfviia',
+    name: 'rFVIIa (NovoSeven RT)',
+    aka: 'Recombinant Factor VIIa, Eptacog alfa',
+    category: 'Bypassing Agent',
+    badge: 'bypass',
+    tags: ['bypassing agent', 'inhibitor', 'hemophilia', 'Glanzmann', 'acquired hemophilia'],
+    shortDesc: 'Recombinant Factor VIIa — bypassing agent สำหรับ hemophilia ที่มี inhibitor, acquired hemophilia, FVII deficiency, Glanzmann thrombasthenia',
+    detail: {
+      mechanism: 'High-dose FVIIa จับกับ tissue factor และ activated platelet surface โดยตรง → กระตุ้น FX → Xa → thrombin generation โดย bypass tenase complex (FIXa+FVIIIa) ที่ขาดหายไป',
+      indications: [
+        'Hemophilia A/B with inhibitors — bleeding episodes & perioperative',
+        'Acquired Hemophilia A — bleeding episodes & perioperative',
+        'Congenital Factor VII deficiency',
+        'Glanzmann Thrombasthenia — ที่ดื้อต่อ platelet transfusion'
+      ],
+      dosing: [
+        { scenario: 'Hemophilia+inhibitor (bleed)', dose: '90 mcg/kg IV q 2h', note: 'จนเลือดหยุด แล้วลด interval' },
+        { scenario: 'Acquired Hemophilia A', dose: '90 mcg/kg IV q 2-3h', note: 'First-line bypassing agent' },
+        { scenario: 'Congenital FVII deficiency', dose: '15-30 mcg/kg IV q 4-6h', note: 'ขนาดน้อยกว่า' },
+        { scenario: 'Glanzmann (plt refractory)', dose: '90 mcg/kg IV q 2h', note: '± platelet transfusion' }
+      ],
+      comparison: 'เทียบกับ aPCC (FEIBA): เป็น recombinant (ไม่เสี่ยง viral), บริสุทธิ์กว่า (pure FVIIa), แต่ต้องให้ถี่กว่า (q 2h vs q 6-8h), ราคาสูงกว่ามาก',
+      cost: 'BW 60 kg: ~127,445 THB/dose → 764,670–1,529,340 THB/วัน (q 2-4h)',
+      caution: 'ไม่เสี่ยง viral transmission (recombinant), เสี่ยง thromboembolism, ต้องให้บ่อย (q 2h), ราคาสูงมาก'
+    }
+  },
+  {
+    id: 'apcc',
+    name: 'aPCC / FEIBA',
+    aka: 'Factor Eight Inhibitor Bypassing Activity, Anti-Inhibitor Coagulant Complex',
+    category: 'Bypassing Agent',
+    badge: 'bypass',
+    tags: ['bypassing agent', 'inhibitor', 'DOAC reversal', 'hemophilia', 'acquired hemophilia'],
+    shortDesc: 'Plasma-derived bypassing agent มี FII, FVIIa, FIX, FX, FXa — ใช้ใน hemophilia ที่มี inhibitor และ DOAC reversal (off-label)',
+    detail: {
+      mechanism: 'มี activated & zymogen factors หลายตัว (FII, FVIIa, FIX, FX, FXa) → ให้ ready-made FXa + prothrombin bypass prothrombinase complex บน activated platelet โดยตรง',
+      indications: [
+        'Hemophilia A/B with inhibitors — control & prevention of bleeding',
+        'Perioperative management ใน hemophilia + inhibitor',
+        'Routine prophylaxis ลด bleeding frequency ใน hemophilia + inhibitor',
+        'Acquired Hemophilia A — acute bleeding',
+        'DOAC reversal (off-label) — เมื่อไม่มี specific antidote'
+      ],
+      dosing: [
+        { scenario: 'Hemophilia+inhibitor (bleed)', dose: '50-100 U/kg IV q 8-12h', note: 'Max 200 U/kg/day' },
+        { scenario: 'Acquired Hemophilia A', dose: '75-100 U/kg IV q 8-12h', note: 'ปรับตาม response' },
+        { scenario: 'Prophylaxis', dose: '85 U/kg q other day', note: 'ลด bleeding rate' },
+        { scenario: 'DOAC reversal (off-label)', dose: '50 U/kg', note: 'หรือสูงกว่าตาม severity' }
+      ],
+      comparison: 'เทียบกับ rFVIIa: Plasma-derived (มี viral risk เล็กน้อย แต่ผ่าน screening), ให้ห่างกว่า (q 6-8h vs q 2h), ราคาถูกกว่า rFVIIa',
+      cost: 'BW 60 kg: aPCC ~91,926 THB/dose → 183,852 THB/วัน (q 12h) vs rFVIIa 764,670-1,529,340 THB/วัน',
+      caution: 'เสี่ยง viral ต่ำ (plasma-derived, screened), เสี่ยง thromboembolism, ห้ามใช้ร่วม TXA (เพิ่ม thrombosis risk), Max 200 U/kg/day'
+    }
+  },
+  {
+    id: 'fviii',
+    name: 'Factor VIII Concentrate',
+    aka: 'FVIII, FVIII TRCS (สภากาชาดไทย), Adynovate, Afstyla, Advate',
+    category: 'Factor Concentrate',
+    badge: 'factor',
+    tags: ['FVIII', 'hemophilia A', 'factor replacement', 'FVIII TRCS', 'NBC'],
+    shortDesc: 'Factor VIII concentrate สำหรับ Hemophilia A — FVIII 1 U/kg เพิ่ม activity 2% | NBC: FVIII TRCS 250/500 IU/vial เก็บ 2-8°C อายุ 2 ปี',
+    detail: {
+      mechanism: 'ทดแทน FVIII ที่ขาดใน Hemophilia A โดยตรง — มีทั้ง plasma-derived, recombinant SHL (standard half-life t½ ~12h) และ EHL (extended half-life)',
+      indications: [
+        'Hemophilia A — bleeding episodes ทุกความรุนแรง',
+        'Hemophilia A — perioperative management',
+        'Hemophilia A — prophylaxis'
+      ],
+      dosing: [
+        { scenario: 'FVIII 1 U/kg', dose: 'เพิ่ม FVIII activity 2%', note: 'สูตรคำนวณพื้นฐาน' },
+        { scenario: 'Minor bleed (target 30-50%)', dose: '15-25 U/kg', note: 'q 12-24h' },
+        { scenario: 'Major bleed / ICH (target 80-100%)', dose: '50 U/kg', note: 'BW 60 kg = 3000 U → FVIII 100%' },
+        { scenario: 'Maintenance (post-peak)', dose: '~25 U/kg q 12h', note: 't½ ~12h → level ลด 50% ใน 12h' }
+      ],
+      monitoring: 'ตรวจ peak level (15-30 min หลังให้) และ trough level (ก่อน dose ถัดไป) เพื่อปรับขนาดยา',
+      types: '<b>ผลิตภัณฑ์ที่มีในไทย:</b><br><b>FVIII TRCS (Plasma Fractionation Centre, สภากาชาดไทย)</b>: 250 & 500 IU/vial, Vol 10 & 20 mL (reconstituted), เก็บ 2-8°C (ห้ามแช่แข็ง, เก็บพ้นแสง), อายุ 2 ปี<br><br>Plasma-derived: pdFVIII<br>Recombinant SHL: rFVIII (1st-3rd gen)<br>Recombinant EHL: Efmoroctocog alfa (Eloctate) ฯลฯ',
+      caution: 'เสี่ยงเกิด inhibitor (neutralizing antibody) ~30% ใน severe HA, ถ้ามี inhibitor ต้องเปลี่ยนไปใช้ bypassing agent, ไม่มี FIX → ใช้ไม่ได้ใน Hemophilia B'
+    }
+  },
+  {
+    id: 'fix',
+    name: 'Factor IX Concentrate',
+    aka: 'FIX, Immunine, BeneFIX, Rixubis',
+    category: 'Factor Concentrate',
+    badge: 'factor',
+    tags: ['FIX', 'hemophilia B', 'factor replacement'],
+    shortDesc: 'Factor IX concentrate สำหรับ Hemophilia B — FIX 1 U/kg เพิ่ม activity 1% (volume distribution กว้างกว่า FVIII)',
+    detail: {
+      mechanism: 'ทดแทน FIX ที่ขาดใน Hemophilia B โดยตรง — FIX มี volume of distribution กว้างกว่า FVIII จึงต้องใช้ dose/kg สูงกว่า แต่ half-life ยาวกว่า (~24h)',
+      indications: [
+        'Hemophilia B — bleeding episodes ทุกความรุนแรง',
+        'Hemophilia B — perioperative management',
+        'Hemophilia B — prophylaxis'
+      ],
+      dosing: [
+        { scenario: 'FIX 1 U/kg', dose: 'เพิ่ม FIX activity 1%', note: 'สูตรคำนวณพื้นฐาน' },
+        { scenario: 'Minor bleed (target 30-50%)', dose: '30-50 U/kg', note: 'q 24h' },
+        { scenario: 'Major bleed / ICH (target 80-100%)', dose: '80-100 U/kg', note: 'BW 60 kg = 6000 U → FIX 100%' },
+        { scenario: 'Maintenance', dose: '~50 U/kg q 24h', note: 't½ ~24h → level ลด 50% ใน 24h' }
+      ],
+      alternatives: 'ถ้าไม่มี FIX concentrate: ใช้ 3F-PCC (Profilnine) ที่มี FIX เป็นส่วนประกอบ หรือ FFP, Cryoprecipitate ไม่มี FIX จึงใช้ไม่ได้',
+      caution: 'Cryoprecipitate ไม่มี FIX → ห้ามใช้ใน Hemophilia B, inhibitor rate ต่ำกว่า Hemophilia A (~3-5%)'
+    }
+  },
+  {
+    id: 'vitk',
+    name: 'Vitamin K',
+    aka: 'Phytonadione, Vitamin K1',
+    category: 'PCC / Reversal',
+    badge: 'reversal',
+    tags: ['VKA reversal', 'warfarin', 'FII', 'FVII', 'FIX', 'FX'],
+    shortDesc: 'Cofactor สำหรับ carboxylation ของ Factor II, VII, IX, X — ใช้ reverse warfarin แต่ออกฤทธิ์ช้า (6-24 ชม.)',
+    detail: {
+      mechanism: 'เป็น cofactor ใน hepatic carboxylation ของ vitamin K-dependent factors (II, VII, IX, X) และ Protein C, S → ฟื้นฟูการสร้าง active coagulation factors ในตับ',
+      indications: [
+        'VKA (Warfarin) reversal — ให้ร่วมกับ 4F-PCC เสมอในกรณี major bleeding',
+        'Supratherapeutic INR โดยไม่มีเลือดออก',
+        'Vitamin K deficiency (malabsorption, prolonged antibiotics)'
+      ],
+      dosing: [
+        { scenario: 'Major VKA bleeding + PCC', dose: 'IV 10 mg slow push', note: 'ให้พร้อม 4F-PCC' },
+        { scenario: 'INR 4.5-10 (ไม่มีเลือดออก)', dose: 'Hold warfarin ± PO Vit K 1-2.5 mg', note: 'Recheck INR 24h' },
+        { scenario: 'INR >10 (ไม่มีเลือดออก)', dose: 'PO Vit K 2.5-5 mg', note: 'Recheck INR 24-48h' }
+      ],
+      caution: 'ออกฤทธิ์ช้า 6-24 ชม. → ไม่เพียงพอในภาวะเร่งด่วน ต้องให้ร่วมกับ PCC หรือ FFP, IV push เร็วเสี่ยง anaphylactoid reaction, ให้ Vit K ร่วม PCC เสมอเพื่อ sustained reversal'
+    }
+  },
+  {
+    id: 'andexanet',
+    name: 'Andexanet Alfa',
+    aka: 'Andexxa, Ondexxya',
+    category: 'DOAC Reversal',
+    badge: 'reversal',
+    tags: ['DOAC reversal', 'rivaroxaban', 'apixaban', 'FXa inhibitor'],
+    shortDesc: 'Modified recombinant FXa ที่เป็น decoy — จับ FXa inhibitors (rivaroxaban, apixaban) เฉพาะเจาะจง',
+    detail: {
+      mechanism: 'Truncated form of FXa ที่ไม่มี catalytic activity แต่ยังจับ FXa inhibitors ได้ → ทำหน้าที่เป็น decoy receptor ดูดซับ rivaroxaban/apixaban ออกจาก endogenous FXa',
+      indications: [
+        'Reversal of rivaroxaban ในภาวะ life-threatening / uncontrolled bleeding',
+        'Reversal of apixaban ในภาวะ life-threatening / uncontrolled bleeding'
+      ],
+      evidence: 'ANNEXA-I Trial (NEJM 2024): Andexanet vs usual care — hemostatic efficacy 67% vs 53.1% (p=0.003), แต่ thrombotic events สูงกว่า 10.3% vs 5.6% (p=0.048)',
+      caution: 'Thrombotic risk สูงกว่า usual care อย่างมีนัยสำคัญ, ราคาสูงมาก, อาจยังไม่มีในไทย → ทางเลือก: 4F-PCC หรือ aPCC เป็น non-specific reversal'
+    }
+  },
+  {
+    id: 'idarucizumab',
+    name: 'Idarucizumab (Praxbind)',
+    aka: 'Praxbind, Anti-dabigatran antibody fragment',
+    category: 'DOAC Reversal',
+    badge: 'reversal',
+    tags: ['DOAC reversal', 'dabigatran', 'Pradaxa', 'idarucizumab', 'Praxbind', 'direct thrombin inhibitor'],
+    shortDesc: 'Humanized monoclonal antibody fragment (Fab) จับ dabigatran เฉพาะเจาะจง — ให้ 5g IV reversal ทันทีภายใน 5 นาที',
+    detail: {
+      mechanism: 'Fab fragment ของ humanized monoclonal antibody ที่จับ dabigatran (ทั้ง free & thrombin-bound) ด้วย affinity สูงกว่า thrombin ~350 เท่า → neutralize dabigatran ทันที, ไม่มีฤทธิ์ procoagulant ของตัวเอง',
+      indications: [
+        'Reversal of dabigatran (Pradaxa) ในภาวะ:',
+        '• Life-threatening or uncontrolled bleeding',
+        '• Emergency surgery / urgent invasive procedure ที่รอไม่ได้'
+      ],
+      dosing: [
+        { scenario: 'Standard dose (ทุกกรณี)', dose: '5 g IV (2 vials × 2.5 g/50 mL)', note: 'ให้ 2 vials ต่อเนื่อง ภายใน 5-10 min' },
+        { scenario: 'Redosing', dose: '5 g IV repeat', note: 'ถ้า recurrent bleeding หรือ ต้อง re-anticoagulate แล้วเลือดออกซ้ำ' }
+      ],
+      evidence: 'RE-VERSE AD Trial (NEJM 2017): N=503, single-arm\n• Median max % reversal of dTT: 100% ภายใน 4 ชม.\n• Intraoperative hemostasis normal: 93.4%\n• Median time to cessation of bleeding: 2.5 ชม.\n• 30-day thrombotic events: 6.3% (ส่วนใหญ่ไม่ได้ restart anticoagulant)\n• 30-day mortality: 18.8% (จาก underlying disease ไม่ใช่จากยา)',
+      caution: 'ไม่มี procoagulant activity → thrombosis risk ต่ำกว่า andexanet, Dabigatran t½ สั้นกว่า idarucizumab → อาจ rebound anticoagulation ที่ 24h (ถ้า dabigatran ยังอยู่ใน gut/redistribution), ราคาสูงมาก (~200,000-300,000 THB/dose), อาจมีบ้างในไทย (ศูนย์ใหญ่), ถ้าไม่มี → ทางเลือก: hemodialysis (dabigatran dialyzable ~60%), aPCC 50 U/kg, หรือ 4F-PCC 50 U/kg'
+    }
+  },
+  {
+    id: 'doac_reversal',
+    name: '💊 DOAC Reversal — Complete Guide',
+    aka: 'Dabigatran, Rivaroxaban, Apixaban, Edoxaban reversal — ครบทุก DOAC',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['DOAC', 'dabigatran', 'rivaroxaban', 'apixaban', 'edoxaban', 'reversal', 'idarucizumab', 'andexanet', '4F-PCC', 'aPCC', 'Pradaxa', 'Xarelto', 'Eliquis', 'bleeding'],
+    shortDesc: 'แนวทาง reverse DOAC ทุกตัว — Specific antidote (Idarucizumab, Andexanet) vs Non-specific (4F-PCC, aPCC) + pharmacokinetics ที่ต้องรู้',
+    detail: {
+      mechanism: 'DOACs แบ่ง 2 กลุ่ม:<br><b>Direct Thrombin Inhibitor (DTI):</b> Dabigatran → จับ thrombin (FIIa) โดยตรง<br><b>Factor Xa Inhibitors:</b> Rivaroxaban, Apixaban, Edoxaban → จับ FXa โดยตรง<br>แต่ละตัวมี pharmacokinetics ต่างกัน → ส่งผลต่อ timing ของ reversal',
+      comparisonTables: [
+        {
+          title: 'DOAC Pharmacokinetics — ต้องรู้ก่อน Reverse',
+          headers: ['คุณสมบัติ', 'Dabigatran (Pradaxa)', 'Rivaroxaban (Xarelto)', 'Apixaban (Eliquis)', 'Edoxaban (Lixiana)'],
+          rows: [
+            ['กลไก', 'Anti-IIa (thrombin)', 'Anti-Xa', 'Anti-Xa', 'Anti-Xa'],
+            ['t½ ปกติ', '12-17h', '5-9h (young) / 11-13h (elderly)', '12h', '10-14h'],
+            ['t½ ไตเสื่อม', '⚠️ ยาวมาก (>24h ถ้า CrCl <30)', 'เพิ่มเล็กน้อย', 'ไม่เปลี่ยนมาก', 'เพิ่มเล็กน้อย'],
+            ['Renal excretion', '🔴 80%', '33%', '27%', '50%'],
+            ['Dialyzable?', '✅ ได้ (~60%)', '❌ (protein-bound 95%)', '❌ (protein-bound 87%)', '❌'],
+            ['Peak effect', '1-3h (fasting)', '2-4h', '3-4h', '1-2h'],
+            ['Activated charcoal', '✅ ถ้า <2h', '✅ ถ้า <2h', '✅ ถ้า <2h', '✅ ถ้า <2h'],
+            ['Lab monitoring', 'dTT, ECT (aPTT screening)', 'Anti-Xa level (PT screening)', 'Anti-Xa level', 'Anti-Xa level']
+          ]
+        },
+        {
+          title: '⚡ Reversal Strategy ตาม DOAC',
+          headers: ['', 'Dabigatran', 'Rivaroxaban / Apixaban', 'Edoxaban'],
+          rows: [
+            ['🟢 Specific antidote', '<b>Idarucizumab 5g IV</b> (Praxbind)', '<b>Andexanet alfa</b> (ถ้ามี)', 'ไม่มี specific antidote'],
+            ['🟡 Non-specific 1st', 'aPCC 50 U/kg', '<b>4F-PCC 50 IU/kg</b>', '<b>4F-PCC 50 IU/kg</b>'],
+            ['🟡 Non-specific 2nd', '4F-PCC 50 IU/kg', 'aPCC 50 U/kg', 'aPCC 50 U/kg'],
+            ['⏳ ถ้าให้ <2h ก่อน', 'Activated charcoal 50g', 'Activated charcoal 50g', 'Activated charcoal 50g'],
+            ['🔄 Hemodialysis', '✅ ได้ผล (remove ~60%)', '❌ ไม่ได้ผล', '❌ ไม่ได้ผล'],
+            ['💊 TXA เสริม', '✅ TXA 1g IV', '✅ TXA 1g IV', '✅ TXA 1g IV']
+          ],
+          footnote: 'ถ้าไม่มี specific antidote → ใช้ 4F-PCC 50 IU/kg (preferred) หรือ aPCC 50 U/kg | Dabigatran เป็น DOAC ตัวเดียวที่ dialyzable | ทุกตัว: ถ้ากิน <2h → activated charcoal 50g'
+        },
+        {
+          title: 'เมื่อไหร่ต้อง Reverse? — Decision Framework',
+          headers: ['สถานการณ์', 'Action', 'Urgency'],
+          rows: [
+            ['🔴 Life-threatening bleed (ICH, massive GI)', 'Specific antidote (ถ้ามี) + TXA + supportive', 'ทันที — ห้ามรอ'],
+            ['🔴 Emergency surgery (<6-8h)', 'Specific antidote หรือ 4F-PCC/aPCC', 'ทันที'],
+            ['🟡 Significant bleed (ไม่ life-threatening)', 'Hold DOAC + supportive + TXA ± 4F-PCC', 'ประเมินก่อน'],
+            ['🟡 Urgent surgery (8-24h)', 'Hold DOAC, อาจรอ drug clearance (ดู t½)', 'ขึ้นกับ renal function'],
+            ['🟢 Elective surgery', 'Hold DOAC ล่วงหน้า 2-5 t½', 'ไม่ต้อง reverse'],
+            ['🟢 Supratherapeutic ไม่มี bleed', 'Hold DOAC, supportive', 'สังเกตอาการ']
+          ]
+        }
+      ],
+      indications: [
+        '<b>Dabigatran (Pradaxa) reversal:</b>',
+        '• First-line: <b>Idarucizumab 5g IV</b> (Praxbind) — ออกฤทธิ์ทันที',
+        '• ถ้าไม่มี: Hemodialysis (remove ~60%) หรือ aPCC 50 U/kg',
+        '• ⚠️ Dabigatran ถูกขับทางไต 80% → ถ้า CrCl ต่ำ t½ ยาวมาก',
+        '',
+        '<b>Rivaroxaban / Apixaban / Edoxaban (FXa inhibitors) reversal:</b>',
+        '• First-line: <b>Andexanet alfa</b> (ถ้ามี — ราคาสูง, thrombosis risk)',
+        '• ถ้าไม่มี (สถานการณ์ส่วนใหญ่ในไทย): <b>4F-PCC 50 IU/kg</b>',
+        '• Alternative: aPCC (FEIBA) 50 U/kg',
+        '• ❌ Hemodialysis ไม่ได้ผล (protein-bound สูง)',
+        '',
+        '<b>ทุก DOAC:</b>',
+        '• กินยา <2 ชม. → Activated charcoal 50g PO',
+        '• เสริม TXA 1g IV ทุกกรณี',
+        '• Supportive: volume resuscitation, PRC, platelet ถ้าจำเป็น'
+      ],
+      attachments: [
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal warfarin (VKA)', href: 'docs/PCC_warfarin.pdf' },
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal DOAC', href: 'docs/PCC_DOAC.pdf' }
+      ],
+      caution: 'Idarucizumab: ไม่มี procoagulant activity (ปลอดภัยกว่า andexanet) แต่อาจ rebound ที่ 24h | Andexanet: thrombotic events 10.3% vs 5.6% (ANNEXA-I) | 4F-PCC/aPCC: off-label แต่เป็นทางเลือกหลักในไทย | Dabigatran + AKI: t½ ยาวมาก → พิจารณา dialysis ก่อน'
+    }
+  },
+  {
+    id: 'emicizumab',
+    name: 'Emicizumab',
+    aka: 'Hemlibra',
+    category: 'Factor Mimetic',
+    badge: 'factor',
+    tags: ['bispecific antibody', 'hemophilia A', 'prophylaxis', 'inhibitor'],
+    shortDesc: 'Bispecific antibody (anti-FIXa/FX) ทำหน้าที่เลียนแบบ FVIII — SC injection สำหรับ prophylaxis ของ Hemophilia A ± inhibitor',
+    detail: {
+      mechanism: 'Bispecific monoclonal antibody ที่จับ FIXa ด้วยแขนข้างหนึ่งและ FX ด้วยอีกข้าง → เลียนแบบ cofactor function ของ FVIIIa ใน tenase complex → ช่วย activate FX → Xa',
+      indications: [
+        'Hemophilia A prophylaxis — ทั้ง with และ without inhibitors',
+        'ไม่ใช้สำหรับ acute bleeding episode (ใช้สำหรับ prophylaxis เท่านั้น)'
+      ],
+      dosing: [
+        { scenario: 'Loading', dose: '3 mg/kg SC weekly × 4 weeks', note: '' },
+        { scenario: 'Maintenance', dose: '1.5 mg/kg SC weekly หรือ 3 mg/kg q 2 wk หรือ 6 mg/kg q 4 wk', note: 'เลือกตาม convenience' }
+      ],
+      caution: 'ห้ามใช้ aPCC (FEIBA) ร่วมกับ emicizumab → เสี่ยง thrombotic microangiopathy (TMA), ถ้าเลือดออก acute ให้ rFVIIa แทน, FVIII assay บาง method อ่านผิด (falsely elevated)',
+      era: 'เริ่มใช้ตั้งแต่ปี 2018 — เปลี่ยน paradigm ของ hemophilia A prophylaxis'
+    }
+  },
+  {
+    id: 'fitusiran',
+    name: 'Fitusiran',
+    aka: 'Alhemo',
+    category: 'Rebalancing Therapy',
+    badge: 'anti',
+    tags: ['siRNA', 'antithrombin', 'hemophilia', 'rebalancing'],
+    shortDesc: 'siRNA กด antithrombin (SERPINC1) ทำให้ thrombin generation เพิ่มขึ้น — rebalancing hemostasis สำหรับ Hemophilia A/B ± inhibitor',
+    detail: {
+      mechanism: 'siRNA targeting SERPINC1 gene → ลด antithrombin production จากตับ → natural anticoagulant ลดลง → thrombin generation เพิ่มขึ้น → balance hemostasis ใน hemophilia',
+      indications: [
+        'Hemophilia A or B — prophylaxis (with or without inhibitors)',
+        'เป็น "rebalancing therapy" — ไม่ได้ทดแทน factor โดยตรง'
+      ],
+      caution: 'ยาใหม่ อยู่ระหว่างศึกษาเพิ่มเติม, ต้องติดตาม antithrombin level, เสี่ยง thrombosis จากการลด natural anticoagulant'
+    }
+  },
+  {
+    id: 'plt_rdp',
+    name: 'Platelet Products (All Types)',
+    aka: 'LDPPC, Pooled Plt, LPPC, LD Plateletpheresis, PI Plateletpheresis, Irradiated, Washed — NBC สภากาชาดไทย',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['platelet', 'thrombocytopenia', 'bleeding', 'LDPPC', 'LPPC', 'pool', 'plateletpheresis', 'PI', 'SDP', 'HLA', 'irradiated', 'washed', 'apheresis', 'NBC'],
+    shortDesc: 'รวมทุกชนิด: Pool (LDPPC ⭐) / Single Donor (LD/PI Plateletpheresis) / Special (Irradiated, Washed, HLA-matched) — 6 ตารางเปรียบเทียบครบ',
+    detail: {
+      mechanism: 'Platelet concentrate แบ่ง 2 กลุ่มหลัก: <b>Pool</b> (จาก whole blood หลาย donor รวมกัน) vs <b>Single Donor / Apheresis</b> (จาก donor คนเดียว) — NBC ปัจจุบันผลิต leukodepleted เป็นมาตรฐาน',
+      comparisonTables: [
+        {
+          title: 'Pool Platelet: Pooled PC vs LPPC vs LDPPC (NBC สภากาชาดไทย)',
+          headers: ['คุณสมบัติ', 'Pooled PC (เก่า)', 'LPPC', 'LDPPC ⭐ NBC มาตรฐาน'],
+          rows: [
+            ['ชื่อเต็ม', 'Pooled Platelet Concentrates', 'Leukocyte Poor Pool Platelet Conc.', 'Leukodepleted Pool Platelet Conc.'],
+            ['วิธีผลิต', 'Pool จาก PRP/buffy coat 4-6 donors', 'Pool + กรอง WBC บางส่วน', 'Pool 4 buffy coats + PAS + <b>leukodepletion filter</b>'],
+            ['Volume', '~200-300 mL', '~200-300 mL', '<b>>200 mL</b>'],
+            ['Platelet count', '>240×10⁹/unit', '>240×10⁹/unit', '<b>>240×10⁹/unit</b>'],
+            ['🔴 Residual WBC', '🔴 สูง (~0.5-1×10⁸/unit)', '🟡 <0.83×10⁸/unit (ลด ~70%)', '🟢 <b><1×10⁶/unit</b> (ลด >99%)'],
+            ['pH', '>6.4', '>6.4', '>6.4'],
+            ['Swirling', 'ต้องมี', 'ต้องมี', 'ต้องมี'],
+            ['จำนวน Donor', '4-6 คน', '4-6 คน', '4 คน'],
+            ['อุณหภูมิเก็บ', '20-24°C + agitation', '20-24°C + agitation', '20-24°C + agitation'],
+            ['อายุ (Shelf life)', '5 วัน', '5 วัน', '<b>7 วัน</b>'],
+            ['สถานะ NBC', '❌ ไม่ผลิตแล้ว', '❌ ไม่ผลิตแล้ว', '✅ <b>มาตรฐานปัจจุบัน</b>']
+          ],
+          footnote: '⭐ NBC ปัจจุบันผลิต LDPPC เป็นมาตรฐาน — Pooled PC และ LPPC ไม่ผลิตแล้ว แต่บาง รพ.ภูมิภาค อาจยังใช้ pooled/LPPC จาก blood bank ท้องถิ่น'
+        },
+        {
+          title: 'Single Donor Platelet (Apheresis) — NBC สภากาชาดไทย',
+          headers: ['คุณสมบัติ', 'LD Plateletpheresis', 'LD Plateletpheresis PAS-C', 'PI Plateletpheresis PAS-C ⭐'],
+          rows: [
+            ['ชื่อเต็ม', 'Leukodepleted Plateletpheresis', 'LD Plateletpheresis ใน PAS-C', 'Psoralen-treated (PI) Plateletpheresis PAS-C'],
+            ['วิธีผลิต', 'Apheresis + leuko filter', 'Apheresis + leuko filter + PAS-C', 'Apheresis + leuko filter + PAS-C + <b>amotosalen/UV-A</b>'],
+            ['Volume', '200-350 mL', '200-350 mL', '200-350 mL'],
+            ['Platelet count', '<b>>2.4×10¹¹/unit</b>', '>2.4×10¹¹/unit', '>2.4×10¹¹/unit'],
+            ['Residual WBC', '🟢 <1×10⁶', '🟢 <1×10⁶', '🟢 <1×10⁶'],
+            ['pH', '>6.4', '>6.4', '>6.4'],
+            ['จำนวน Donor', '<b>1 คน</b>', '1 คน', '1 คน'],
+            ['Additive', 'Plasma', '<b>PAS-C</b> (ลด plasma → ลด allergic rx)', '<b>PAS-C</b> + Pathogen Inactivation'],
+            ['Pathogen Inactivation', '❌', '❌', '✅ <b>amotosalen + UV-A</b>'],
+            ['ทดแทน Irradiation', '❌ ต้อง irradiate แยก', '❌ ต้อง irradiate แยก', '✅ <b>ทดแทนได้</b> (ป้องกัน TA-GVHD)'],
+            ['อุณหภูมิเก็บ', '20-24°C + agitation', '20-24°C + agitation', '20-24°C + agitation'],
+            ['อายุ (Shelf life)', '7 วัน', '7 วัน', '7 วัน']
+          ],
+          footnote: 'Plateletpheresis ทุกชนิด: Plt >2.4×10¹¹ = ~10 เท่าของ LDPPC ต่อ unit | PAS-C ลด plasma content → ลด allergic reaction | PI ⭐ เพิ่มความปลอดภัย (ลด bacteria, virus, parasite) + ทดแทน irradiation'
+        },
+        {
+          title: 'Pool (LDPPC) vs Single Donor (LD Plateletpheresis) — เลือกอย่างไร?',
+          headers: ['คุณสมบัติ', 'LDPPC (Pool)', 'LD Plateletpheresis (Single Donor)'],
+          rows: [
+            ['Platelet/unit', '>240×10⁹', '>2.4×10¹¹ (<b>~10 เท่า</b>)'],
+            ['จำนวน Donor', '4 คน', '<b>1 คน</b>'],
+            ['Donor exposure risk', '🟡 สูงกว่า (4 donors)', '🟢 ต่ำ (1 donor)'],
+            ['HLA alloimmunization', '🟡 เสี่ยงมากกว่า', '🟢 เสี่ยงน้อยกว่า'],
+            ['HLA matching ได้?', '❌ ทำไม่ได้', '✅ <b>ทำได้</b>'],
+            ['Crossmatch ได้?', '❌ ทำไม่ได้', '✅ ทำได้'],
+            ['Residual WBC', '<1×10⁶', '<1×10⁶ (เท่ากัน)'],
+            ['PI available?', '❌', '✅ PI PAS-C'],
+            ['ราคา', '🟢 ถูกกว่า', '🔴 แพงกว่า'],
+            ['ความพร้อม', '🟢 หาง่าย (stock)', '🟡 ต้องนัด donor / สั่งล่วงหน้า'],
+            ['ข้อบ่งใช้หลัก', 'Routine transfusion', '<b>Plt refractory, HLA-match, frequent transfusion, neonatal</b>']
+          ],
+          footnote: 'ใช้ LDPPC เป็น first-line สำหรับ routine | เปลี่ยนเป็น Plateletpheresis เมื่อ: plt refractory, ต้อง HLA-match, ได้ plt บ่อย (ลด donor exposure), ต้องการ PI'
+        },
+        {
+          title: 'Pediatric LDPC (NBC สภากาชาดไทย)',
+          headers: ['คุณสมบัติ', 'Pediatric LDPC'],
+          rows: [
+            ['Volume', '57-65 mL'],
+            ['PAS-C', '34-55 mL'],
+            ['Platelet', '>60×10⁹/unit'],
+            ['Residual WBC', '<1×10⁶'],
+            ['pH', '>6.4'],
+            ['เก็บ', '20-24°C + agitation'],
+            ['อายุ', '7 วัน'],
+            ['ข้อบ่งใช้', 'ทารก / เด็กเล็ก (ลดปริมาตรต่อ dose)']
+          ]
+        },
+        {
+          title: 'Special Modifications — สั่งเพิ่มเติมจาก LDPPC / Plateletpheresis',
+          headers: ['Modification', 'วิธีการ', 'ข้อบ่งใช้', 'หมายเหตุ'],
+          rows: [
+            ['Irradiated (25 Gy)', 'ฉายรังสี gamma/X-ray', 'ป้องกัน TA-GVHD: BMT, Hodgkin, congenital immunodef, directed donation จากญาติ, fludarabine/bendamustine', 'Shelf life ไม่เปลี่ยน (7 วัน) — ต่างจาก RBC! PI platelet ทดแทนได้'],
+            ['Washed', 'ล้างด้วย saline ลด plasma protein', 'IgA deficiency + anti-IgA, severe/recurrent allergic reaction', 'ใช้ภายใน 4 ชม.หลัง wash, เสีย plt บางส่วน (~20%)'],
+            ['Volume-reduced', 'ปั่นเอา supernatant ออก', 'ทารกแรกเกิด, fluid overload, CHF', 'ใช้ภายใน 4 ชม., เสีย plt บางส่วน'],
+            ['CMV-negative', 'จาก donor CMV seronegative', 'CMV-neg immunocompromised (BMT, neonatal)', 'LDPRC/LDPPC ถือว่า CMV-safe equivalent ได้'],
+            ['HLA-matched', 'Apheresis จาก HLA-matched donor', 'Platelet refractoriness จาก HLA alloimmunization', 'ต้องสั่งล่วงหน้า, ทำได้เฉพาะ Plateletpheresis'],
+            ['Crossmatched', 'ทดสอบ donor plt กับ recipient serum', 'Plt refractory ที่หา HLA-match ไม่ได้', 'SPRCA method, ส่ง serum ใหม่ทุก 72 ชม.']
+          ],
+          footnote: 'สั่งระบุ modification ที่ต้องการเพิ่มเติมจาก standard product เช่น "LDPPC 1 unit irradiated" หรือ "LD Plateletpheresis HLA-matched irradiated"'
+        }
+      ],
+      indications: [
+        '<b>ข้อบ่งใช้ทั่วไป (ใช้ LDPPC หรือ Plateletpheresis):</b>',
+        '• Thrombocytopenia with active bleeding (platelet <50,000)',
+        '• Prophylactic transfusion เมื่อ platelet <10,000 (หรือ <20,000 ถ้ามี fever/sepsis)',
+        '• Pre-procedure: target platelet >50,000 (surgery ทั่วไป) หรือ >100,000 (neurosurgery/eye)',
+        '• Massive transfusion protocol',
+        '• Platelet function defect with bleeding',
+        '',
+        '<b>ข้อบ่งใช้เฉพาะ Plateletpheresis (Single Donor):</b>',
+        '• Platelet refractoriness จาก alloimmunization → ใช้ HLA-matched SDP',
+        '• ผู้ป่วยที่ต้องได้ platelet บ่อย (leukemia, aplastic anemia) → ลด donor exposure',
+        '• Neonatal alloimmune thrombocytopenia (NAIT) → HPA-matched',
+        '• ต้องการ PI (Pathogen Inactivated) product'
+      ],
+      dosing: [
+        { scenario: 'LDPPC (NBC standard)', dose: '1 unit LDPPC', note: 'Plt >240×10⁹, = 1 therapeutic dose' },
+        { scenario: 'Plateletpheresis', dose: '1 unit SDP', note: 'Plt >2.4×10¹¹ (~10× LDPPC)' },
+        { scenario: 'Prophylactic (stable)', dose: 'LDPPC 1 unit', note: 'Trigger: plt <10,000' },
+        { scenario: 'Pre-surgery (general)', dose: 'Target plt >50,000', note: '1 dose อาจเพียงพอ' },
+        { scenario: 'Pre-neurosurgery', dose: 'Target plt >100,000', note: 'อาจต้อง >1 dose' },
+        { scenario: 'Pediatric', dose: 'Pediatric LDPC 1 unit (57-65 mL)', note: 'หรือ 10-20 mL/kg' }
+      ],
+      caution: 'เสี่ยงต่อ: alloimmunization (anti-HLA) → plt refractoriness, febrile reaction, bacterial contamination (เก็บ room temp), TRALI, volume overload | Plateletpheresis แพงกว่าและต้องนัด donor ล่วงหน้า | Irradiated plt: shelf life ไม่เปลี่ยน (7 วัน ตาม NBC — ต่างจาก RBC!) PI platelet ทดแทน irradiation ได้ | Washed plt: เสีย plt ~20% ต้องใช้ภายใน 4 ชม. | ตรวจ swirling ก่อนให้ทุกครั้ง (ถ้าไม่มี swirl = platelet เสื่อม ห้ามให้)'
+    }
+  },
+  {
+    id: 'prc',
+    name: 'PRC / Red Cell Products (All Types)',
+    aka: 'PRC, LPRC, LDPRC, SDR, Irradiated, Washed, Phenotype-matched — NBC สภากาชาดไทย',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['PRC', 'LPRC', 'LDPRC', 'SDR', 'anemia', 'red cell', 'transfusion', 'hemorrhage', 'Hb', 'irradiated', 'washed', 'phenotype', 'thalassemia', 'sickle cell', 'TA-GVHD', 'CMV', 'NBC'],
+    shortDesc: 'รวมทุกชนิด: PRC / LPRC / LDPRC ⭐ / SDR + Special (Irradiated, Washed, Phenotype-matched, CMV-neg) — ตารางเปรียบเทียบ + คำนวณ units',
+    detail: {
+      mechanism: 'แยกจาก whole blood โดยปั่นเอา plasma ออก เหลือ RBC เข้มข้น เก็บใน anticoagulant/additive solution ที่ 1-6°C — NBC มี 4 ชนิด ที่สำคัญต่างกันที่ <b>ปริมาณ WBC ที่เหลือ</b>',
+      comparisonTables: [
+        {
+          title: 'PRC vs LPRC vs LDPRC vs SDR (NBC สภากาชาดไทย)',
+          headers: ['คุณสมบัติ', 'PRC', 'LPRC', 'LDPRC ⭐', 'SDR (Apheresis)'],
+          rows: [
+            ['ชื่อเต็ม', 'Packed Red Cells', 'Leukocyte Poor PRC', 'Leukodepleted PRC', 'Single Donor Red Cells'],
+            ['วิธีผลิต', 'ปั่นแยกจาก WB', 'ปั่นแยก + กรอง WBC บางส่วน', 'ปั่นแยก + <b>กรอง WBC ด้วย leukodepletion filter</b>', 'Apheresis จาก donor คนเดียว'],
+            ['Volume', '160-260 mL (350 mL unit)', '200-350 mL', '170-330 mL (450) / 180-230 mL (350)', '280 mL'],
+            ['Hematocrit', '≤80%', '50-70% (additive)', '50-70% (additive) / ≤80% (no additive)', '≥60%'],
+            ['Hemoglobin', '≥35 g/unit', '≥40 g/unit', '≥40 g (450) / ≥32 g (350)', '≥55 g/unit'],
+            ['🔴 Residual WBC', '🔴 ไม่ลด (~2-3×10⁹)', '🟡 <1.2×10⁹', '🟢 <b><1×10⁶</b> (ลด 1000 เท่า!)', '🟢 <1×10⁶'],
+            ['Residual Platelet', 'มี', 'มี', 'ต่ำ', '<1×10⁶'],
+            ['Additive Solution', 'ไม่มี (CPDA-1)', 'SAG-M', 'CPDA-1 หรือ SAG-M', 'SAG-M'],
+            ['อุณหภูมิเก็บ', '1-6°C', '1-6°C', '1-6°C', '1-6°C'],
+            ['อายุ (Shelf life)', '35 วัน (CPDA-1)', '42 วัน (SAG-M)', '35 วัน (CPDA-1) / 42 วัน (SAG-M)', '42 วัน (SAG-M)'],
+            ['Hemolysis', '<0.8%', '<0.8%', '<0.8%', '<0.8%'],
+            ['Protein', '-', '-', '-', '<1 g/unit']
+          ],
+          footnote: '⭐ LDPRC เป็นมาตรฐานปัจจุบันของ NBC — WBC <1×10⁶ ลด febrile reaction, CMV transmission, HLA alloimmunization ได้ดีที่สุด'
+        },
+        {
+          title: 'ความแตกต่างทางคลินิก: WBC ที่เหลือ',
+          headers: ['ชนิด', 'WBC ที่เหลือ', 'ลด Febrile Rx', 'ลด CMV', 'ลด HLA Immunization', 'ลด TA-GVHD'],
+          rows: [
+            ['PRC', '~2-3×10⁹', '❌', '❌', '❌', '❌'],
+            ['LPRC', '<1.2×10⁹ (ลด ~70%)', '🟡 บางส่วน', '❌', '❌', '❌'],
+            ['LDPRC ⭐', '<1×10⁶ (ลด 99.97%)', '🟢 ใช่', '🟢 ใช่', '🟢 ใช่', '❌ (ต้อง irradiate)'],
+            ['SDR', '<1×10⁶', '🟢 ใช่', '🟢 ใช่', '🟢 ใช่', '❌ (ต้อง irradiate)']
+          ],
+          footnote: 'LPRC ลด WBC ได้แค่ ~70% → ยังเสี่ยง febrile reaction, CMV, HLA alloimmunization | LDPRC ลด WBC ได้ >99.97% (ต่างกัน ~1,000 เท่า!) | ทั้ง LDPRC และ SDR ยังต้อง irradiate แยกต่างหากถ้าต้องการป้องกัน TA-GVHD'
+        },
+        {
+          title: 'Special Modifications — สั่งเพิ่มเติมจาก LDPRC / PRC',
+          headers: ['Modification', 'วิธีการ', 'ข้อบ่งใช้', 'Shelf life หลัง modify'],
+          rows: [
+            ['Irradiated (25 Gy)', 'ฉายรังสี gamma/X-ray', 'TA-GVHD prevention: BMT, Hodgkin, congenital immunodef, directed donation จากญาติ, fludarabine/bendamustine', '⚠️ ลดเหลือ 28 วัน (หรือ original date ถ้าน้อยกว่า) — K⁺ leak เพิ่ม'],
+            ['Washed', 'ล้างด้วย saline ≥3 ครั้ง ลด plasma protein', 'IgA deficiency + anti-IgA, severe/recurrent allergic reaction, neonatal', '⚠️ ใช้ภายใน 24 ชม. (open system)'],
+            ['Phenotype-matched', 'Match Rh (C,c,E,e) + Kell', 'Thalassemia major, Sickle cell, AIHA, multiple alloantibodies', 'ไม่เปลี่ยน — แต่ต้องวางแผนล่วงหน้า'],
+            ['CMV-negative', 'จาก CMV seronegative donor', 'CMV-neg immunocompromised, ทารกน้ำหนักน้อย', 'ไม่เปลี่ยน (LDPRC ถือเป็น CMV-safe equivalent)']
+          ],
+          footnote: 'สั่งระบุ modification เพิ่มเติม เช่น "LDPRC 1 unit irradiated" หรือ "LDPRC phenotype-matched (Rh+Kell)"'
+        }
+      ],
+      indications: [
+        'Acute blood loss / hemorrhage — ร่วมกับ massive transfusion protocol',
+        'Symptomatic anemia (เหนื่อยง่าย, tachycardia, หน้ามืด)',
+        'Chronic anemia ที่ Hb <7 g/dL (restrictive strategy ใน stable patients)',
+        'Perioperative anemia — trigger Hb <7-8 g/dL ตามสภาวะ',
+        'Hematologic malignancy / chemotherapy-induced anemia',
+        'Thalassemia major — chronic transfusion program (phenotype-matched LDPRC)',
+        '',
+        '<b>ข้อบ่งใช้ Special Products:</b>',
+        '• <b>Irradiated</b> — BMT, Hodgkin, congenital immunodef, directed donation, fludarabine/bendamustine',
+        '• <b>Washed</b> — IgA def + anti-IgA, severe allergic reaction ซ้ำ',
+        '• <b>Phenotype-matched</b> — Thalassemia, SCD, AIHA, multiple alloantibodies',
+        '• <b>CMV-negative</b> — CMV-neg immunocompromised (LDPRC ถือเป็น CMV-safe equivalent ได้)'
+      ],
+      dosing: [
+        { scenario: 'ผู้ใหญ่ทั่วไป', dose: '1 unit PRC', note: 'เพิ่ม Hb ~1 g/dL, Hct ~3%' },
+        { scenario: 'เด็ก', dose: '10-15 mL/kg', note: 'เพิ่ม Hb ~2-3 g/dL' },
+        { scenario: 'Acute hemorrhage', dose: 'ตาม estimated blood loss', note: 'MTP ratio 1:1:1 (PRC:FFP:Plt)' },
+        { scenario: 'Chronic anemia (stable)', dose: 'Transfuse 1 unit → reassess', note: 'Restrictive: trigger Hb <7' }
+      ],
+      transfusionTrigger: 'Restrictive strategy (Hb <7 g/dL) ดีเท่าหรือดีกว่า liberal (Hb <10) ใน ICU, post-op, GI bleed (ยกเว้น ACS ที่อาจ trigger Hb <8)',
+      caution: 'ต้อง ABO & Rh compatible + crossmatch | อัตราให้ปกติ 2-4 ชม./unit (ช้าลงใน heart failure) | ระวัง TACO ในผู้สูงอายุ/heart failure | Irradiated RBC: shelf life ลดเหลือ 28 วัน (K⁺ leak!) | Washed RBC: ใช้ภายใน 24 ชม. | Phenotype matching: ต้องวางแผนล่วงหน้า | Iron overload ใน chronic transfusion',
+      rate: 'อัตราการให้: ปกติ 2-4 ชม./unit, ฉุกเฉิน: เร็วที่สุดเท่าที่ได้ ใช้ pressure bag/rapid infuser'
+    }
+  },
+  {
+    id: 'ddavp',
+    name: 'Desmopressin (DDAVP)',
+    aka: 'DDAVP, Minirin, 1-desamino-8-D-arginine vasopressin',
+    category: 'Hemostatic Agent',
+    badge: 'anti',
+    tags: ['DDAVP', 'vWD', 'hemophilia A mild', 'platelet', 'type 1 vWD', 'uremia'],
+    shortDesc: 'Synthetic vasopressin analogue — กระตุ้นปล่อย vWF และ FVIII จาก endothelial cells (Weibel-Palade bodies) เพิ่มระดับ 2-5 เท่า',
+    detail: {
+      mechanism: 'จับ V2 receptor บน endothelial cells → กระตุ้นปล่อย vWF และ FVIII จาก Weibel-Palade bodies → เพิ่มระดับ vWF/FVIII ในเลือด 2-5 เท่า ภายใน 30-60 นาที, เพิ่ม platelet adhesion',
+      indications: [
+        'von Willebrand Disease Type 1 — first-line treatment (ทำ DDAVP trial ก่อน)',
+        'Mild Hemophilia A (FVIII >5%) — minor bleeding/procedures',
+        'Platelet function defect (uremic platelet dysfunction, aspirin effect)',
+        'ไม่ใช้ใน vWD Type 2B (เสี่ยง thrombocytopenia) และ Type 3 (ไม่มี vWF ให้ปล่อย)'
+      ],
+      dosing: [
+        { scenario: 'IV (preferred)', dose: '0.3 mcg/kg IV ใน NSS 50 mL over 30 min', note: 'Peak effect 30-60 min' },
+        { scenario: 'SC', dose: '0.3 mcg/kg SC', note: 'Peak effect 60-90 min' },
+        { scenario: 'Intranasal (Stimate)', dose: '150 mcg (1 puff) ถ้า <50 kg, 300 mcg (2 puffs) ถ้า ≥50 kg', note: 'ใช้ high-concentration nasal spray เท่านั้น' },
+        { scenario: 'Uremic bleeding', dose: '0.3 mcg/kg IV', note: 'ออกฤทธิ์ 1 ชม. คง 6-8 ชม.' }
+      ],
+      caution: 'Tachyphylaxis — ประสิทธิภาพลดลงหลังให้ซ้ำ >2-3 dose ติดต่อกัน (หมด stored vWF), เสี่ยง hyponatremia จาก water retention (จำกัดน้ำ), หลีกเลี่ยงในเด็กเล็ก (<2 ปี) และผู้สูงอายุที่มี cardiovascular disease, ห้ามใน vWD type 2B',
+      ddavpTrial: 'ควรทำ DDAVP trial ก่อนใช้จริง: ให้ DDAVP แล้วตรวจ vWF/FVIII ที่ 1 ชม. — ถ้าเพิ่ม >2 เท่า ถือว่า respond'
+    }
+  },
+  {
+    id: 'ivig_itp',
+    name: 'IVIG (for ITP)',
+    aka: 'Intravenous Immunoglobulin, IVIg',
+    category: 'ITP Treatment',
+    badge: 'factor',
+    tags: ['IVIG', 'ITP', 'thrombocytopenia', 'immune', 'platelet', 'bleeding'],
+    shortDesc: 'Pooled immunoglobulin IV — เพิ่ม platelet เร็ว (24-48 ชม.) โดยบล็อก Fc receptor บน macrophage ลดการทำลาย platelet',
+    detail: {
+      mechanism: 'บล็อก Fc receptor (FcγR) บน splenic macrophage → ลดการ phagocytosis ของ antibody-coated platelet, อาจมี immunomodulatory effect อื่น (anti-idiotype, complement inhibition)',
+      indications: [
+        'ITP — acute bleeding ที่ต้องเพิ่ม platelet เร็ว',
+        'ITP — pre-procedure/surgery เมื่อต้องเพิ่ม platelet เร็ว',
+        'ITP — first-line ร่วมกับ corticosteroid ในผู้ป่วย severe thrombocytopenia + bleeding',
+        'Childhood ITP — เมื่อต้องการ rapid response'
+      ],
+      dosing: [
+        { scenario: 'Standard dose', dose: '1 g/kg/day × 1-2 วัน', note: 'Response 24-48 ชม.' },
+        { scenario: 'Alternative', dose: '0.4 g/kg/day × 5 วัน', note: 'ผลคล้ายกัน แต่ช้ากว่า' },
+        { scenario: 'Urgent (active major bleed)', dose: '1 g/kg × 1 dose', note: 'ร่วมกับ steroid + platelet' }
+      ],
+      attachments: [
+        { label: 'เอกสารอ้างอิง — IVIg ใน ITP', href: 'docs/IVIG_ITP.pdf' }
+      ],
+      caution: 'ผลชั่วคราว (2-4 สัปดาห์), ราคาสูง, adverse effects: headache (aseptic meningitis), renal impairment (sucrose-containing), hemolytic anemia (anti-A/B ใน non-O recipient), thrombosis, fluid overload, ให้ช้า (เริ่ม 0.5 mL/kg/h เพิ่มตาม tolerance)'
+    }
+  },
+  {
+    id: 'steroid_itp',
+    name: 'Corticosteroids (for ITP)',
+    aka: 'Prednisolone, Dexamethasone, Methylprednisolone',
+    category: 'ITP Treatment',
+    badge: 'factor',
+    tags: ['steroid', 'ITP', 'thrombocytopenia', 'prednisolone', 'dexamethasone', 'immune', 'first-line'],
+    shortDesc: 'First-line treatment ของ ITP — กดภูมิคุ้มกัน ลดการสร้าง anti-platelet antibody และลดการทำลาย platelet ใน spleen',
+    detail: {
+      mechanism: 'กด B-cell → ลดการสร้าง anti-platelet antibody, ลด Fc receptor expression บน macrophage → ลด phagocytosis ของ platelet, ลด capillary fragility, กด T-cell mediated platelet destruction',
+      indications: [
+        'ITP — first-line treatment ทุกกรณี',
+        'Newly diagnosed ITP ที่มี platelet <30,000 หรือมี bleeding',
+        'ให้ร่วมกับ IVIG ในกรณี severe bleeding'
+      ],
+      dosing: [
+        { scenario: 'Prednisolone (standard)', dose: '1 mg/kg/day (max 80 mg) PO', note: 'Response 4-14 วัน → taper 2-4 สัปดาห์' },
+        { scenario: 'Dexamethasone (pulse)', dose: '40 mg/day PO × 4 วัน', note: 'อาจ repeat q 2-4 wk × 1-4 cycles' },
+        { scenario: 'IV methylprednisolone', dose: '1 g IV × 3 วัน', note: 'สำหรับ severe refractory/bleeding' }
+      ],
+      caution: 'ผลข้างเคียงจาก prolonged use: hyperglycemia, infection, osteoporosis, adrenal suppression, Cushingoid, GI ulcer — พยายาม taper ให้เร็ว, Dexamethasone pulse อาจได้ผลดีกว่าและ side effect น้อยกว่า prolonged prednisolone',
+      response: 'Initial response 70-80% แต่ sustained response หลังหยุดยาเพียง ~30% → หลายรายต้อง second-line (TPO-RA, rituximab, splenectomy)'
+    }
+  },
+  {
+    id: 'tpora',
+    name: 'TPO-Receptor Agonists',
+    aka: 'Romiplostim (Nplate), Eltrombopag (Revolade), Avatrombopag',
+    category: 'ITP Treatment',
+    badge: 'anti',
+    tags: ['TPO-RA', 'romiplostim', 'eltrombopag', 'ITP', 'thrombocytopenia', 'thrombopoietin', 'chronic ITP'],
+    shortDesc: 'กระตุ้น thrombopoietin receptor (c-Mpl) บน megakaryocyte → เพิ่มการสร้าง platelet สำหรับ chronic ITP ที่ดื้อต่อ first-line',
+    detail: {
+      mechanism: 'จับ TPO receptor (c-Mpl) บน megakaryocyte → กระตุ้น JAK-STAT, MAPK pathway → เพิ่ม megakaryocyte maturation และ platelet production (ไม่ได้ลดการทำลาย แต่เพิ่มการสร้าง)',
+      indications: [
+        'Chronic ITP ที่ไม่ตอบสนองต่อ corticosteroid, IVIG, หรือ splenectomy',
+        'ITP ที่ต้องใช้ steroid ขนาดสูงนาน (steroid-dependent)',
+        'Persistent ITP (3-12 เดือน) ที่ยังไม่ตอบสนอง',
+        'ผู้ป่วย ITP ที่ไม่เหมาะ/ไม่ต้องการ splenectomy',
+        'Hepatitis C-related thrombocytopenia (eltrombopag)',
+        'Severe aplastic anemia (eltrombopag — off-label as part of IST)'
+      ],
+      dosing: [
+        { scenario: 'Eltrombopag (PO)', dose: 'เริ่ม 50 mg OD (25 mg ใน East Asian / liver disease)', note: 'ปรับ q 2 wk ตาม platelet, max 75 mg' },
+        { scenario: 'Romiplostim (SC)', dose: 'เริ่ม 1 mcg/kg SC weekly', note: 'ปรับ q 1 wk, max 10 mcg/kg/wk' },
+        { scenario: 'Avatrombopag (PO)', dose: '20 mg OD', note: 'ไม่ต้อง fasting, ไม่มี food interaction' }
+      ],
+      caution: 'เสี่ยง thrombosis/thromboembolism (ระวังใน antiphospholipid syndrome), reticulin fibrosis ในไขกระดูก (reversible หลังหยุดยา), rebound thrombocytopenia หลังหยุด, Eltrombopag: ห้ามกิน dairy/Ca²⁺/antacid ร่วม (chelation), ต้องตรวจ LFT สม่ำเสมอ (hepatotoxicity)',
+      response: 'Response rate 70-90% ใน chronic ITP, ส่วนใหญ่ต้องใช้ต่อเนื่อง แต่ ~10-30% อาจ remission หลังหยุดยา'
+    }
+  },
+  {
+    id: 'rituximab_itp',
+    name: 'Rituximab (for ITP)',
+    aka: 'MabThera, Rituxan, Anti-CD20',
+    category: 'ITP Treatment',
+    badge: 'factor',
+    tags: ['rituximab', 'anti-CD20', 'ITP', 'thrombocytopenia', 'second-line', 'autoimmune'],
+    shortDesc: 'Anti-CD20 monoclonal antibody — ทำลาย B-cell ลดการสร้าง anti-platelet antibody สำหรับ chronic/refractory ITP',
+    detail: {
+      mechanism: 'จับ CD20 บน B-lymphocyte → ADCC, CDC, apoptosis → ลด B-cell ที่สร้าง anti-platelet antibody (anti-GPIIb/IIIa, anti-GPIb/IX) ออกฤทธิ์ช้า (2-8 สัปดาห์)',
+      indications: [
+        'Chronic ITP — second-line หลัง steroid failure',
+        'Refractory ITP — ก่อนหรือหลัง splenectomy',
+        'ITP ที่ไม่เหมาะ splenectomy (เช่น elderly, comorbidities)',
+        'Warm AIHA + ITP (Evans syndrome)'
+      ],
+      dosing: [
+        { scenario: 'Standard dose', dose: '375 mg/m² IV weekly × 4 weeks', note: 'Response 2-8 สัปดาห์' },
+        { scenario: 'Low-dose', dose: '100 mg IV weekly × 4 weeks', note: 'ผลอาจคล้ายกัน, ถูกกว่า' }
+      ],
+      caution: 'Infusion reaction (premedicate: antihistamine + paracetamol ± steroid), Hepatitis B reactivation (ตรวจ HBsAg/anti-HBc ก่อนให้ ถ้า positive ให้ antiviral prophylaxis), PML (rare), hypogammaglobulinemia (long-term)',
+      response: 'Overall response ~60%, complete response ~40%, sustained response ที่ 5 ปี ~20-25% — ผลไม่ถาวรในหลายราย'
+    }
+  },
+  {
+    id: 'whole_blood',
+    name: 'Whole Blood',
+    aka: 'WB, Low-titer O Whole Blood (LTOWB)',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['whole blood', 'massive transfusion', 'trauma', 'hemorrhage', 'LTOWB'],
+    shortDesc: 'เลือดครบส่วน (~450 mL + anticoagulant) มี RBC + plasma + platelet — กลับมาใช้ใน massive hemorrhage / trauma resuscitation',
+    detail: {
+      mechanism: 'เลือดที่เก็บจาก donor ไม่ได้แยกส่วน มี RBC, plasma (coagulation factors), platelet (function ลดลงหลังเก็บ >24 ชม.) และ WBC',
+      content: '1 unit ~450-500 mL (รวม anticoagulant ~63 mL), Hct ~35-40%, เก็บ 2-6°C ได้ 21-35 วัน (ตาม anticoagulant), platelet function ลดลงเร็วหลังเก็บ',
+      indications: [
+        'Massive hemorrhage / trauma — ใช้ Low-titer O Whole Blood (LTOWB) เป็น universal product',
+        'Rural/austere setting ที่ไม่มีระบบ component separation',
+        'ข้อดีในบาง protocol: ลดขั้นตอน, ได้ทุก component พร้อมกัน, ลด dilutional coagulopathy'
+      ],
+      dosing: [
+        { scenario: 'Massive hemorrhage', dose: '1-2 units as initial resuscitation', note: 'ตามด้วย component therapy ตาม lab' },
+        { scenario: 'LTOWB (group O, low anti-A/B)', dose: 'ให้ได้กับทุก blood group', note: 'Titer anti-A/B <1:256' }
+      ],
+      caution: 'ส่วนใหญ่ถูกแยกเป็น components (PRC + FFP + Platelet) เพื่อใช้งานเฉพาะส่วน, Whole blood ไม่ได้ leukoreduced/irradiated ตามมาตรฐาน (ต้องสั่งเพิ่ม), Platelet ใน stored whole blood function ลดลงมากหลัง 24-48 ชม.'
+    }
+  },
+  {
+    id: 'itp_emergency',
+    name: '🚨 ITP Emergency Protocol',
+    aka: 'ITP bleeding management, Severe ITP with hemorrhage',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['ITP', 'emergency', 'bleeding', 'platelet', 'protocol', 'ICH', 'GI bleed', 'thrombocytopenia'],
+    shortDesc: 'แนวทางจัดการ ITP ที่มี severe/life-threatening bleeding — ให้ multimodal treatment พร้อมกัน เพิ่ม platelet ให้เร็วที่สุด',
+    detail: {
+      mechanism: 'ITP = Immune Thrombocytopenia: autoantibody (ส่วนใหญ่ anti-GPIIb/IIIa) ทำลาย platelet ใน spleen + กด megakaryopoiesis → thrombocytopenia',
+      indications: [
+        '🔴 <b>Life-threatening bleeding</b> (ICH, massive GI bleed, uncontrolled hemorrhage) — ให้ทุกอย่างพร้อมกัน:',
+        '1. Platelet transfusion — ถึงแม้จะถูกทำลายเร็ว แต่อาจช่วยได้ชั่วคราว (ให้ continuous หรือ bolus ซ้ำ)',
+        '2. IV Methylprednisolone 1 g/day × 3 วัน',
+        '3. IVIG 1 g/kg (repeat วันที่ 2 ถ้าจำเป็น)',
+        '4. Tranexamic acid IV 1g (ถ้าไม่มีข้อห้าม)',
+        '5. Platelet-เพิ่ม romiplostim ถ้ามี (off-label emergency)',
+        '',
+        '🟡 <b>Significant but non-life-threatening bleeding</b>:',
+        '1. Corticosteroid (prednisolone 1 mg/kg หรือ dexamethasone 40 mg × 4 วัน)',
+        '2. IVIG 1 g/kg ถ้าต้องเพิ่ม platelet เร็ว',
+        '3. Tranexamic acid PO/IV',
+        '',
+        '🟢 <b>Platelet <10,000 ไม่มี bleeding</b>:',
+        '1. Corticosteroid เริ่ม treatment',
+        '2. ± IVIG ถ้า very high risk',
+        '3. Avoid antiplatelet drugs, NSAIDs, IM injection'
+      ],
+      caution: 'Platelet transfusion ใน ITP: ไม่ให้ routine (ถูกทำลายเร็ว) แต่ให้ได้ในกรณี life-threatening — ให้พร้อม IVIG/steroid เพื่อลดการทำลาย, ห้ามรอ IVIG ออกฤทธิ์ก่อนให้ platelet ใน ICH, Splenectomy อาจพิจารณาเป็น emergency ในบางกรณี'
+    }
+  },
+  {
+    id: 'anemia_approach',
+    name: '🔬 Anemia & Transfusion Decision',
+    aka: 'Transfusion trigger, Restrictive vs Liberal, Anemia workup',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['anemia', 'transfusion trigger', 'Hb', 'restrictive', 'liberal', 'iron deficiency', 'hemorrhage', 'PRC'],
+    shortDesc: 'แนวทางตัดสินใจ transfusion PRC — Restrictive (Hb <7) vs Liberal (Hb <10) strategy และข้อพิจารณาต่างๆ',
+    detail: {
+      mechanism: 'การตัดสินใจ transfuse ขึ้นกับ: Hb/Hct level, อาการของผู้ป่วย, สาเหตุของ anemia, ความเร็วของ Hb drop, comorbidities, และ ongoing bleeding',
+      indications: [
+        '<b>🔴 Restrictive Strategy (Trigger Hb <7 g/dL)</b> — แนะนำสำหรับ:',
+        '• ICU patients (ที่ hemodynamically stable)',
+        '• Post-operative patients',
+        '• Upper GI bleeding (ที่ไม่มี cardiac disease)',
+        '• Hospitalized stable patients ทั่วไป',
+        '• Evidence: TRICC Trial, TRISS Trial, TRIGGER Trial',
+        '',
+        '<b>🟡 Moderate (Trigger Hb <8 g/dL)</b> — พิจารณาสำหรับ:',
+        '• Acute coronary syndrome / unstable cardiac disease',
+        '• Symptomatic anemia ในผู้ป่วย cardiovascular disease',
+        '• Orthopedic surgery ในผู้สูงอายุ',
+        '',
+        '<b>⚡ Acute Hemorrhage</b> — ไม่รอ Hb:',
+        '• Massive transfusion protocol (MTP): PRC:FFP:Platelet = 1:1:1',
+        '• Class III-IV hemorrhage (>30% blood volume loss)',
+        '• Hemodynamic instability ไม่ตอบสนองต่อ crystalloid',
+        '',
+        '<b>🔍 ก่อน transfuse — หาสาเหตุ:</b>',
+        '• Iron deficiency → IV iron อาจดีกว่า transfusion ใน chronic',
+        '• B12/Folate deficiency → supplement',
+        '• Hemolysis → treat cause, corticosteroids ถ้า AIHA',
+        '• Chronic kidney disease → EPO/ESA',
+        '• Bleeding → stop bleeding source ก่อน'
+      ],
+      caution: 'อย่า transfuse เพื่อ Hb number เพียงอย่างเดียว — ดู clinical context เสมอ, Chronic anemia ผู้ป่วยทน Hb ต่ำได้ดีกว่า acute (compensated), Iron deficiency anemia ในผู้ป่วย stable → IV iron ดีกว่า transfusion (ลด alloimmunization, TACO, iron overload), ผู้ป่วย heart failure ให้ช้า (1 mL/kg/hr) และ furosemide ร่วมถ้าจำเป็น'
+    }
+  },
+  {
+    id: 'mtp',
+    name: '🚑 Massive Transfusion Protocol (MTP)',
+    aka: 'Massive hemorrhage protocol, MTP, Code Transfusion',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['MTP', 'massive transfusion', 'trauma', 'hemorrhage', 'PRC', 'FFP', 'platelet', 'cryoprecipitate', 'TXA', 'protocol', 'shock'],
+    shortDesc: 'Protocol สำหรับผู้ป่วยเลือดออกรุนแรง (>10 units PRC/24h หรือ >4 units/1h) — ratio-based resuscitation PRC:FFP:Plt ≈ 1:1:1',
+    detail: {
+      mechanism: 'Massive hemorrhage ทำให้เกิด "lethal triad": hypothermia + acidosis + coagulopathy → ต้อง resuscitate ด้วย balanced blood components ตั้งแต่เริ่มต้น ป้องกัน dilutional coagulopathy',
+      indications: [
+        '<b>🔴 เกณฑ์เปิด MTP (ตัวอย่าง):</b>',
+        '• คาดว่าต้องให้ ≥10 units PRC ใน 24 ชม.',
+        '• ให้ PRC ≥4 units ใน 1 ชม. และยังมี ongoing bleeding',
+        '• Hemorrhagic shock ไม่ตอบสนองต่อ crystalloid 1-2 L',
+        '• Class III-IV hemorrhage (เสียเลือด >30% ของ blood volume)',
+        '• ABC score ≥2 (Assessment of Blood Consumption)',
+        '',
+        '<b>📦 MTP Package (ตัวอย่าง 1 round):</b>',
+        '• PRC 4-6 units',
+        '• FFP 4-6 units (เป้า ratio PRC:FFP ≈ 1:1)',
+        '• Platelet 1 apheresis unit หรือ 4-6 pool RDP (เป้า ratio ≈ 1:1:1)',
+        '• Cryoprecipitate 10 units (ถ้า fibrinogen <150 mg/dL)',
+        '',
+        '<b>💊 Adjunctive therapies:</b>',
+        '• Tranexamic acid (TXA) IV 1g over 10 min → 1g/8h (ภายใน 3 ชม. — CRASH-2)',
+        '• Calcium gluconate 1g IV (ต้านฤทธิ์ citrate จาก blood products)',
+        '• รักษา temperature >36°C (warm products, warm blanket)',
+        '• Correct acidosis (adequate resuscitation)',
+        '',
+        '<b>🔬 Lab monitoring ระหว่าง MTP:</b>',
+        '• CBC, PT/INR, aPTT, Fibrinogen ทุก 30-60 นาที',
+        '• Ca²⁺ (ionized), Lactate, ABG',
+        '• ROTEM/TEG ถ้ามี → guide component therapy',
+        '• เป้า: Hb >7, Plt >50,000, Fibrinogen >150, INR <1.5, pH >7.2, Ca²⁺ >1.1, Temp >36°C',
+        '',
+        '<b>🛑 เกณฑ์หยุด MTP:</b>',
+        '• Surgical/procedural hemostasis สำเร็จ',
+        '• Hemodynamically stable',
+        '• Lab parameters ถึงเป้า',
+        '• ลด ratio กลับสู่ component-based ตาม lab'
+      ],
+      caution: 'Complications ของ massive transfusion: Hypothermia (ให้ blood warmer), Hypocalcemia จาก citrate (monitor iCa q 30 min), Hyperkalemia (จาก stored RBC), Metabolic alkalosis (ช่วงหลัง — citrate → bicarbonate), TRALI, TACO, Dilutional coagulopathy ถ้า ratio ไม่ balanced, DIC superimposed',
+      evidence: 'PROPPR Trial (JAMA 2015): ratio 1:1:1 (plasma:platelet:RBC) vs 1:1:2 — ไม่ต่างกันใน 24h & 30d mortality แต่ 1:1:1 มี hemostasis สำเร็จมากกว่า & death จาก exsanguination น้อยกว่าใน 24 ชม.แรก'
+    }
+  },
+  {
+    id: 'ffp_vs_pcc',
+    name: '⚖️ FFP vs PCC Comparison',
+    aka: 'Fresh Frozen Plasma vs Prothrombin Complex Concentrate',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['FFP', 'PCC', '4F-PCC', '3F-PCC', 'comparison', 'VKA reversal', 'warfarin', 'INR'],
+    shortDesc: 'ตารางเปรียบเทียบ FFP vs PCC อย่างละเอียด — ข้อดี ข้อเสีย ขนาดยา evidence-based พร้อม dosing ตาม INR',
+    detail: {
+      mechanism: 'FFP มี coagulation factors ทุกตัว ~1 IU/mL, PCC มี vitamin K-dependent factors เข้มข้น (FII, VII, IX, X) — ทั้งคู่ใช้ reverse VKA ได้แต่มีข้อดีข้อเสียต่างกัน',
+      comparisonTables: [
+        {
+          title: 'FFP vs PCC',
+          headers: ['คุณสมบัติ', 'FFP', 'PCC'],
+          rows: [
+            ['Volume', 'มาก (~30 เท่า)', '🟢 น้อย'],
+            ['Availability', 'รอ thaw ≥30 นาที', '🟢 พร้อมทันที'],
+            ['Administration rate', 'ช้า', '🟢 เร็ว (3-8.4 mL/min)'],
+            ['Viral inactivation', 'Methylene blue', 'Two steps (Steam + Nanofiltration)'],
+            ['Blood group matching', '🔴 ต้อง ABO match', '🟢 ไม่ต้อง'],
+            ['Risk of TRALI', '🔴 มี', '🟢 ไม่มี'],
+            ['Hypocalcemia (citrate)', '🔴 มี', '🟢 ไม่มี'],
+            ['Fluid overload', '🔴 สูง (14%)', '🟢 ต่ำ (5%)'],
+            ['Thrombogenicity risk', '🟢 ต่ำ', '🔴 มี (สูงกว่าเล็กน้อย)'],
+            ['Factor content', 'ทุกตัว (All)', 'II, IX, X, ±VII']
+          ]
+        },
+        {
+          title: 'Dosing ตาม Baseline INR (Sarode et al.)',
+          headers: ['Baseline INR', '4F-PCC (IU FIX/kg)', 'Plasma (mL/kg)'],
+          rows: [
+            ['2.0 – 3.9', '25 IU/kg', '10 mL/kg'],
+            ['4.0 – 6.0', '35 IU/kg', '12 mL/kg'],
+            ['> 6.0', '50 IU/kg', '15 mL/kg']
+          ],
+          footnote: '*Max dose: 4F-PCC ≤5000 IU | FFP ≤1500 mL (คำนวณจาก BW ≤100 kg)'
+        },
+        {
+          title: '4F-PCC vs 3F-PCC Composition',
+          headers: ['Component', '4F-PCC (IU/mL)', '3F-PCC (IU/mL)'],
+          rows: [
+            ['FII', '30', '15'],
+            ['FVII', '🟢 25', '🔴 Non-therapeutic'],
+            ['FIX', '30', '10'],
+            ['FX', '30', '10'],
+            ['Protein C', '>20', '❌ N/A'],
+            ['Protein S', '14-16', '❌ N/A'],
+            ['Antithrombin', '0.75-1.5', '❌ N/A'],
+            ['Heparin', '15.5', '❌ ไม่มี'],
+            ['Viral inactivation', 'Steam treatment', 'Solvent Detergent'],
+            ['Viral elimination', 'Nanofiltration', 'Nanofiltration']
+          ]
+        }
+      ],
+      indications: [
+        '<b>ใช้ 4F-PCC แทน FFP เมื่อ:</b>',
+        '• Life-threatening VKA-related bleeding (ICH, major GI bleed)',
+        '• ต้องลด INR เร็ว (pre-urgent surgery)',
+        '• ผู้ป่วย volume-sensitive (heart failure, renal failure)',
+        '• ต้องการหลีกเลี่ยง TRALI risk',
+        '',
+        '<b>ใช้ FFP เมื่อ:</b>',
+        '• ไม่มี PCC',
+        '• ต้องการ factor ทุกตัว (DIC, liver failure, multiple factor deficiency)',
+        '• TTP — therapeutic plasma exchange',
+        '• กังวลเรื่อง thrombosis risk จาก PCC',
+        '',
+        '<b>ให้ Vitamin K ร่วมเสมอ:</b>',
+        '• IV Vit K 10 mg ร่วมกับ PCC หรือ FFP',
+        '• PCC = immediate but temporary, Vit K = delayed (6-24h) but sustained'
+      ],
+      evidence: 'Sarode et al. (Circulation 2013): RCT, N=216, 4F-PCC vs FFP\n• Rapid INR ≤1.3 at 0.5h: 4F-PCC 62.2% vs FFP 9.6%\n• 69% ได้ INR <1.3 ภายใน 1h หลัง 4F-PCC\n• Hemostatic efficacy at 4h: PCC 82.6% vs FFP 50.0%\n• Fluid overload: PCC 5% vs FFP 14%\n• Thromboembolism: ไม่ต่างกัน\n\nMeta-analysis (Thromb Haemost 2023): 4F-PCC vs 3F-PCC\n• INR achievement (1.3-1.5): OR 3.50 [1.88-6.52] favors 4F-PCC\n• Thromboembolism: RD 0.01 [-0.01, 0.03] ไม่ต่างกัน',
+      attachments: [
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal warfarin (VKA)', href: 'docs/PCC_warfarin.pdf' },
+        { label: 'เอกสารอ้างอิง — PCC สำหรับ reversal DOAC', href: 'docs/PCC_DOAC.pdf' }
+      ],
+      caution: 'ให้ Vitamin K IV 10 mg ร่วมกับ PCC เสมอ เพื่อ sustained reversal (PCC ออกฤทธิ์ทันทีแต่ชั่วคราว, Vit K ออกฤทธิ์ 6-24h แต่ยาวนาน), 4F-PCC เป็น drug of choice สำหรับ VKA reversal ในภาวะ life-threatening bleeding, ถ้าไม่มี 4F-PCC → ใช้ 3F-PCC + FFP (เพิ่ม FVII) หรือ FFP อย่างเดียว'
+    }
+  },
+  {
+    id: 'plt_compare',
+    name: '⚖️ Platelet Products Comparison',
+    aka: 'PC vs LPPC vs LDPPC vs SDP vs PI-SDP vs PLDPC — คู่มือ NBC สภากาชาดไทย 2566',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['platelet', 'PC', 'LPPC', 'LDPPC', 'SDP', 'PI', 'PLDPC', 'comparison', 'NBC', 'เกล็ดเลือด', 'pool'],
+    shortDesc: 'ตารางเทียบ Platelet Products ทั้ง 6 ชนิดจากคู่มือ NBC สภากาชาดไทย — PC, LPPC, LDPPC, SDP, PI-SDP, PLDPC พร้อม dosing & ข้อบ่งใช้',
+    detail: {
+      mechanism: 'เกล็ดเลือดเก็บรักษาที่ 20-24°C พร้อมเขย่าตลอดเวลา อายุ 5-7 วัน (7 วัน ถ้ามีตรวจ bacterial contamination) — มี 6 ผลิตภัณฑ์หลัก แต่ละชนิดมีปริมาณเกล็ดเลือดและ WBC ต่างกัน ส่งผลต่อ dosing และข้อดี-ข้อเสีย',
+      comparisonTables: [
+        {
+          title: 'เปรียบเทียบ Platelet Products ทั้ง 6 ชนิด (NBC สภากาชาดไทย)',
+          headers: ['ผลิตภัณฑ์', 'แหล่งที่มา', 'Volume', 'Plt count', 'WBC', '= 1 Dose ผู้ใหญ่?'],
+          rows: [
+            ['<b>PC</b> (Platelet Conc.)', 'WB 1 ถุง', '>40 mL', '>6×10¹⁰', '<0.2×10⁹', '🔴 ไม่ใช่ (ต้อง pool 1u/10 kg)'],
+            ['<b>LPPC</b> (Pooled Leukocyte Poor)', 'Pool 4 buffy coats', '230-430 mL', '<b>>2.4×10¹¹</b>', '<0.2×10⁹', '🟢 ใช่ 1 unit = 1 dose'],
+            ['<b>LDPPC</b> (Leukodepleted Pool)', 'Pool 4 buffy coats + LD filter', '>200 mL', '>2.0×10¹¹', '<b><1×10⁶</b> ⭐', '🟢 ใช่ 1 unit = 1 dose'],
+            ['<b>SDP</b> (Single Donor)', 'Apheresis 1 donor', '>200 mL', '>2.0×10¹¹', '<1×10⁶', '🟢 ใช่ 1 unit = 1 dose'],
+            ['<b>PI-SDP</b> (Pathogen Inactivated)', 'Apheresis + Psoralen/UV-A', '>200 mL', '>2.0×10¹¹', '<1×10⁶', '🟢 ใช่ 1 unit = 1 dose'],
+            ['<b>PLDPC</b> (Pediatric LD)', 'Apheresis แบ่ง 4', '>40 mL', '>6×10¹⁰', '<1×10⁶', '🔴 ไม่ใช่ (สำหรับเด็ก)']
+          ]
+        },
+        {
+          title: 'ข้อดี-ข้อเสียเปรียบเทียบ',
+          headers: ['คุณสมบัติ', 'PC (แยก)', 'LPPC (pool)', 'LDPPC (pool+LD)', 'SDP (apheresis)', 'PI-SDP'],
+          rows: [
+            ['WBC content', '🔴 สูง (<0.2×10⁹)', '🔴 สูง (<0.2×10⁹)', '🟢 ต่ำมาก (<1×10⁶)', '🟢 ต่ำมาก (<1×10⁶)', '🟢 ต่ำมาก (<1×10⁶)'],
+            ['Febrile reaction', 'สูง', 'ปานกลาง', '🟢 ต่ำ', '🟢 ต่ำ', '🟢 ต่ำ'],
+            ['HLA alloimmunization', '🔴 สูง', '🔴 ปานกลาง', '🟢 ต่ำ', '🟢 ต่ำ', '🟢 ต่ำ'],
+            ['CMV transmission', 'มี risk', 'มี risk', '🟢 ต่ำมาก', '🟢 ต่ำมาก', '🟢 ต่ำมาก'],
+            ['Donor exposure', '🔴 หลายคน', '🔴 4 คน', '🔴 4 คน', '🟢 1 คน', '🟢 1 คน'],
+            ['Pathogen inactivation', '❌', '❌', '❌', '❌', '🟢 ใช่ (Psoralen+UV-A)'],
+            ['ทดแทน irradiation', '❌', '❌', '❌', '❌', '🟢 ได้ (ยับยั้ง WBC แบ่งตัว)'],
+            ['ราคา', '🟢 ถูก', 'ปานกลาง', 'ปานกลาง', '🔴 แพง', '🔴 แพงที่สุด'],
+            ['ความพร้อม', '🟢 หาง่าย', '🟢 มาตรฐาน NBC', '🟢 มาตรฐาน NBC', 'ต้องนัดล่วงหน้า', 'จำกัด']
+          ]
+        },
+        {
+          title: 'Dosing & Expected Increment',
+          headers: ['ผลิตภัณฑ์', 'Dose ผู้ใหญ่', 'Expected Plt Increment', 'Frequency'],
+          rows: [
+            ['PC (แยกเดี่ยว)', '<b>1 unit / 10 kg BW</b> (pool หลาย unit)', 'เพิ่ม Plt 20,000-40,000/µL (ต่อ therapeutic dose)', 'ตาม clinical'],
+            ['LPPC', '<b>1 unit = 1 therapeutic dose</b>', 'เพิ่ม Plt 20,000-40,000/µL', 'ตาม clinical'],
+            ['LDPPC', '<b>1 unit = 1 therapeutic dose</b>', 'เพิ่ม Plt 20,000-40,000/µL', 'ตาม clinical'],
+            ['SDP', '<b>1 unit = 1 therapeutic dose</b>', 'เพิ่ม Plt 20,000-40,000/µL', 'ตาม clinical'],
+            ['PI-SDP', '<b>1 unit = 1 therapeutic dose</b>', 'เพิ่ม Plt 20,000-40,000/µL', 'ตาม clinical'],
+            ['PLDPC (เด็ก)', '1 unit ตาม BW เด็ก', 'คำนวณตาม BW', 'ตาม clinical']
+          ],
+          footnote: '* LPPC, LDPPC, SDP, PI-SDP: 1 unit มี Plt เพียงพอเป็น 1 therapeutic dose ในผู้ใหญ่ ไม่ต้อง pool | PC ต้อง pool 1u/10kg'
+        }
+      ],
+      indications: [
+        '<b>📌 สรุปความแตกต่างหลัก:</b>',
+        '',
+        '<b>PC vs LPPC/LDPPC:</b> PC เป็น single unit จาก WB 1 ถุง (Plt >6×10¹⁰) ต้อง pool หลาย unit → LPPC/LDPPC pool มาเรียบร้อยแล้ว 1 unit = 1 dose',
+        '',
+        '<b>LPPC vs LDPPC:</b> ทั้งคู่ pool 4 buffy coats แต่ <b>LDPPC ผ่าน leukodepletion filter เพิ่ม</b> → WBC ลดจาก <0.2×10⁹ เหลือ <b><1×10⁶</b> (ต่ำกว่า 200 เท่า!) → ลด febrile reaction, HLA alloimmunization, CMV risk อย่างมาก',
+        '',
+        '<b>LDPPC vs SDP:</b> ปริมาณ Plt และ WBC ใกล้เคียงกัน แต่ SDP มาจาก <b>donor คนเดียว</b> (ลด donor exposure) ส่วน LDPPC มาจาก 4 คน — SDP เหมาะสำหรับ HLA-matching',
+        '',
+        '<b>PI-SDP (Pathogen Inactivated):</b> เหมือน SDP + <b>Psoralen+UV-A treatment</b> → ลดเชื้อไวรัส/แบคทีเรีย + <b>ไม่ต้อง irradiate</b> (ยับยั้ง WBC แบ่งตัวได้แล้ว) — ดีที่สุดแต่แพงที่สุด',
+        '',
+        '<b>📋 Transfusion Trigger (คู่มือ NBC 2566):</b>',
+        '• Therapy-related thrombocytopenia: ≤10,000/µL',
+        '• Central venous catheter: <20,000/µL',
+        '• Lumbar puncture / diagnostic: <50,000/µL',
+        '• Major elective nonneuraxial surgery: <50,000/µL',
+        '• Cardiac surgery with bypass: ให้เมื่อมี bleeding จาก plt dysfunction',
+        '• Plt 20,000-50,000/µL: พิจารณาอาการ/อาการแสดงร่วมด้วย'
+      ],
+      caution: 'วิธีให้: เก็บ 20-24°C เขย่าตลอด, ห้ามแช่เย็น, ใช้ blood set ใหม่ (ไม่ใช่ set เก่าจาก RBC), ให้ทันทีหลังรับจาก blood bank, ขนส่งที่ 20-24°C, ตรวจ swirling ก่อนให้ (ถ้าไม่มี swirl = platelet function เสีย → ไม่ควรใช้), ระวัง bacterial contamination (เก็บ room temp)'
+    }
+  },
+  {
+    id: 'nbc_pdmp',
+    name: 'NBC PDMPs & Apheresis Products',
+    aka: 'Immunoglobulin 5 TRCS, Albumin 20 TRCS, HBIG, HRIG, SDG — ศูนย์ผลิตผลิตภัณฑ์จากพลาสมา สภากาชาดไทย',
+    category: 'Blood Component',
+    badge: 'blood',
+    tags: ['NBC', 'PDMP', 'IVIG', 'albumin', 'HBIG', 'HRIG', 'granulocyte', 'SDG', 'immunoglobulin', 'สภากาชาดไทย'],
+    shortDesc: 'Plasma-Derived Medicinal Products (PDMPs) จาก Plasma Fractionation Centre สภากาชาดไทย — IVIG, Albumin, HBIG, HRIG + SDG (Granulocyte)',
+    detail: {
+      mechanism: 'ผลิตภัณฑ์จากพลาสมา (PDMPs) ผลิตโดย Plasma Fractionation Centre ของ NBC สภากาชาดไทย ผ่านกระบวนการ fractionation, viral inactivation ตามมาตรฐานสากล',
+      content: '<b>Plasma-Derived Medicinal Products (PDMPs):</b><br><br><b>1. IMMUNOGLOBULIN 5 TRCS (IVIG)</b><br>Human Immunoglobulin 5% Solution | ขนาด: 2.5 g/50 mL และ 5 g/100 mL<br>ให้ทาง IV | เก็บ: 2-8°C (ห้ามแช่แข็ง, เก็บพ้นแสง) | อายุ: 3 ปี<br><br><b>2. ALBUMIN 20 TRCS</b><br>Human Albumin 20% Solution | ขนาด: 50 mL และ 100 mL<br>เก็บ: ต่ำกว่า 30°C (ห้ามแช่แข็ง, เก็บพ้นแสง) | อายุ: 3 ปี<br><br><b>3. HBIG (Hepatitis B Immunoglobulin) for IM</b><br>Potency: 200 IU/mL 16 g% | ขนาด: 2 mL<br>เก็บ: 2-8°C | อายุ: 3 ปี<br>ข้อบ่งใช้: Post-exposure prophylaxis HBV, neonatal prophylaxis (HBsAg+ mother)<br><br><b>4. HRIG (Human Rabies Immunoglobulin) for IM</b><br>Potency: 150 IU/mL 16 g% | ขนาด: 5 mL<br>เก็บ: 2-8°C | อายุ: 2 ปี<br>ข้อบ่งใช้: Post-exposure rabies prophylaxis (infiltrate around wound)<br><br><b>Apheresis Blood Component:</b><br><br><b>5. SDG (Single Donor Granulocyte)</b><br>Volume: 200-350 mL | Leukocyte: 1.0-2.5×10¹⁰ cells/unit<br>เก็บ: 20-24°C | <b>อายุ: ใช้เร็วที่สุด ภายใน 24 ชม.</b><br>ข้อบ่งใช้: Severe neutropenia + life-threatening infection ที่ไม่ตอบสนองต่อ antibiotics<br>หมายเหตุ: ต้อง irradiate ก่อนให้ (ป้องกัน TA-GVHD), ABO compatible',
+      caution: 'PDMP ทุกตัว: ห้ามแช่แข็ง, เก็บพ้นแสง, ตรวจสอบลักษณะก่อนให้ (ต้องใส ไม่ขุ่น ไม่มีตะกอน), SDG ต้อง irradiate ก่อนให้เสมอ และใช้ภายใน 24 ชม.'
+    }
+  },
+  {
+    id: 'hemo_a_scenario',
+    name: '🩸 Hemophilia A — Bleeding Management',
+    aka: 'FVIII replacement, Cryo, HTFDC, DDAVP, Bypassing agents — คำนวณ dose ตามสถานการณ์',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['hemophilia A', 'FVIII', 'factor VIII', 'cryoprecipitate', 'HTFDC', 'DDAVP', 'inhibitor', 'hemarthrosis', 'ICH', 'surgery', 'calculator'],
+    shortDesc: 'แนวทางรักษา Hemophilia A — คำนวณ FVIII conc. / FVIII TRCS / HTFDC / Cryo ตาม severity + สถานการณ์ พร้อม Calculator',
+    detail: {
+      mechanism: 'Hemophilia A = ขาด Factor VIII → aPTT prolonged, PT ปกติ, Mixing test correct<br>Severity: Severe <1% | Moderate 1-5% | Mild 5-40%<br>สูตร: <b>FVIII dose (IU) = (Target% − Current%) × BW ÷ 2</b><br>FVIII 1 IU/kg → เพิ่ม FVIII activity 2% | t½ SHL ~8-12h',
+      comparisonTables: [
+        {
+          title: 'Target FVIII level ตามสถานการณ์',
+          headers: ['สถานการณ์', 'Target FVIII (%)', 'Dose (IU/kg)', 'Duration', 'Frequency'],
+          rows: [
+            ['Hemarthrosis (early)', '30-50%', '15-25', '1-3 วัน', 'q 12-24h'],
+            ['Muscle / Soft tissue', '40-60%', '20-30', '2-5 วัน', 'q 12-24h'],
+            ['Oral / Epistaxis', '30-50%', '15-25', '1-3 วัน + TXA', 'q 12-24h'],
+            ['GI bleed', '50-80%', '25-40', '5-7 วัน', 'q 8-12h'],
+            ['Dental extraction', '50-80%', '25-40', '1-5 วัน + TXA', 'q 12h'],
+            ['Major surgery', '80-100% → >50%', '50 loading → 25', '7-14 วัน', 'q 8-12h'],
+            ['🔴 ICH / Life-threatening', '80-100% → >50%', '50 loading → 25', '7-14 วัน', 'q 8-12h'],
+            ['Iliopsoas / Retroperitoneal', '80-100%', '50', '7-10 วัน', 'q 8-12h']
+          ]
+        },
+        {
+          title: 'เลือก Product — ตามความพร้อม',
+          headers: ['Product', 'FVIII content', 'ข้อดี', 'ข้อจำกัด'],
+          rows: [
+            ['FVIII Concentrate (Recombinant)', 'ตาม vial (250/500/1000 IU)', '🟢 แม่นยำ, viral-safe, first-line', 'ราคาสูง, ต้องมี stock'],
+            ['FVIII TRCS (NBC สภากาชาดไทย)', '250 / 500 IU/vial', '🟢 ผลิตในไทย, ราคาถูกกว่า', 'Plasma-derived'],
+            ['HTFDC (NBC PDMP)', '≥200 IU/bottle', '🟢 เก็บ 2-8°C, heat-treated', 'ต้อง reconstitute'],
+            ['Cryoprecipitate (NBC)', '≥70 IU/unit', '🟡 หาง่าย, ราคาถูก', 'FVIII content ต่ำ → ต้องให้หลาย unit, ปริมาตรมาก, ไม่ viral-inactivated'],
+            ['DDAVP (Mild HA only)', 'เพิ่ม endogenous 2-5x', '🟢 ไม่เสี่ยง inhibitor, ราคาถูก', 'เฉพาะ Mild (>5%), tachyphylaxis, ห้าม <2 ปี']
+          ],
+          footnote: 'ลำดับ: FVIII conc. > FVIII TRCS > HTFDC > Cryo | Mild HA: ลอง DDAVP ก่อน (DDAVP trial)'
+        },
+        {
+          title: 'Hemophilia A + Inhibitor → Bypassing Agents',
+          headers: ['สถานการณ์', 'Low-titer Inhibitor (<5 BU)', 'High-titer Inhibitor (≥5 BU)'],
+          rows: [
+            ['First-line', 'FVIII conc. (high dose)', 'rFVIIa 90 mcg/kg q 2h หรือ aPCC 75-100 U/kg q 8-12h'],
+            ['ถ้าไม่ตอบสนอง', 'rFVIIa หรือ aPCC', 'สลับ rFVIIa ↔ aPCC'],
+            ['Prophylaxis', 'Emicizumab SC', 'Emicizumab SC (ห้ามใช้ aPCC ร่วม!)'],
+            ['Max dose/day', 'FVIII ไม่จำกัด', 'aPCC max 200 U/kg/day']
+          ],
+          footnote: 'Inhibitor: Bethesda assay >0.6 BU = positive | ถ้ามี inhibitor ห้ามให้ FVIII ขนาดปกติ → ใช้ bypassing agent'
+        }
+      ],
+      indications: [
+        '<b>เมื่อไหร่ควรใช้อะไร:</b>',
+        '• <b>Severe/Moderate HA</b> → FVIII concentrate (first-line) หรือ FVIII TRCS / HTFDC',
+        '• <b>Mild HA (FVIII 5-40%)</b> → DDAVP 0.3 mcg/kg IV ก่อน (ถ้า DDAVP trial respond)',
+        '• <b>ไม่มี FVIII concentrate</b> → Cryoprecipitate (NBC: ≥70 IU/unit)',
+        '• <b>มี Inhibitor</b> → rFVIIa (NovoSeven) หรือ aPCC (FEIBA)',
+        '• <b>Prophylaxis + Inhibitor</b> → Emicizumab SC (ห้ามใช้ aPCC ร่วม!)',
+        '• <b>Dental/Mucosal bleed</b> → เสริม Tranexamic acid ทุกกรณี'
+      ],
+      caution: 'ตรวจ inhibitor (Bethesda assay) ทุกครั้งที่ FVIII ไม่ขึ้นตามคาด | Severe HA เสี่ยง inhibitor ~30% | Mild HA + DDAVP: จำกัดน้ำ (hyponatremia), max 2-3 doses (tachyphylaxis) | Cryo ต้อง ABO compatible, ใช้ทันทีหลัง thaw'
+    }
+  },
+  {
+    id: 'vwd_scenario',
+    name: '🩸 von Willebrand Disease — Treatment',
+    aka: 'vWD Type 1/2/3, DDAVP, vWF/FVIII concentrate, Cryoprecipitate, TXA — คำนวณ dose',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['vWD', 'von Willebrand', 'DDAVP', 'desmopressin', 'vWF', 'type 1', 'type 2', 'type 3', 'menorrhagia', 'epistaxis', 'cryoprecipitate', 'calculator'],
+    shortDesc: 'แนวทางรักษา vWD ตาม Type (1/2A/2B/2M/2N/3) + สถานการณ์ — DDAVP / vWF-FVIII conc. / Cryo / TXA พร้อม Calculator',
+    detail: {
+      mechanism: 'von Willebrand Disease = ขาดหรือผิดปกติของ vWF → platelet adhesion บกพร่อง + FVIII ลดลง (vWF stabilize FVIII)<br>Lab: ↑BT, ↓vWF:Ag, ↓vWF:RCo, ↓FVIII (Type 3, 2N), aPTT อาจ prolong<br>Primary hemostasis defect → mucocutaneous bleeding pattern',
+      comparisonTables: [
+        {
+          title: 'vWD Type — การรักษาตาม Type',
+          headers: ['Type', 'ลักษณะ', 'DDAVP', 'vWF/FVIII conc.', 'Cryo'],
+          rows: [
+            ['Type 1', 'Partial quantitative ↓ (70-80% ของ vWD)', '✅ First-line (trial ก่อน)', 'ถ้า DDAVP ไม่พอ', 'Backup'],
+            ['Type 2A', '↓ large multimers', '🟡 อาจได้ผล (trial)', '✅ Preferred', 'Backup'],
+            ['Type 2B', 'Gain-of-function → plt ลดลง', '❌ ห้าม! (plt ยิ่งลด)', '✅ เท่านั้น', 'Backup'],
+            ['Type 2M', '↓ platelet binding, multimers ปกติ', '🟡 อาจได้ผลบ้าง', '✅ Preferred major', 'Backup'],
+            ['Type 2N', '↓ FVIII binding (เหมือน mild HA)', '🟡 เพิ่ม FVIII ชั่วคราว', '✅ Preferred (stabilize FVIII)', 'Backup'],
+            ['Type 3', 'Complete deficiency', '❌ ห้าม! (ไม่มี vWF)', '✅ เท่านั้น ± plt txn', 'Backup']
+          ],
+          footnote: 'DDAVP ทำ trial ก่อนใช้จริง: ให้ 0.3 mcg/kg IV → ตรวจ vWF:RCo, FVIII ที่ 1h — ถ้าเพิ่ม >2 เท่า = respond'
+        },
+        {
+          title: 'Target vWF:RCo / FVIII ตามสถานการณ์',
+          headers: ['สถานการณ์', 'Target vWF:RCo (IU/dL)', 'Target FVIII (%)', 'Duration', 'เสริม TXA?'],
+          rows: [
+            ['Epistaxis / Oral bleed', '>30', '>30', '1-3 วัน', '✅ TXA 1g TID'],
+            ['Dental extraction', '>50', '>50', '1-5 วัน', '✅ TXA 1g TID × 5-7 วัน'],
+            ['Menorrhagia', '>30-50', '-', 'ช่วง menstruation', '✅ TXA 1300mg TID × 5 วัน'],
+            ['Minor surgery', '>50', '>50', '3-5 วัน', '✅ TXA'],
+            ['Major surgery', '>50-100 → >50', '>50-80', '7-14 วัน', '✅ TXA IV 1g q 8h'],
+            ['GI bleed', '>50', '>50', '5-7 วัน', '✅ TXA IV'],
+            ['🔴 ICH / Life-threatening', '>100 → >50', '>80', '7-14 วัน', '✅ TXA IV'],
+            ['Delivery / C-section', '>50', '>50', '3-5 วัน postpartum', '✅ TXA']
+          ]
+        },
+        {
+          title: 'Product เลือก — vWF/FVIII Concentrates ที่มี',
+          headers: ['Product', 'vWF:RCo', 'FVIII', 'หมายเหตุ'],
+          rows: [
+            ['Humate-P (CSL Behring)', '~2.4:1 (vWF:FVIII)', 'มี FVIII', 'Plasma-derived, มี vWF multimers ครบ'],
+            ['Wilate (Octapharma)', '~1:1', 'มี FVIII', 'Plasma-derived'],
+            ['Vonvendi (rVWF, Takeda)', 'Pure rVWF', 'ไม่มี FVIII', 'Recombinant vWF — ต้องให้ FVIII เสริมครั้งแรก'],
+            ['Cryoprecipitate (NBC)', '~80-150 IU/unit', '≥70 IU/unit', 'Backup — ไม่ viral-inactivated, ปริมาตรมาก'],
+            ['DDAVP', 'เพิ่ม endogenous 2-5x', 'เพิ่ม 2-5x', 'Type 1 first-line, ห้าม Type 2B & 3']
+          ],
+          footnote: 'vWF/FVIII conc. ให้ dose ตาม vWF:RCo content: ~40-60 IU/kg loading, ~20-40 IU/kg maintenance q 12-24h'
+        },
+        {
+          title: 'Menorrhagia ใน vWD — Step-up approach',
+          headers: ['Step', 'Treatment', 'หมายเหตุ'],
+          rows: [
+            ['1. First-line', 'Tranexamic acid 1300 mg PO TID × 5 วัน', 'เริ่มวันแรกของ menstruation'],
+            ['2. เพิ่ม', 'DDAVP intranasal 150-300 mcg (Type 1)', 'วันแรกของ menstruation ± วันที่ 2'],
+            ['3. Hormonal', 'Combined OCP หรือ LNG-IUS (Mirena)', 'ลด loss 40-95%, long-term'],
+            ['4. Severe', 'vWF/FVIII conc. หรือ Cryo', 'เมื่อ 1-3 ไม่เพียงพอ']
+          ]
+        }
+      ],
+      indications: [
+        '<b>หลักการรักษา vWD:</b>',
+        '• <b>Type 1 (most common)</b> → DDAVP first-line (ถ้า trial respond) + TXA',
+        '• <b>Type 2A/2M/2N</b> → DDAVP อาจได้ผล (trial ก่อน) → vWF/FVIII conc. สำหรับ major',
+        '• <b>Type 2B</b> → ❌ ห้าม DDAVP! → vWF/FVIII conc. เท่านั้น',
+        '• <b>Type 3</b> → ❌ ห้าม DDAVP! → vWF/FVIII conc. + อาจต้อง platelet transfusion',
+        '• <b>TXA</b> → เสริมได้ทุก type โดยเฉพาะ mucosal bleed, dental, menorrhagia',
+        '• <b>Pregnancy</b> → vWF/FVIII มักเพิ่มขึ้นใน 3rd trimester แต่ลดเร็วหลังคลอด → ดูแลช่วง postpartum'
+      ],
+      caution: 'DDAVP ห้ามใน Type 2B (thrombocytopenia แย่ลง) & Type 3 (ไม่มี vWF ให้ปล่อย) | DDAVP: จำกัดน้ำ (hyponatremia), max 2-3 dose ต่อเนื่อง | ระวัง FVIII สะสมเมื่อให้ vWF/FVIII conc. นาน (vWF stabilize endogenous FVIII → thrombosis risk) | Cryo: ABO compatible, ใช้ทันทีหลัง thaw'
+    }
+  },
+  {
+    id: 'plt_refract',
+    name: '🔬 Platelet Refractoriness',
+    aka: 'CCI Calculator, Diagnosis & Management Algorithm',
+    category: 'Clinical Scenario',
+    badge: 'accent3',
+    tags: ['platelet refractoriness', 'CCI', 'corrected count increment', 'HLA', 'HPA', 'alloimmunization', 'crossmatch', 'refractory', 'transfusion'],
+    shortDesc: 'การวินิจฉัยและจัดการ Platelet Refractoriness — CCI <5,000 สองครั้งติดต่อกัน ที่ 1 ชม.หลังให้ platelet, แยก immune vs non-immune cause',
+    detail: {
+      mechanism: 'Platelet refractoriness = ให้ platelet แล้วเกล็ดเลือดไม่ขึ้น ซ้ำ ≥2 ครั้ง ติดต่อกัน\nPrevalence: 4.8-49.6% ของผู้ป่วยที่ได้ platelet transfusion\nเพิ่ม: bleeding risk, transfusion demand, length of stay, ค่าใช้จ่าย, mortality',
+      indications: [
+        '<b>📐 สูตรคำนวณ (TRAP Study Criteria):</b>',
+        '',
+        '<b>1. Posttransfusion Increment (PI)</b>',
+        '= Post-transfusion platelet − Pre-transfusion platelet (/µL)',
+        '',
+        '<b>2. Corrected Count Increment (CCI)</b>',
+        '= PI (/µL) × BSA (m²) ÷ Platelet transfused (×10¹¹)',
+        '',
+        '<b>3. Percentage Platelet Recovery (PPR)</b>',
+        '= PI (/µL) × Blood volume (L) ÷ Platelet transfused (×10¹¹) × 100',
+        '',
+        '<b>🔴 เกณฑ์วินิจฉัย Platelet Refractoriness:</b>',
+        '• CCI <5,000 cells/µL ที่ 1 ชม.หลังให้ platelet, ≥2 ครั้ง ติดต่อกัน',
+        '• ใช้ ABO-compatible platelets, stored <48 ชม.',
+        '• PI ปกติ: 5,000-20,000/µL, PPR ปกติ: >30%',
+        '',
+        '<b>🧪 แยก Immune vs Non-immune cause:</b>',
+        '',
+        '<b>Low CCI ที่ <1 ชม.</b> → สงสัย <b>Immune cause</b>',
+        '• Anti-HLA class I antibody (80-90% ของ immune cause) — HLA-A, HLA-B',
+        '• Anti-HPA antibody (2-11%) — GPIa, GPIb, GPIIb, GPIIIa',
+        '• ABO-mismatched platelets',
+        '• Drug-dependent antibodies (heparin, vancomycin, ceftriaxone ฯลฯ)',
+        '• Risk factors: pregnancy (11-32%), blood transfusion (23%), solid organ transplant',
+        '• ตรวจพบ antibodies หลังให้ random platelet 6-8 สัปดาห์',
+        '',
+        '<b>Normal CCI ที่ 1 ชม. แต่ Low CCI ที่ 18-24 ชม.</b> → สงสัย <b>Non-immune cause</b>',
+        '• Fever, infection, sepsis',
+        '• Active bleeding',
+        '• DIC, TMA',
+        '• Drugs (amphotericin B, vancomycin, ATG)',
+        '• Splenomegaly / splenic sequestration',
+        '• GVHD',
+        '• Poor platelet quality / storage age',
+        '',
+        '<b>📋 Management Algorithm (Nahirniak et al. Blood 2025):</b>',
+        '',
+        '<b>Step 1:</b> CCI ≤5,000-10,000? → ให้ ABO-identical platelet ครั้งถัดไป',
+        '<b>Step 2:</b> ยัง CCI ต่ำ? → หา non-immune cause → แก้ไข underlying cause',
+        '<b>Step 3:</b> มี HLA class I antibodies? → <b>HLA-matched platelet</b> (apheresis, 4/4 match)',
+        '<b>Step 4:</b> ยัง CCI ต่ำ? → ตรวจ <b>HPA antibodies</b> → HPA-matched platelet',
+        '<b>Step 5:</b> ยัง CCI ต่ำ? → Re-evaluate immune + non-immune causes ใหม่',
+        '',
+        '<b>🩸 วิธี Platelet Selection สำหรับ Immune Cause:</b>',
+        '',
+        '<b>1. HLA-Matched Platelet</b> (Standard approach)',
+        '• Apheresis จาก donor ที่ HLA-A, HLA-B match 4/4',
+        '• Grade A (4/4 identical) ดีที่สุด → B/C/D ตามลำดับ',
+        '• Success rate ~80% (vs 31% random, 35% pool)',
+        '• ข้อจำกัด: ต้อง donor pool ≥3,000 คน, แพง, ใช้เวลานาน',
+        '',
+        '<b>2. Platelet Crossmatch</b> (เร็วที่สุด)',
+        '• Solid Phase Red Cell Adherence Assay (SPRCA)',
+        '• ทดสอบ donor platelet กับ recipient serum',
+        '• Success rate 50-90%, CCI เพิ่ม mean 13,620',
+        '• ข้อดี: เร็ว, ไม่ต้อง HLA-type, ราคาถูกกว่า',
+        '• ข้อเสีย: ต้องส่ง fresh recipient sample ทุก 72 ชม., อาจ induce future alloimmunization',
+        '',
+        '<b>3. Antibody Specificity Prediction (ASP)</b>',
+        '• Computer program จับคู่ — ระบุ specificity ของ HLA Ab แล้วเลือก donor ที่ไม่มี antigen นั้น',
+        '• ข้อดี: เพิ่ม compatible donor pool, ประสิทธิภาพเทียบเท่า HLA-match (PPR ~24%)',
+        '• ข้อเสีย: ต้องตรวจ HLA antibody specificity ก่อน, ไม่ป้องกัน future allosensitization',
+        '',
+        '<b>🛡️ Prevention ของ Platelet Refractoriness:</b>',
+        '• <b>Leukoreduction</b> — ลด HLA immunization จาก 19% → 7%, ลด refractoriness จาก 14% → 4% (TRAP Study)',
+        '• UV-B irradiation ของ platelet product',
+        '• ABO-matching platelet เมื่อเป็นไปได้',
+        '',
+        '<b>🔮 Future Therapies:</b>',
+        '• HLA-depleted platelets (citric acid/chloroquine phosphate denature HLA class I)',
+        '• Eculizumab ร่วมกับ platelet transfusion (improved CCI ~40%)',
+        '• HLA eplet matching (แม่นยำกว่า antigen-level matching)'
+      ],
+      evidence: 'TRAP Study (NEJM 1997): Leukoreduction ลด HLA alloimmunization จาก 19% เหลือ 7% และ platelet refractoriness จาก 14% เหลือ 4%\n\nGavva et al. (Transfusion 2019): HLA-selected platelet success rate 80% vs random 31% vs pool 35% ในผู้ป่วย PRA >60%\n\nPetz et al. (Transfusion 2000): PPR: HLA-matched 20.8%, Crossmatch 23.4%, ASP 24.1% vs Random 14.9%\n\nKrieguer et al. (2025 meta-analysis): SPRCA crossmatch เพิ่ม satisfactory increment RR 4.00 [1.61-9.97], mean CCI increase 13,620',
+      caution: 'อย่าให้ platelet ซ้ำใน non-bleeding patients ที่ platelet refractory โดยไม่จำเป็น, TXA ไม่ได้ลด death หรือ WHO grade ≥2 bleeding ใน hematologic patients (Estcourt, Lancet Haematol 2025), ให้ ABO-matched & fresh (<48h) platelet เสมอ, ส่ง HLA antibody screen เมื่อสงสัย immune cause'
+    }
+  }
+];
+
+const categoryList = [
+  { key: 'all', label: 'ทั้งหมด' },
+  { key: 'Blood Component', label: '🩸 Blood Components' },
+  { key: 'Factor Concentrate', label: '💉 Factor Concentrate' },
+  { key: 'PCC / Reversal', label: '🔄 PCC / Reversal' },
+  { key: 'Bypassing Agent', label: '⚡ Bypassing Agents' },
+  { key: 'Factor Mimetic', label: '🧬 Mimetic / Rebalancing' },
+  { key: 'Antifibrinolytic', label: '🛡️ Antifibrinolytic / Hemostatic' },
+  { key: 'DOAC Reversal', label: '💊 DOAC Reversal' },
+  { key: 'ITP Treatment', label: '🟣 ITP Treatment' },
+  { key: 'Clinical Scenario', label: '📋 Clinical Scenarios' }
+];
+
+let currentCategory = 'all';
+
+function renderCategories() {
+  const el = document.getElementById('categories');
+  el.innerHTML = categoryList.map(c =>
+    `<button class="cat-btn ${c.key === currentCategory ? 'active' : ''}" onclick="setCategory('${c.key}')">${c.label}</button>`
+  ).join('');
+}
+
+function setCategory(cat) {
+  currentCategory = cat;
+  renderCategories();
+  renderGrid();
+}
+
+function getFiltered() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  let list = agents;
+
+  if (currentCategory !== 'all') {
+    list = list.filter(a => a.category === currentCategory ||
+      (currentCategory === 'Factor Mimetic' && (a.category === 'Factor Mimetic' || a.category === 'Rebalancing Therapy')) ||
+      (currentCategory === 'Antifibrinolytic' && (a.category === 'Antifibrinolytic' || a.category === 'Hemostatic Agent'))
+    );
+  }
+
+  if (q) {
+    list = list.filter(a => {
+      const searchable = [a.name, a.aka, a.category, a.shortDesc, ...a.tags,
+        ...(a.detail.indications || []),
+        a.detail.mechanism || '',
+        a.detail.caution || '',
+      ].join(' ').toLowerCase();
+      return q.split(/\s+/).every(word => searchable.includes(word));
+    });
+  }
+
+  return list;
+}
+
+function renderGrid() {
+  const list = getFiltered();
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('resultsCount');
+  count.textContent = `พบ ${list.length} รายการ`;
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🔍</div><p>ไม่พบผลลัพธ์ — ลองค้นหาด้วยคำอื่น</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map((a, i) => `
+    <div class="card" style="animation-delay:${i * 0.05}s" onclick="showDetail('${a.id}')">
+      <div class="card-stripe" style="background: linear-gradient(90deg, ${stripeColor(a.badge)})"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">${a.name}</div>
+          <span class="card-badge badge-${a.badge}">${a.category}</span>
+        </div>
+        ${a.aka ? `<div class="card-aka">${a.aka}</div>` : ''}
+        <div class="card-desc">${a.shortDesc}</div>
+        <div class="card-tags">${a.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="card-expand-hint">คลิกเพื่อดูรายละเอียด →</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function stripeColor(badge) {
+  const map = {
+    blood: '#ff6b8a, #ff4757',
+    factor: '#7b93ff, #5568e8',
+    bypass: '#f0c040, #e8a020',
+    anti: '#64ffda, #20c997',
+    reversal: '#ff9f43, #f0803c',
+    accent3: '#ff6b8a, #e84393'
+  };
+  return map[badge] || '#666, #888';
+}
+
+function showDetail(id) {
+  const a = agents.find(x => x.id === id);
+  if (!a) return;
+  const d = a.detail;
+  const overlay = document.getElementById('detailOverlay');
+  const panel = document.getElementById('detailPanel');
+
+  let html = `
+    <div class="detail-top">
+      <div class="detail-title">${a.name}</div>
+      <button class="close-btn" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="detail-content">
+  `;
+
+  if (a.aka) html += `<div class="detail-section"><p style="color:var(--text-muted);font-style:italic;font-size:13px">${a.aka}</p></div>`;
+
+  if (d.mechanism) {
+    html += `<div class="detail-section"><h3>กลไกการออกฤทธิ์</h3><p>${d.mechanism}</p></div>`;
+  }
+
+  if (d.content) {
+    html += `<div class="detail-section"><h3>ส่วนประกอบ</h3><p>${d.content}</p></div>`;
+  }
+
+  if (d.comparisonTables && d.comparisonTables.length) {
+    d.comparisonTables.forEach(t => {
+      html += `<div class="detail-section"><h3>${t.title}</h3>
+        <table class="dose-table">
+          <thead><tr>${t.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${t.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+        ${t.footnote ? `<p style="color:var(--warning);font-size:12px;margin-top:6px;font-style:italic">${t.footnote}</p>` : ''}
+      </div>`;
+    });
+  }
+
+  if (d.indications && d.indications.length) {
+    const filtered = d.indications.filter(i => i.trim() !== '');
+    html += `<div class="detail-section"><h3>ข้อบ่งใช้</h3><ul>${filtered.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
+  }
+
+  if (d.dosing && d.dosing.length) {
+    html += `<div class="detail-section"><h3>ขนาดยาและวิธีใช้</h3>
+      <table class="dose-table">
+        <thead><tr><th>สถานการณ์</th><th>ขนาดยา</th><th>หมายเหตุ</th></tr></thead>
+        <tbody>${d.dosing.map(r => `<tr><td>${r.scenario}</td><td>${r.dose}</td><td>${r.note}</td></tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+  }
+
+  if (d.admin) html += `<div class="detail-section"><h3>วิธีเตรียมและบริหารยา</h3><p>${d.admin}</p></div>`;
+  if (d.renalAdjust) html += `<div class="detail-section"><h3>ปรับขนาดในไตบกพร่อง</h3><p>${d.renalAdjust}</p></div>`;
+  if (d.monitoring) html += `<div class="detail-section"><h3>การติดตามผล</h3><p>${d.monitoring}</p></div>`;
+  if (d.types) html += `<div class="detail-section"><h3>ชนิดของยา</h3><p>${d.types}</p></div>`;
+  if (d.alternatives) html += `<div class="detail-section"><h3>ทางเลือกอื่น</h3><p>${d.alternatives}</p></div>`;
+  if (d.transfusionTrigger) html += `<div class="detail-section"><h3>Transfusion Trigger</h3><div class="alert-box alert-info">${d.transfusionTrigger}</div></div>`;
+  if (d.rate) html += `<div class="detail-section"><h3>อัตราการให้</h3><p>${d.rate}</p></div>`;
+  if (d.ddavpTrial) html += `<div class="detail-section"><h3>DDAVP Trial</h3><div class="alert-box alert-info">${d.ddavpTrial}</div></div>`;
+  if (d.response) html += `<div class="detail-section"><h3>Response</h3><div class="alert-box alert-info">${d.response}</div></div>`;
+
+  if (d.evidence) html += `<div class="detail-section"><h3>หลักฐานทางคลินิก</h3><div class="alert-box alert-info">${d.evidence.replace(/\n/g,'<br>')}</div></div>`;
+  if (d.evidenceINR) html += `<div class="detail-section"><h3>หลักฐานทางคลินิก</h3><div class="alert-box alert-info">${d.evidenceINR}</div></div>`;
+  if (d.rotem) html += `<div class="detail-section"><h3>ROTEM</h3><div class="alert-box alert-info">${d.rotem}</div></div>`;
+
+  if (d.comparison) html += `<div class="detail-section"><h3>เปรียบเทียบ</h3><p>${d.comparison}</p></div>`;
+  if (d.vsFFP || d.vsPCC || d.vs4F) html += `<div class="detail-section"><h3>เปรียบเทียบ</h3><p>${d.vsFFP || d.vsPCC || d.vs4F}</p></div>`;
+  if (d.vsApheresis) html += `<div class="detail-section"><h3>เปรียบเทียบกับ Apheresis</h3><p>${d.vsApheresis}</p></div>`;
+  if (d.vsRDP) html += `<div class="detail-section"><h3>เปรียบเทียบกับ RDP</h3><p>${d.vsRDP}</p></div>`;
+  if (d.cost) html += `<div class="detail-section"><h3>ราคา (ประมาณ)</h3><p>${d.cost}</p></div>`;
+  if (d.era) html += `<div class="detail-section"><h3>Timeline</h3><p>${d.era}</p></div>`;
+
+  if (d.attachments && d.attachments.length) {
+    html += `<div class="detail-section doc-attachments"><h3>เอกสารแนบ (PDF)</h3><ul class="doc-attachment-list">${d.attachments.map(att => `<li><a href="${att.href}" target="_blank" rel="noopener noreferrer" class="doc-link">${att.label}</a></li>`).join('')}</ul></div>`;
+  }
+
+  if (d.caution) html += `<div class="detail-section"><h3>ข้อควรระวัง</h3><div class="alert-box alert-warning">⚠️ ${d.caution.replace(/\n/g,'<br>')}</div></div>`;
+
+  // Add order button if orderTemplates exist for this agent
+  if (orderTemplates[a.id]) {
+    const btnText = a.id === 'plt_refract' ? '🧮 CCI Calculator — คำนวณ Platelet Refractoriness' : '📋 สั่งยา — Generate Order Text';
+    html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border)">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('${a.id}')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;font-size:15px;padding:14px">
+        ${btnText}
+      </button>
+    </div>`;
+  }
+  // Add calculator buttons for plt and prc
+  if (a.id === 'plt_rdp') {
+    html += `<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('plt_calc')" class="copy-btn copy-btn-alt" style="flex:1;justify-content:center;padding:12px;font-size:13px">🧮 คำนวณ Plt units ที่ต้องจอง</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('plt_refract')" class="copy-btn copy-btn-alt" style="flex:1;justify-content:center;padding:12px;font-size:13px">🧮 CCI Calculator</button>
+    </div>`;
+  }
+  if (a.id === 'prc') {
+    html += `<div style="margin-top:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('prc_calc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">🧮 คำนวณ PRC units ที่ต้องจอง (Hb/Hct calculator)</button>
+    </div>`;
+  }
+  if (a.id === 'fviii' || a.id === 'cryo') {
+    html += `<div style="margin-top:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('hemo_a_calc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">🧮 Hemophilia A Calculator (FVIII / Cryo / HTFDC)</button>
+    </div>`;
+  }
+  if (a.id === 'ddavp' || a.id === 'fviii' || a.id === 'cryo') {
+    html += `<div style="margin-top:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('vwd_calc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">🧮 vWD Calculator (DDAVP / vWF-FVIII / Cryo)</button>
+    </div>`;
+  }
+  if (a.id === 'hemo_a_scenario') {
+    html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('hemo_a_calc')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">🧮 Hemophilia A Calculator — คำนวณ FVIII/Cryo/HTFDC</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('fviii')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order FVIII Concentrate</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Cryoprecipitate / HTFDC</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('rfviia')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order rFVIIa (Inhibitor)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order aPCC/FEIBA (Inhibitor)</button>
+    </div>`;
+  }
+  if (a.id === 'vwd_scenario') {
+    html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('vwd_calc')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">🧮 vWD Calculator — คำนวณ DDAVP/vWF-FVIII/Cryo</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('ddavp')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order DDAVP</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('cryo')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Cryoprecipitate / HTFDC</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Tranexamic acid</button>
+    </div>`;
+  }
+  if (a.id === 'doac_reversal' || a.id === 'idarucizumab' || a.id === 'andexanet') {
+    html += `<div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px">
+      <button onclick="event.stopPropagation();closeDetail();openOrder('idarucizumab')" class="copy-btn copy-btn-main" style="width:100%;justify-content:center;padding:14px;font-size:15px">📋 Order Idarucizumab (Dabigatran reversal)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('4fpcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order 4F-PCC (FXa inhibitor / non-specific)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('apcc')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order aPCC/FEIBA (non-specific)</button>
+      <button onclick="event.stopPropagation();closeDetail();openOrder('txa')" class="copy-btn copy-btn-alt" style="width:100%;justify-content:center;padding:12px;font-size:13px">📋 Order Tranexamic acid</button>
+    </div>`;
+  }
+
+  html += `</div>`;
+  panel.innerHTML = html;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+  document.getElementById('detailOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('detailOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDetail();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeDetail(); closeOrder(); }
+});
+
+document.getElementById('searchInput').addEventListener('input', renderGrid);
+
+// ===== ORDER SYSTEM =====
+const orderTemplates = {
+  txa: {
+    name: 'Tranexamic Acid',
+    scenarios: [
+      { title:'Trauma / PPH / TBI', sub:'IV 1g loading + 1g maintenance', gen: bw => [
+        `Tranexamic acid 1000 mg (1 g) + NSS 100 mL IV drip over 10 min STAT`,
+        `then`,
+        `Tranexamic acid 1000 mg (1 g) + NSS 100 mL IV drip over 8 hours x 1 dose`
+      ]},
+      { title:'Cardiac Surgery', sub:'IV 10 mg/kg bolus + 1 mg/kg/h', gen: bw => {
+        const b=Math.round(10*bw), m=Math.round(1*bw);
+        return [`Tranexamic acid ${b} mg (${(b/1000).toFixed(1)} g) + NSS 100 mL IV drip over 20 min STAT`,`then`,`Tranexamic acid ${m} mg/hr + NSS 50 mL/hr IV drip continuous (intra-op)`];
+      }},
+      { title:'Orthopedic Surgery', sub:'IV 1g pre-incision', gen: bw => [
+        `Tranexamic acid 1000 mg (1 g) + NSS 100 mL IV drip over 15 min ก่อนผ่าตัด`,
+        `± Tranexamic acid 1000 mg + NSS 100 mL IV drip over 15 min repeat x 1 dose (3h หลัง dose แรก)`
+      ]},
+      { title:'Heavy Menstrual Bleeding (PO)', sub:'1300 mg TID x 5 days', gen: bw => [
+        `Tranexamic acid 650 mg 2 tab PO tid pc x 5 days (เริ่มวันแรกของประจำเดือน)`,
+        `หมายเหตุ: Max 5 วัน/cycle`
+      ]},
+      { title:'Hemophilia — Dental', sub:'PO 25 mg/kg TID', gen: bw => {
+        const d=Math.round(25*bw);
+        return [`Tranexamic acid ${d} mg PO tid pc (เริ่มก่อนทำหัตถการ)`,`ให้ต่อ 5-7 วันหลังทำหัตถการ`,`หมายเหตุ: ร่วมกับ factor replacement`];
+      }},
+      { title:'Epistaxis (Topical)', sub:'500 mg soaked pledget', gen: bw => [
+        `Tranexamic acid 500 mg (5 mL injectable) soak ใน gauze/pledget`,
+        `Pack จมูกข้างที่เลือดออก x 10-15 นาที`,
+      ]}
+    ]
+  },
+  ffp: {
+    name: 'Fresh Frozen Plasma — เลือกชนิด',
+    scenarios: [
+      { title:'LDFFP (Leukodepleted FFP) — NBC มาตรฐาน', sub:'10-15 mL/kg ตาม INR', gen: bw => {
+        const v=Math.round(12*bw), u=Math.ceil(v/150);
+        return [`Leukodepleted Fresh Frozen Plasma (LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min → เพิ่มได้ถ้าทน`,`หมายเหตุ: LDFFP มี FVIII ≥0.7 IU/mL, WBC <1×10⁶, ต้อง ABO compatible`,`Thaw ก่อนให้ ~30 นาที (ให้เสร็จภายใน 4 ชม.หลัง thaw)`,`Recheck PT/INR, aPTT หลังให้เสร็จ`];
+      }},
+      { title:'FFP — VKA Reversal (INR 2-4) + Vit K', sub:'10 mL/kg', gen: bw => {
+        const v=Math.round(10*bw), u=Math.ceil(v/150);
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`หมายเหตุ: ต้อง ABO compatible, thaw ~30 นาที`,`Recheck INR หลังให้เสร็จ`];
+      }},
+      { title:'FFP — VKA Reversal (INR 4-6) + Vit K', sub:'12 mL/kg', gen: bw => {
+        const v=Math.round(12*bw), u=Math.ceil(v/150);
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`];
+      }},
+      { title:'FFP — VKA Reversal (INR >6) + Vit K', sub:'15 mL/kg (max 1500 mL)', gen: bw => {
+        const v=Math.min(Math.round(15*bw),1500), u=Math.ceil(v/150);
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Rate: เริ่ม 1-2 mL/min (max 1500 mL)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`];
+      }},
+      { title:'CRP (Cryo-Removed Plasma) — สำหรับ TTP/PE', sub:'1-1.5x plasma volume', gen: bw => {
+        const pv=Math.round(40*bw);
+        return [`Cryo-Removed Plasma (CRP) สำหรับ Therapeutic Plasma Exchange`,`ปริมาตร exchange: ${pv} mL (1x estimated plasma volume)`,`หมายเหตุ: CRP ไม่มี large vWF multimers — เหมาะสำหรับ TTP`,`สั่งผ่านธนาคารเลือด / apheresis unit`];
+      }},
+      { title:'DIC / Coagulopathy', sub:'10-15 mL/kg', gen: bw => {
+        const v=Math.round(15*bw), u=Math.ceil(v/150);
+        return [`Fresh Frozen Plasma (FFP/LDFFP) ${v} mL (~${u} units) IV drip`,`Recheck PT/INR, aPTT, Fibrinogen หลังให้เสร็จ`,`Repeat ตาม lab results`];
+      }}
+    ]
+  },
+  cryo: {
+    name: 'Cryoprecipitate / HTFDC — เลือกชนิด',
+    scenarios: [
+      { title:'Cryoprecipitate (Frozen) — Hypofibrinogenemia', sub:'1 unit/5-10 kg', gen: bw => {
+        const u=Math.ceil(bw/7);
+        return [`Cryoprecipitate ${u} units IV drip STAT`,`Rate: 1-2 mL/min (ให้เสร็จภายใน 30 min หลัง thaw)`,`หมายเหตุ: NBC Cryo — FVIII ≥70 IU, Fibrinogen ≥140 mg/unit, Vol <15 mL/unit`,`เก็บ ≤−20°C, อายุ 1 ปี, ใช้ทันทีหลัง thaw`,`Recheck fibrinogen หลังให้ 1 ชม.`];
+      }},
+      { title:'HTFDC (Heat Treated Freeze Dried Cryo) — NBC PDMP', sub:'FVIII ≥200 IU/bottle', gen: bw => {
+        const target=Math.round(50*bw), bottles=Math.ceil(target/200);
+        return [`HTFDC (Heat Treated Freeze Dried Cryoprecipitate) ${bottles} bottle IV push`,`Reconstitute: ละลายด้วย sterile water ตาม manufacturer`,`Volume หลัง reconstitute: 50 mL/bottle`,`หมายเหตุ: FVIII ≥200 IU/bottle, Fibrinogen >420 mg/bottle`,`เก็บ 2-8°C (ไม่ต้อง thaw), อายุ 1 ปี`,`ข้อดี: ผ่าน heat treatment → ปลอดภัยจากไวรัส`,`Target dose: ${target} IU FVIII (สำหรับ target FVIII 100%)`,`Check FVIII activity 15-30 min หลังให้ (peak level)`];
+      }},
+      { title:'Cryoprecipitate — Hemophilia A (ไม่มี FVIII conc.)', sub:'คำนวณจาก FVIII', gen: bw => {
+        const target=Math.round(50*bw), units=Math.ceil(target/70);
+        return [`Cryoprecipitate ${units} units IV drip STAT`,`(NBC Cryo: FVIII ≥70 IU/unit → ต้องการ ~${target} IU สำหรับ target 100%)`,`Rate: ให้เสร็จภายใน 30 นาทีหลัง thaw`,`Check FVIII activity หลังให้ 15-30 min (peak level)`,`หมายเหตุ: ถ้ามี HTFDC ให้ใช้แทน (FVIII ≥200 IU/bottle, viral inactivated)`];
+      }}
+    ]
+  },
+  '4fpcc': {
+    name: '4-Factor PCC',
+    scenarios: [
+      { title:'VKA Reversal — INR 2.0-3.9', sub:'25 IU/kg', gen: bw => {
+        const d=Math.round(25*bw), v=Math.ceil(d/500);
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (reconstitute 500 IU ใน sterile water 17 mL)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ (เป้า INR ≤1.3)`];
+      }},
+      { title:'VKA Reversal — INR 4.0-6.0', sub:'35 IU/kg', gen: bw => {
+        const d=Math.round(35*bw), v=Math.ceil(d/500);
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ`];
+      }},
+      { title:'VKA Reversal — INR >6.0', sub:'50 IU/kg (max 5000 IU)', gen: bw => {
+        const d=Math.min(Math.round(50*bw),5000), v=Math.ceil(d/500);
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push`,`Rate: max 2 mL/min (max dose 5000 IU)`,`+ Vitamin K1 10 mg + NSS 50 mL IV drip over 20 min`,`Recheck INR 30 min หลังให้เสร็จ`];
+      }},
+      { title:'DOAC Reversal (off-label)', sub:'50 IU/kg', gen: bw => {
+        const d=Math.min(Math.round(50*bw),5000), v=Math.ceil(d/500);
+        return [`4F-PCC (Cofact/Beriplex) ${d} IU (${v} vial) IV push STAT`,`Rate: max 2 mL/min`,`หมายเหตุ: Off-label use — ใช้เมื่อไม่มี specific antidote (andexanet/idarucizumab)`];
+      }}
+    ]
+  },
+  '3fpcc': {
+    name: '3-Factor PCC (Profilnine)',
+    scenarios: [
+      { title:'Hemophilia B — Minor bleed', sub:'25-40 IU/kg', gen: bw => {
+        const d=Math.round(30*bw);
+        return [`Profilnine SD (3F-PCC) ${d} IU IV push`,`Rate: max 10 mL/min`,`Target FIX level: 20-40%`,`Recheck FIX activity หลังให้ 15-30 min`];
+      }},
+      { title:'Hemophilia B — Major bleed / Surgery', sub:'60-100 IU/kg', gen: bw => {
+        const d=Math.round(80*bw);
+        return [`Profilnine SD (3F-PCC) ${d} IU IV push`,`Rate: max 10 mL/min`,`Target FIX level: 60-100%`,`Recheck FIX activity → repeat q 24h`];
+      }}
+    ]
+  },
+  rfviia: {
+    name: 'rFVIIa (NovoSeven RT)',
+    scenarios: [
+      { title:'Hemophilia + Inhibitor / AHA', sub:'90 mcg/kg IV q 2h', gen: bw => {
+        const d=Math.round(90*bw), mg=(d/1000).toFixed(1);
+        return [`NovoSeven RT (rFVIIa) ${d} mcg (${mg} mg) IV push over 2-5 min`,`Repeat: q 2 hours จนเลือดหยุด`,`แล้วเพิ่ม interval เป็น q 3h → q 4h → q 6h ตาม response`,`หมายเหตุ: Reconstitute ด้วย histidine diluent ที่ให้มา`];
+      }},
+      { title:'Congenital FVII Deficiency', sub:'15-30 mcg/kg q 4-6h', gen: bw => {
+        const d=Math.round(20*bw), mg=(d/1000).toFixed(1);
+        return [`NovoSeven RT (rFVIIa) ${d} mcg (${mg} mg) IV push over 2-5 min`,`Repeat: q 4-6 hours ตาม clinical response`];
+      }},
+      { title:'Glanzmann Thrombasthenia', sub:'90 mcg/kg q 2h', gen: bw => {
+        const d=Math.round(90*bw), mg=(d/1000).toFixed(1);
+        return [`NovoSeven RT (rFVIIa) ${d} mcg (${mg} mg) IV push over 2-5 min`,`Repeat: q 2 hours จนเลือดหยุด`,`± Platelet concentrate transfusion`];
+      }}
+    ]
+  },
+  apcc: {
+    name: 'aPCC / FEIBA',
+    scenarios: [
+      { title:'Hemophilia + Inhibitor — Bleeding', sub:'50-100 U/kg q 8-12h', gen: bw => {
+        const d=Math.round(75*bw), v=Math.ceil(d/500);
+        return [`FEIBA (aPCC) ${d} U (${v} vial x 500U) IV drip`,`Rate: max 2 U/kg/min`,`Repeat: q 8-12 hours (max 200 U/kg/day)`,`หมายเหตุ: ห้ามใช้ร่วม TXA (เสี่ยง thrombosis)`];
+      }},
+      { title:'Acquired Hemophilia A', sub:'75-100 U/kg q 8-12h', gen: bw => {
+        const d=Math.round(75*bw), v=Math.ceil(d/500);
+        return [`FEIBA (aPCC) ${d} U (${v} vial x 500U) IV drip`,`Rate: max 2 U/kg/min`,`Repeat: q 8-12 hours ตาม clinical response`,`+ เริ่ม immunosuppressive therapy (Prednisolone ± Cyclophosphamide)`];
+      }},
+      { title:'DOAC Reversal (off-label)', sub:'50 U/kg', gen: bw => {
+        const d=Math.round(50*bw), v=Math.ceil(d/500);
+        return [`FEIBA (aPCC) ${d} U (${v} vial x 500U) IV drip STAT`,`Rate: max 2 U/kg/min`,`หมายเหตุ: Off-label, ใช้เมื่อไม่มี specific antidote`];
+      }}
+    ]
+  },
+  fviii: {
+    name: 'Factor VIII Concentrate',
+    scenarios: [
+      { title:'Minor Bleed (target 30-50%)', sub:'15-25 U/kg q 12-24h', gen: bw => {
+        const d=Math.round(25*bw);
+        return [`Factor VIII concentrate ${d} U IV push STAT`,`Rate: max 3 mL/min`,`Target FVIII activity: 30-50%`,`Repeat: ${Math.round(d/2)} U IV q 12h x 1-3 days`,`Check peak FVIII (15-30 min หลังให้) & trough (ก่อน dose ถัดไป)`];
+      }},
+      { title:'Major Bleed / ICH (target 80-100%)', sub:'50 U/kg q 12h', gen: bw => {
+        const d=Math.round(50*bw);
+        return [`Factor VIII concentrate ${d} U IV push STAT`,`Rate: max 3 mL/min`,`Target FVIII activity: 80-100%`,`Maintenance: ${Math.round(d/2)} U IV q 12h`,`Check FVIII activity: peak & trough`,`Duration: 7-14 วัน (ICH) หรือจนหยุดเลือด`];
+      }},
+      { title:'Surgery (target 80-100% then 50%)', sub:'50 U/kg pre-op', gen: bw => {
+        const d=Math.round(50*bw);
+        return [`Pre-op: Factor VIII concentrate ${d} U IV push (1h ก่อนผ่าตัด)`,`Rate: max 3 mL/min`,`Post-op: ${Math.round(d/2)} U IV q 12h (maintain FVIII >50%)`,`Duration: 7-14 วัน ตาม type of surgery`,`Monitor: FVIII peak & trough daily`];
+      }}
+    ]
+  },
+  fix: {
+    name: 'Factor IX Concentrate',
+    scenarios: [
+      { title:'Minor Bleed (target 30-50%)', sub:'30-50 U/kg q 24h', gen: bw => {
+        const d=Math.round(40*bw);
+        return [`Factor IX concentrate ${d} U IV push STAT`,`Rate: max 3 mL/min`,`Target FIX activity: 30-50%`,`Repeat: ${Math.round(d/2)} U IV q 24h x 1-3 days`,`Check FIX activity: peak & trough`];
+      }},
+      { title:'Major Bleed / ICH (target 80-100%)', sub:'80-100 U/kg q 24h', gen: bw => {
+        const d=Math.round(100*bw);
+        return [`Factor IX concentrate ${d} U IV push STAT`,`Rate: max 3 mL/min`,`Target FIX activity: 80-100%`,`Maintenance: ${Math.round(d/2)} U IV q 24h`,`Duration: 7-14 วัน`,`Monitor FIX peak & trough daily`];
+      }}
+    ]
+  },
+  vitk: {
+    name: 'Vitamin K1',
+    scenarios: [
+      { title:'Major VKA Bleeding (+ PCC)', sub:'IV 10 mg', gen: bw => [
+        `Vitamin K1 (Phytonadione) 10 mg + NSS 50 mL IV drip over 20 min STAT`,
+        `หมายเหตุ: ให้พร้อมกับ 4F-PCC, ห้าม IV push เร็ว (anaphylactoid)`,
+        `Recheck INR at 6h, 24h`
+      ]},
+      { title:'INR >10 ไม่มีเลือดออก', sub:'PO 2.5-5 mg', gen: bw => [
+        `Vitamin K1 (Phytonadione) 5 mg PO x 1 dose`,
+        `Hold Warfarin`,
+        `Recheck INR ใน 24-48 ชม.`
+      ]},
+      { title:'INR 4.5-10 ไม่มีเลือดออก', sub:'Hold warfarin ± Vit K PO', gen: bw => [
+        `Hold Warfarin`,
+        `± Vitamin K1 1-2.5 mg PO x 1 dose (ถ้า high bleeding risk)`,
+        `Recheck INR ใน 24 ชม.`
+      ]}
+    ]
+  },
+  ddavp: {
+    name: 'Desmopressin (DDAVP)',
+    scenarios: [
+      { title:'vWD Type 1 / Mild Hemophilia A', sub:'0.3 mcg/kg IV', gen: bw => {
+        const d=(0.3*bw).toFixed(1);
+        return [`Desmopressin (DDAVP) ${d} mcg + NSS 50 mL IV drip over 30 min`,`ให้ 1 ชม.ก่อนทำหัตถการ`,`Restrict fluid intake 1.5 L/24h (เสี่ยง hyponatremia)`,`หมายเหตุ: Max 2-3 doses ต่อเนื่อง (tachyphylaxis)`];
+      }},
+      { title:'Uremic Bleeding', sub:'0.3 mcg/kg IV', gen: bw => {
+        const d=(0.3*bw).toFixed(1);
+        return [`Desmopressin (DDAVP) ${d} mcg + NSS 50 mL IV drip over 30 min STAT`,`ออกฤทธิ์ภายใน 1 ชม. คงอยู่ 6-8 ชม.`,`Restrict fluid intake`];
+      }},
+      { title:'Intranasal (Stimate)', sub:'150-300 mcg', gen: bw => {
+        const p = bw < 50 ? '150 mcg (1 puff)' : '300 mcg (2 puffs)';
+        return [`Desmopressin nasal spray (Stimate 1.5 mg/mL) ${p} intranasal`,`ให้ 1-2 ชม.ก่อนทำหัตถการ`,`หมายเหตุ: ใช้ high-concentration formula เท่านั้น (ไม่ใช่ Minirin spray สำหรับ DI)`];
+      }}
+    ]
+  },
+  ivig_itp: {
+    name: 'IVIG (for ITP)',
+    scenarios: [
+      { title:'ITP — Standard', sub:'1 g/kg x 1-2 days', gen: bw => {
+        const d=Math.round(bw);
+        return [`IVIG ${d} g (1 g/kg) IV drip Day 1`,`Rate: เริ่ม 0.5 mL/kg/hr → เพิ่มทุก 30 min ถ้าทน → max 4 mL/kg/hr`,`Pre-med: Paracetamol 500 mg PO + Chlorpheniramine 4 mg PO (30 min ก่อน)`,`± Repeat ${d} g IV drip Day 2 (ถ้า response ไม่เพียงพอ)`,`Monitor: vital signs q 15 min ใน 1 ชม.แรก`,`Check CBC + platelet count Day 2-3`];
+      }},
+      { title:'ITP — Urgent (life-threatening bleed)', sub:'1 g/kg + steroid + platelet', gen: bw => {
+        const d=Math.round(bw);
+        return [`IVIG ${d} g (1 g/kg) IV drip STAT`,`+ Methylprednisolone 1 g + NSS 100 mL IV drip over 1h STAT`,`+ Platelet concentrate (SDP 1 unit หรือ RDP 4-6 units) IV drip`,`+ Tranexamic acid 1000 mg + NSS 100 mL IV drip over 10 min`,`Rate IVIG: เริ่มช้า 0.5 mL/kg/hr → max 4 mL/kg/hr`];
+      }}
+    ]
+  },
+  steroid_itp: {
+    name: 'Corticosteroids (for ITP)',
+    scenarios: [
+      { title:'Prednisolone — Standard', sub:'1 mg/kg/day', gen: bw => {
+        const d=Math.min(Math.round(bw), 80), tabs=Math.ceil(d/5);
+        return [`Prednisolone 5 mg ${tabs} tab (${d} mg) PO OD หลังอาหารเช้า`,`Duration: 2-4 สัปดาห์ แล้ว taper`,`+ Omeprazole 20 mg PO OD (GI protection)`,`Monitor: CBC + platelet count weekly, glucose, BP`];
+      }},
+      { title:'Dexamethasone Pulse', sub:'40 mg x 4 days', gen: bw => [
+        `Dexamethasone 8 mg 5 tab (40 mg) PO OD หลังอาหารเช้า x 4 วัน`,
+        `อาจ repeat cycle ทุก 2-4 สัปดาห์ (max 4 cycles)`,
+        `+ Omeprazole 20 mg PO OD`,
+        `Monitor: glucose (esp. DM), CBC + platelet weekly`
+      ]},
+      { title:'IV Pulse (severe/refractory)', sub:'Methylpred 1 g x 3 days', gen: bw => [
+        `Methylprednisolone 1 g + NSS 100 mL IV drip over 1 hour OD x 3 วัน`,
+        `then Prednisolone 1 mg/kg/day PO (taper over 2-4 wk)`,
+        `Monitor: vital signs, glucose q 6h, CBC daily`
+      ]}
+    ]
+  },
+  tpora: {
+    name: 'TPO-Receptor Agonists',
+    scenarios: [
+      { title:'Eltrombopag — Start', sub:'50 mg OD', gen: bw => [
+        `Eltrombopag (Revolade) 50 mg PO OD ก่อนอาหาร 1 ชม. (หรือหลังอาหาร 2 ชม.)`,
+        `หมายเหตุ: ห้ามกินพร้อม dairy, calcium, antacid, multivitamin (chelation)`,
+        `ปรับ dose ทุก 2 wk ตาม platelet: เป้า 50,000-200,000`,
+        `Max 75 mg/day`,
+        `ถ้า East Asian: เริ่ม 25 mg OD`,
+        `Monitor: CBC weekly x 4 wk แรก แล้ว monthly, LFT ทุก 2 wk x 3 เดือน`
+      ]},
+      { title:'Romiplostim — Start', sub:'1 mcg/kg SC weekly', gen: bw => {
+        const d=Math.round(bw);
+        return [`Romiplostim (Nplate) ${d} mcg (1 mcg/kg) SC weekly`,`ปรับเพิ่ม 1 mcg/kg/wk ทุกสัปดาห์ จนได้ platelet ≥50,000`,`Max: 10 mcg/kg/wk`,`Monitor: CBC weekly จนได้ stable dose แล้ว monthly`];
+      }}
+    ]
+  },
+  plt_rdp: {
+    name: 'Platelet Products — เลือกชนิด',
+    scenarios: [
+      { title:'── POOL ──────────────────', sub:'', gen: bw => ['=== Pool Platelet ==='] },
+      { title:'LDPPC (Leukodepleted Pool) — NBC มาตรฐาน', sub:'1 unit = 1 therapeutic dose (Plt >240×10⁹)', gen: bw => [
+        `Leukodepleted Pool Platelet Concentrates (LDPPC) 1 unit IV drip`,
+        `Rate: drip เร็วที่สุดที่ทนได้ (ให้เสร็จภายใน 30 นาที)`,
+        `หมายเหตุ: 1 unit LDPPC = pool จาก 4 donors, Plt >240×10⁹, WBC <1×10⁶`,
+        `เก็บ 20-24°C (agitation), อายุ 7 วัน, ตรวจ swirling ก่อนให้`,
+        `Check CBC + platelet count 1h หลังให้เสร็จ (คำนวณ CCI)`,
+        `เป้า: เพิ่ม platelet ≥30,000-50,000/µL`
+      ]},
+      { title:'LDPPC — Pre-procedure (target >50,000)', sub:'1 unit, ให้ก่อนทำหัตถการ 1 ชม.', gen: bw => [
+        `Leukodepleted Pool Platelet Concentrates (LDPPC) 1 unit IV drip`,
+        `ให้ 1 ชม.ก่อนทำหัตถการ`,
+        `Target: platelet >50,000 (general surgery) หรือ >100,000 (neurosurgery/eye)`,
+        `Check platelet count หลังให้ ก่อนเริ่มทำ`,
+        `ถ้ายังไม่ถึงเป้า → สั่ง LDPPC เพิ่ม 1 unit`
+      ]},
+      { title:'Pooled Platelet (กรณีไม่มี LDPPC)', sub:'4-6 units RDP pooled, WBC ไม่ลด', gen: bw => [
+        `Platelet concentrate (Random Donor) 4-6 units pooled IV drip`,
+        `Rate: drip ภายใน 30 นาที`,
+        `⚠️ ไม่ leukodepleted → เสี่ยง febrile reaction, HLA alloimmunization มากกว่า LDPPC`,
+        `ถ้ามี LDPPC ให้ใช้ LDPPC แทน`,
+        `Check CBC + platelet count 1h หลังให้ (CCI)`
+      ]},
+      { title:'Pediatric LDPC (เด็ก)', sub:'57-65 mL/unit', gen: bw => {
+        const vol = Math.round(15 * bw);
+        return [
+          `Pediatric Leukodepleted Platelet Concentrates (Pediatric LDPC) ${vol} mL (15 mL/kg) IV drip`,
+          `Rate: 5 mL/kg/hr`,
+          `หมายเหตุ: Pediatric LDPC vol 57-65 mL/unit, Plt >60×10⁹/unit`,
+          `Check CBC + platelet count 1h post-transfusion`
+        ];
+      }},
+      { title:'── SINGLE DONOR (APHERESIS) ──', sub:'', gen: bw => ['=== Single Donor Platelet ==='] },
+      { title:'LD Plateletpheresis (มาตรฐาน NBC)', sub:'1 unit, Plt >2.4×10¹¹, 1 donor', gen: bw => [
+        `Leukodepleted Plateletpheresis 1 unit IV drip`,
+        `Rate: drip ภายใน 30-60 นาที`,
+        `หมายเหตุ: Single donor, Plt >2.4×10¹¹ (~10× LDPPC), WBC <1×10⁶`,
+        `Check platelet count 1h & 24h post-transfusion (CCI)`
+      ]},
+      { title:'PI Plateletpheresis PAS-C (Pathogen Inactivated) ⭐', sub:'ลด infection + ทดแทน irradiation', gen: bw => [
+        `PI Psoralen-treated Plateletpheresis PAS-C 1 unit IV drip`,
+        `Rate: drip ภายใน 30-60 นาที`,
+        `หมายเหตุ: ผ่าน Pathogen Inactivation (amotosalen + UV-A)`,
+        `ไม่ต้อง irradiate เพิ่ม (PI ทดแทน irradiation สำหรับ TA-GVHD prevention)`,
+        `ลดความเสี่ยง bacterial contamination, viral, parasitic`,
+        `Check platelet count 1h post-transfusion (CCI)`
+      ]},
+      { title:'── SPECIAL ORDERS ────────', sub:'', gen: bw => ['=== Special Platelet Orders ==='] },
+      { title:'HLA-Matched Plateletpheresis (refractory)', sub:'สั่งล่วงหน้า, ระบุ HLA type ผู้ป่วย', gen: bw => [
+        `HLA-Matched Leukodepleted Plateletpheresis 1 unit IV drip`,
+        `ระบุ HLA type ผู้ป่วย: HLA-A_____, HLA-B_____`,
+        `สั่งผ่านธนาคารเลือด — ต้องหา compatible donor ล่วงหน้า`,
+        `หมายเหตุ: ใช้ในกรณี platelet refractoriness จาก HLA alloimmunization`,
+        `ถ้าหา HLA-matched ไม่ได้ → ใช้ Platelet crossmatch (SPRCA) แทน`,
+        `Check CCI 1h post-transfusion (เป้า CCI ≥5,000)`
+      ]},
+      { title:'Crossmatched Platelet (หา HLA-match ไม่ได้)', sub:'ส่ง recipient serum ทุก 72 ชม.', gen: bw => [
+        `Crossmatch-compatible Plateletpheresis 1 unit IV drip`,
+        `ส่ง recipient serum (clotted blood 5 mL) ใหม่ทุก 72 ชม. ให้ธนาคารเลือด`,
+        `วิธี: Solid Phase Red Cell Adherence Assay (SPRCA)`,
+        `หมายเหตุ: ใช้เมื่อหา HLA-matched donor ไม่ได้`,
+        `Check CCI 1h post-transfusion (เป้า CCI ≥5,000)`,
+        `ถ้า CCI ยังต่ำ → ส่งตรวจ HPA antibody`
+      ]},
+      { title:'Irradiated Platelet (ป้องกัน TA-GVHD)', sub:'สั่งเพิ่ม irradiation 25 Gy', gen: bw => [
+        `LDPPC (หรือ Plateletpheresis) 1 unit — IRRADIATED (25 Gy) — IV drip`,
+        `Rate: drip ภายใน 30 นาที`,
+        `ข้อบ่งใช้: BMT recipient, Hodgkin lymphoma, congenital immunodef,`,
+        `directed donation จากญาติ, fludarabine/bendamustine therapy`,
+        `หมายเหตุ: Shelf life ไม่เปลี่ยน (7 วัน), ถ้าใช้ PI platelet ไม่ต้อง irradiate`,
+        `Check platelet count 1h post-transfusion`
+      ]},
+      { title:'Washed Platelet (severe allergic / IgA def)', sub:'ใช้ภายใน 4 ชม.', gen: bw => [
+        `LDPPC (หรือ Plateletpheresis) 1 unit — WASHED — IV drip`,
+        `Rate: drip ภายใน 30 นาที`,
+        `ข้อบ่งใช้: IgA deficiency + anti-IgA, severe/recurrent allergic reaction`,
+        `หมายเหตุ: ⚠️ ต้องใช้ภายใน 4 ชม.หลัง wash, เสีย platelet ~20%`,
+        `Check platelet count 1h post-transfusion`
+      ]}
+    ]
+  },
+  prc: {
+    name: 'Packed Red Cells — เลือกชนิด',
+    scenarios: [
+      { title:'LDPRC (Leukodepleted PRC) — NBC มาตรฐาน', sub:'1 unit', gen: bw => [
+        `Leukodepleted Packed Red Cells (LDPRC) 1 unit IV drip`,
+        `Rate: 2-4 ชม./unit (ฉุกเฉิน: เร็วที่สุด ± pressure bag)`,
+        `หมายเหตุ: LDPRC WBC <1×10⁶ → ลด febrile reaction, CMV, HLA alloimmunization`,
+        `ใช้ blood tubing with 170-260 µm filter`,
+        `Recheck Hb/Hct หลังให้ 1-2 ชม.`
+      ]},
+      { title:'LDPRC — Acute Hemorrhage', sub:'ฉุกเฉิน, pressure bag', gen: bw => [
+        `Leukodepleted Packed Red Cells (LDPRC) 2 units IV drip STAT`,
+        `Rate: เร็วที่สุดเท่าที่ได้ (pressure bag / rapid infuser)`,
+        `+ Blood warmer ถ้าให้เร็ว >50 mL/min`,
+        `Recheck Hb/Hct, CBC, coagulation หลังทุก 4 units`,
+        `ถ้า massive hemorrhage → เปิด MTP protocol`
+      ]},
+      { title:'LDPRC — Chronic Anemia + Heart Failure', sub:'1 unit slow + furosemide', gen: bw => [
+        `Leukodepleted Packed Red Cells (LDPRC) 1 unit IV drip SLOW`,
+        `Rate: 1 mL/kg/hr (~4-6 ชม./unit)`,
+        `Pre-med: Furosemide 20-40 mg IV STAT (ก่อนเริ่ม หรือ ระหว่างให้)`,
+        `Monitor: vital signs q 1h, SpO2, ดู signs fluid overload (dyspnea, JVP, basal crepitation)`,
+        `Recheck Hb/Hct หลังให้ → reassess ก่อนให้ unit ถัดไป`
+      ]},
+      { title:'PRC (ไม่มี LDPRC) — standard', sub:'1 unit, WBC ไม่ลด', gen: bw => [
+        `Packed Red Cells (PRC) 1 unit IV drip`,
+        `Rate: 2-4 ชม./unit`,
+        `Pre-med: ไม่จำเป็น routine (ถ้ามี febrile reaction ซ้ำ → pre-med Chlorpheniramine 10 mg IV + Paracetamol 500 mg PO)`,
+        `หมายเหตุ: PRC ไม่ได้ลด WBC → เสี่ยง febrile reaction, CMV, HLA alloimmunization`,
+        `ถ้ามี LDPRC ให้ใช้ LDPRC แทนเสมอ`,
+        `Recheck Hb/Hct หลังให้ 1-2 ชม.`
+      ]},
+      { title:'LPRC (Leukocyte Poor PRC)', sub:'1 unit, WBC <1.2×10⁹ (ลดแค่ ~70%)', gen: bw => [
+        `Leukocyte Poor Packed Red Cells (LPRC) 1 unit IV drip`,
+        `Rate: 2-4 ชม./unit`,
+        `หมายเหตุ: LPRC WBC <1.2×10⁹ (ลด WBC ~70% จาก PRC ปกติ)`,
+        `⚠️ LPRC ≠ LDPRC — LPRC ยังมี WBC มากกว่า LDPRC ถึง ~1,000 เท่า`,
+        `LPRC ลด febrile reaction ได้บ้าง แต่ไม่ลด CMV, HLA alloimmunization`,
+        `ถ้ามี LDPRC ให้ใช้ LDPRC แทน (WBC <1×10⁶ → ดีกว่ามาก)`,
+        `Recheck Hb/Hct หลังให้ 1-2 ชม.`
+      ]},
+      { title:'LPRC — ผู้ป่วย febrile reaction ซ้ำ (ไม่มี LDPRC)', sub:'1 unit + pre-med', gen: bw => [
+        `Leukocyte Poor Packed Red Cells (LPRC) 1 unit IV drip`,
+        `Pre-med: Chlorpheniramine 10 mg IV + Paracetamol 500 mg PO (30 min ก่อนให้เลือด)`,
+        `Rate: 2-4 ชม./unit`,
+        `หมายเหตุ: ใช้กรณี febrile reaction ซ้ำ และไม่มี LDPRC`,
+        `ถ้ายังมี reaction → เปลี่ยนเป็น LDPRC หรือ Washed PRC`,
+        `Recheck Hb/Hct หลังให้ 1-2 ชม.`
+      ]},
+      { title:'SDR (Single Donor Red Cells / Apheresis)', sub:'1 unit, Hb ≥55 g', gen: bw => [
+        `Single Donor Red Cells (SDR) 1 unit IV drip`,
+        `Rate: 2-4 ชม./unit`,
+        `หมายเหตุ: Apheresis product, Hb ≥55 g/unit, WBC <1×10⁶, Plt <1×10⁶`,
+        `ข้อบ่งใช้พิเศษ: phenotype-matched, ผู้ป่วย thalassemia/SCD ที่ต้อง specific antigen matching`,
+        `Recheck Hb/Hct หลังให้ 1-2 ชม.`
+      ]},
+      { title:'Pediatric PRC', sub:'10-15 mL/kg', gen: bw => {
+        const v = Math.round(10 * bw);
+        return [
+          `Leukodepleted Packed Red Cells (LDPRC) ${v} mL (10 mL/kg) IV drip`,
+          `Rate: 5 mL/kg/hr`,
+          `Monitor: vital signs q 15-30 min`,
+          `Recheck Hb/Hct หลังให้เสร็จ 1 ชม.`
+        ];
+      }}
+    ]
+  },
+  emicizumab: {
+    name: 'Emicizumab (Hemlibra)',
+    scenarios: [
+      { title:'Loading dose', sub:'3 mg/kg SC weekly x 4 wk', gen: bw => {
+        const d=Math.round(3*bw);
+        return [`Emicizumab (Hemlibra) ${d} mg (3 mg/kg) SC weekly x 4 สัปดาห์`,`ฉีดบริเวณ abdomen, upper arm, หรือ thigh`,`หมายเหตุ: ห้ามใช้ aPCC (FEIBA) ร่วม — เสี่ยง TMA`];
+      }},
+      { title:'Maintenance — Weekly', sub:'1.5 mg/kg SC weekly', gen: bw => {
+        const d=Math.round(1.5*bw);
+        return [`Emicizumab (Hemlibra) ${d} mg (1.5 mg/kg) SC weekly`,`หมายเหตุ: ถ้ามี breakthrough bleed ให้ rFVIIa (ไม่ใช่ aPCC)`];
+      }},
+      { title:'Maintenance — Q 2 weeks', sub:'3 mg/kg SC q 2 wk', gen: bw => {
+        const d=Math.round(3*bw);
+        return [`Emicizumab (Hemlibra) ${d} mg (3 mg/kg) SC every 2 weeks`];
+      }}
+    ]
+  },
+  idarucizumab: {
+    name: 'Idarucizumab (Praxbind) — Dabigatran Reversal',
+    scenarios: [
+      { title:'Life-threatening bleed (standard)', sub:'5g IV ทันที', gen: bw => [
+        `Idarucizumab (Praxbind) 5 g IV (2 vials × 2.5 g/50 mL)`,
+        `Vial 1: 2.5 g IV push over 5 min (หรือ drip over 5-10 min)`,
+        `Vial 2: 2.5 g IV push over 5 min (ให้ต่อเนื่องทันทีหลัง vial 1)`,
+        `หมายเหตุ: Fixed dose 5g — ไม่ต้องปรับตาม BW`,
+        `ออกฤทธิ์: ทันที (ภายในนาที), duration ~24 ชม.`,
+        `+ Tranexamic acid 1000 mg + NSS 100 mL IV drip over 10 min`,
+        `Lab: dTT หรือ ECT pre- & post-dose (aPTT เป็น screening)`,
+        `⚠️ Monitor rebound anticoagulation ที่ 12-24h (dabigatran redistribution)`
+      ]},
+      { title:'Emergency surgery', sub:'5g IV pre-op', gen: bw => [
+        `Idarucizumab (Praxbind) 5 g IV (2 vials × 2.5 g/50 mL)`,
+        `ให้ก่อน surgery ทันที (ไม่ต้องรอ lab)`,
+        `Lab: dTT/ECT pre-dose (ถ้าทำได้เร็ว)`,
+        `เริ่ม surgery ได้ทันทีหลังให้เสร็จ`,
+        `Monitor: rebound ที่ 12-24h post-op`
+      ]},
+      { title:'ถ้าไม่มี Idarucizumab → Alternatives', sub:'Dialysis / aPCC / 4F-PCC', gen: bw => {
+        const apcc = Math.round(50*bw), pcc = Math.min(Math.round(50*bw),5000);
+        return [
+        `=== ไม่มี Idarucizumab — ทางเลือก Dabigatran Reversal ===`,
+        ``,
+        `Option 1: Hemodialysis (ถ้าทำได้เร็ว)`,
+        `  Dabigatran dialyzable ~60% | ใช้ high-flux dialyzer`,
+        `  Duration: 4-6 ชม. | Monitor: dTT/aPTT post-dialysis`,
+        ``,
+        `Option 2: aPCC (FEIBA) ${apcc} U (50 U/kg) IV drip`,
+        `  Rate: max 2 U/kg/min | ⚠️ Off-label`,
+        ``,
+        `Option 3: 4F-PCC ${pcc} IU (50 IU/kg) IV push`,
+        `  Rate: max 2 mL/min | ⚠️ Off-label`,
+        ``,
+        `ทุกกรณี:`,
+        `+ Activated charcoal 50 g PO (ถ้ากิน dabigatran <2 ชม.)`,
+        `+ Tranexamic acid 1000 mg IV over 10 min`,
+        `+ Supportive: PRC, FFP, platelet ตามข้อบ่งใช้`
+        ];
+      }}
+    ]
+  },
+  mtp: {
+    name: 'Massive Transfusion Protocol (MTP)',
+    scenarios: [
+      { title:'🚨 เปิด MTP — Round 1 (STAT)', sub:'PRC:FFP:Plt ≈ 1:1:1 + TXA + Ca²⁺', gen: bw => [
+        `=== MASSIVE TRANSFUSION PROTOCOL — ACTIVATE ===`,
+        `แจ้งธนาคารเลือด: เปิด MTP สำหรับผู้ป่วย _________ HN _________`,
+        ``,
+        `--- MTP Round 1 (ให้ทันที) ---`,
+        `1. LDPRC 4 units IV drip STAT (pressure bag / rapid infuser)`,
+        `2. FFP (LDFFP) 4 units IV drip STAT (thaw ทันที)`,
+        `3. LDPPC 1 unit IV drip STAT`,
+        ``,
+        `--- Adjunctive (ให้พร้อมกัน) ---`,
+        `4. Tranexamic acid 1000 mg + NSS 100 mL IV drip over 10 min STAT`,
+        `   then Tranexamic acid 1000 mg + NSS 100 mL IV drip over 8 hours`,
+        `   (ให้ภายใน 3 ชม.หลังบาดเจ็บ — CRASH-2)`,
+        `5. Calcium gluconate 10% 10 mL (1g) IV push slow q 30 min`,
+        `   (monitor iCa²⁺ ทุก 30 นาที เป้า >1.1 mmol/L)`,
+        `6. Blood warmer — ใช้สำหรับทุก product ที่ให้เร็ว`,
+        `7. รักษา temperature >36°C (warm blanket, warm IV fluid)`,
+        ``,
+        `--- Lab (ส่งทันที & ทุก 30-60 นาที) ---`,
+        `CBC, PT/INR, aPTT, Fibrinogen, iCa²⁺, Lactate, ABG`,
+        `Crossmatch เพิ่ม 4 units LDPRC (สำหรับ Round 2)`,
+      ]},
+      { title:'Round 2 (หลัง Round 1 หมด)', sub:'ปรับตาม lab + ให้ต่อเนื่อง', gen: bw => [
+        `=== MTP Round 2 ===`,
+        `(ให้ต่อเมื่อยังมี active bleeding + hemodynamic instability)`,
+        ``,
+        `1. LDPRC 4 units IV drip (pressure bag)`,
+        `2. FFP (LDFFP) 4 units IV drip`,
+        `3. LDPPC 1 unit IV drip`,
+        `4. Cryoprecipitate 10 units IV drip (ถ้า Fibrinogen <150 mg/dL)`,
+        ``,
+        `--- ปรับตาม Lab ---`,
+        `• Fibrinogen <150 → Cryoprecipitate 10 units (หรือ HTFDC 2-3 bottles)`,
+        `• Plt <50,000 → LDPPC เพิ่ม 1 unit`,
+        `• INR >1.5 → FFP เพิ่ม 4 units`,
+        `• iCa²⁺ <1.1 → Calcium gluconate 1g IV repeat`,
+        `• pH <7.2 → adequate resuscitation, NaHCO₃ พิจารณา`,
+        ``,
+        `Recheck lab หลัง Round 2 → ถ้ายังเลือดออก → Round 3`,
+      ]},
+      { title:'Round 3+ (ต่อเนื่อง)', sub:'Component-guided ตาม lab', gen: bw => [
+        `=== MTP Round 3+ (Component-guided) ===`,
+        ``,
+        `ปรับ blood products ตาม lab results:`,
+        `• Hb <7 → LDPRC 2 units`,
+        `• INR >1.5 หรือ aPTT >1.5× → FFP 4 units`,
+        `• Plt <50,000 → LDPPC 1 unit`,
+        `• Fibrinogen <150 → Cryo 10 units`,
+        `• iCa²⁺ <1.1 → Calcium gluconate 1g IV`,
+        ``,
+        `Continue: TXA infusion 1g/8h (ถ้ายังอยู่ใน 3 ชม.แรก)`,
+        `Continue: Blood warmer, warm blanket`,
+        `Recheck lab ทุก 30-60 นาที`,
+      ]},
+      { title:'🛑 หยุด MTP — Deactivation', sub:'เมื่อ hemostasis สำเร็จ + stable', gen: bw => [
+        `=== MTP DEACTIVATION ===`,
+        `แจ้งธนาคารเลือด: หยุด MTP สำหรับผู้ป่วย _________ HN _________`,
+        ``,
+        `เกณฑ์หยุด MTP:`,
+        `✅ Surgical/procedural hemostasis สำเร็จ`,
+        `✅ Hemodynamically stable (MAP >65, HR <100)`,
+        `✅ Lab ถึงเป้า: Hb >7, Plt >50K, Fibrinogen >150, INR <1.5`,
+        `✅ Temp >36°C, pH >7.2, iCa²⁺ >1.1, Lactate ลดลง`,
+        ``,
+        `เปลี่ยนเป็น component-based therapy ตาม lab`,
+        `สรุปจำนวน blood products ที่ใช้ทั้งหมดลง medical record`,
+      ]},
+      { title:'MTP สำหรับ Trauma (CRASH-2 + PROPPR)', sub:'Full protocol + TXA ≤3h', gen: bw => {
+        const txa = Math.round(bw * 15);
+        return [
+        `=== MTP — TRAUMA PROTOCOL ===`,
+        ``,
+        `--- ทันที (ใน ED) ---`,
+        `1. Tranexamic acid 1000 mg + NSS 100 mL IV drip over 10 min STAT`,
+        `   (⚠️ ต้องให้ภายใน 3 ชม.หลังบาดเจ็บ — หลัง 3 ชม. อาจ harmful)`,
+        `2. LDPRC 4 units IV drip STAT (O-neg ถ้ายังไม่ได้ crossmatch)`,
+        `3. FFP (LDFFP) 4 units IV drip STAT (type-specific หรือ AB)`,
+        `4. LDPPC 1 unit IV drip STAT`,
+        `5. Calcium gluconate 1g IV push slow`,
+        `6. Blood warmer ON`,
+        ``,
+        `--- ต่อเนื่อง ---`,
+        `7. Tranexamic acid 1000 mg + NSS 100 mL IV drip over 8 hours`,
+        `8. Repeat Round (PRC:FFP:Plt ≈ 1:1:1) จน hemostasis`,
+        `9. Cryoprecipitate 10 units ถ้า Fibrinogen <150`,
+        `10. Lab ทุก 30-60 นาที: CBC, PT, aPTT, Fibrinogen, iCa²⁺, Lactate, ABG`,
+        ``,
+        `--- เป้าหมาย ---`,
+        `Hb >7 | Plt >50K | Fib >150 | INR <1.5 | pH >7.2 | iCa²⁺ >1.1 | Temp >36°C`,
+        ``,
+        `Ref: CRASH-2 (Lancet 2010), PROPPR (JAMA 2015)`,
+        ];
+      }},
+      { title:'MTP สำหรับ PPH (Postpartum Hemorrhage)', sub:'WOMAN Trial + WHO', gen: bw => [
+        `=== MTP — POSTPARTUM HEMORRHAGE ===`,
+        ``,
+        `--- ทันที ---`,
+        `1. Tranexamic acid 1000 mg + NSS 100 mL IV drip over 10 min STAT`,
+        `   (ให้ภายใน 3 ชม.หลังคลอด — WOMAN Trial)`,
+        `   ± Repeat TXA 1000 mg ถ้ายังเลือดออกหลัง 30 นาที`,
+        `2. LDPRC 4 units IV drip STAT`,
+        `3. FFP (LDFFP) 4 units IV drip STAT`,
+        `4. LDPPC 1 unit IV drip`,
+        `5. Calcium gluconate 1g IV push slow`,
+        `6. Oxytocin 20-40 U in NSS 1000 mL IV drip (uterine contraction)`,
+        ``,
+        `--- ถ้า Fibrinogen <200 (สำคัญใน PPH!) ---`,
+        `7. Cryoprecipitate 10 units IV drip STAT (target Fibrinogen >200)`,
+        `   หรือ HTFDC 3 bottles`,
+        ``,
+        `--- Lab ทุก 30-60 นาที ---`,
+        `CBC, PT/INR, aPTT, Fibrinogen (⚠️ Fib <200 สัมพันธ์กับ severe PPH),`,
+        `iCa²⁺, Lactate`,
+        ``,
+        `Ref: WOMAN Trial (Lancet 2017), WHO PPH Guidelines`,
+      ]},
+      { title:'MTP สำหรับ GI Hemorrhage', sub:'Restrictive PRC + FFP + Plt', gen: bw => [
+        `=== MTP — GI HEMORRHAGE ===`,
+        ``,
+        `--- ทันที ---`,
+        `1. LDPRC 2 units IV drip STAT`,
+        `   (Restrictive: target Hb 7 ถ้าไม่มี cardiac disease)`,
+        `2. FFP (LDFFP) 4 units IV drip (ถ้า INR >1.5 หรือ massive)`,
+        `3. LDPPC 1 unit IV drip (ถ้า Plt <50,000)`,
+        ``,
+        `--- ถ้า Variceal bleeding ---`,
+        `4. Octreotide 50 mcg IV bolus → 50 mcg/hr IV drip`,
+        `5. Ceftriaxone 1g IV OD (SBP prophylaxis)`,
+        `6. Urgent endoscopy ภายใน 12 ชม.`,
+        ``,
+        `--- ถ้า Non-variceal + on anticoagulant ---`,
+        `• Warfarin: 4F-PCC (ตาม INR) + Vit K 10 mg IV`,
+        `• DOAC: 4F-PCC 50 IU/kg หรือ specific antidote`,
+        ``,
+        `--- Lab ---`,
+        `CBC ทุก 4-6h, PT/INR, aPTT, Fibrinogen, LFT, Lactate`,
+        `Crossmatch เตรียม LDPRC ≥4 units`,
+      ]}
+    ]
+  },
+  hemo_a_calc: {
+    name: 'Hemophilia A — FVIII / Cryo Dose Calculator',
+    customUI: 'hemo_a_calc'
+  },
+  vwd_calc: {
+    name: 'von Willebrand Disease — Treatment Calculator',
+    customUI: 'vwd_calc'
+  },
+  plt_refract: {
+    name: 'CCI Calculator — Platelet Refractoriness',
+    customUI: true
+  },
+  plt_calc: {
+    name: 'Platelet Dose Calculator',
+    customUI: 'plt_calc'
+  },
+  prc_calc: {
+    name: 'PRC Dose Calculator',
+    customUI: 'prc_calc'
+  }
+};
+
+let currentOrderId = null;
+let currentOrderBW = 60;
+let selectedScenarioIdx = null;
+
+function openOrder(id) {
+  currentOrderId = id;
+  selectedScenarioIdx = null;
+  const t = orderTemplates[id];
+  if (!t) return;
+  const panel = document.getElementById('orderPanel');
+
+  // Custom calculators
+  if (t.customUI) {
+    if (t.customUI === 'plt_calc') { openPltCalc(); return; }
+    if (t.customUI === 'prc_calc') { openPrcCalc(); return; }
+    if (t.customUI === 'hemo_a_calc') { openHemoACalc(); return; }
+    if (t.customUI === 'vwd_calc') { openVWDCalc(); return; }
+    // Default: CCI calculator
+    openCCICalc();
+    return;
+  }
+  panel.innerHTML = `
+    <div class="order-top">
+      <h2>📋 ${t.name}</h2>
+      <button class="close-btn" onclick="closeOrder()">✕</button>
+    </div>
+    <div class="order-body">
+      <div class="order-bw-row">
+        <label>น้ำหนัก (BW):</label>
+        <input type="number" id="orderBW" value="${currentOrderBW}" min="1" max="250" oninput="updateOrderBW(this.value)" />
+        <label>kg</label>
+      </div>
+      <div style="margin-bottom:8px;font-size:13px;color:var(--text-dim)">เลือกสถานการณ์:</div>
+      <div id="orderScenarios">
+        ${t.scenarios.map((s,i) => `
+          <button class="order-scenario-btn" onclick="selectScenario(${i})">
+            <div class="scn-title">${s.title}</div>
+            <div class="scn-sub">${s.sub}</div>
+          </button>
+        `).join('')}
+      </div>
+      <div class="order-result" id="orderResult">
+        <span class="placeholder">← เลือกสถานการณ์เพื่อ generate order</span>
+      </div>
+      <div class="copy-row">
+        <button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button>
+        <button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Copy Plain Text</button>
+      </div>
+      <div class="order-note">⚠️ Order text เป็นแนวทางเท่านั้น — กรุณาตรวจสอบขนาดยา ข้อห้ามใช้ และปรับตาม clinical context ก่อนสั่งจริง</div>
+    </div>
+  `;
+  document.getElementById('orderOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrder() {
+  document.getElementById('orderOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('orderOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeOrder();
+});
+
+function updateOrderBW(v) {
+  currentOrderBW = parseFloat(v) || 60;
+  if (selectedScenarioIdx !== null) selectScenario(selectedScenarioIdx);
+}
+
+function selectScenario(idx) {
+  selectedScenarioIdx = idx;
+  const t = orderTemplates[currentOrderId];
+  if (!t) return;
+  // highlight selected
+  document.querySelectorAll('.order-scenario-btn').forEach((b,i) => {
+    b.classList.toggle('selected', i === idx);
+  });
+  const scn = t.scenarios[idx];
+  const lines = scn.gen(currentOrderBW);
+  const flat = Array.isArray(lines) ? lines : [lines];
+  const text = flat.join('\n');
+  document.getElementById('orderResult').textContent = text;
+}
+
+function getOrderText() {
+  const el = document.getElementById('orderResult');
+  return el ? el.textContent : '';
+}
+
+function copyOrder() {
+  const text = getOrderText();
+  if (!text || text.includes('เลือกสถานการณ์')) return;
+  navigator.clipboard.writeText(text).then(() => showToast('✅ Copied to clipboard!')).catch(() => fallbackCopy(text));
+}
+
+function copyOrderPlain() {
+  const text = getOrderText();
+  if (!text || text.includes('เลือกสถานการณ์')) return;
+  // strip emoji for HIS
+  const plain = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').replace(/  +/g,' ').trim();
+  navigator.clipboard.writeText(plain).then(() => showToast('✅ Copied (plain text)!')).catch(() => fallbackCopy(plain));
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  showToast('✅ Copied!');
+}
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'copied-toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+function showCalcPanel(title, body) {
+  const panel = document.getElementById('orderPanel');
+  panel.innerHTML = `<div class="order-top"><h2>${title}</h2><button class="close-btn" onclick="closeOrder()">✕</button></div><div class="order-body">${body}</div>`;
+  document.getElementById('orderOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function openCCICalc() {
+  showCalcPanel('🧮 CCI Calculator', `
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text-dim)">คำนวณ Corrected Count Increment (CCI) — วินิจฉัย Platelet Refractoriness</div>
+    <div class="order-bw-row"><label>Pre-transfusion Plt:</label><input type="number" id="cciPre" value="9000" style="width:110px" oninput="calcCCI()"/><label>/µL</label></div>
+    <div class="order-bw-row"><label>Post-transfusion Plt (1h):</label><input type="number" id="cciPost" value="15000" style="width:110px" oninput="calcCCI()"/><label>/µL</label></div>
+    <div class="order-bw-row"><label>BSA:</label><input type="number" id="cciBSA" value="1.7" step="0.01" style="width:80px" oninput="calcCCI()"/><label>m²</label>
+      <span style="color:var(--text-muted);font-size:11px;margin-left:8px">H/W →</span>
+      <input type="number" id="cciHt" placeholder="cm" style="width:60px" oninput="autoCalcBSA()"/>
+      <input type="number" id="cciWt" placeholder="kg" style="width:60px" oninput="autoCalcBSA()"/></div>
+    <div class="order-bw-row"><label>Plt transfused:</label><input type="number" id="cciPltDose" value="3.3" step="0.1" style="width:80px" oninput="calcCCI()"/><label>×10¹¹</label>
+      <span style="color:var(--text-muted);font-size:11px;margin-left:8px">(LDPPC ≈2.4, SDP ≈2.4-3.0)</span></div>
+    <div class="order-result" id="orderResult" style="font-size:14px;line-height:2"><span class="placeholder">กำลังคำนวณ...</span></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy</button></div>
+    <div class="order-note">CCI <5,000 ที่ 1h ≥2 ครั้ง = Platelet Refractoriness</div>
+  `);
+  calcCCI();
+}
+
+function openPltCalc() {
+  showCalcPanel('🩸 Platelet Dose Calculator', `
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text-dim)">คำนวณจำนวน Platelet units ที่ต้องใช้ตามสถานการณ์คลินิก</div>
+    <div class="order-bw-row"><label>Current Plt:</label><input type="number" id="pltCur" value="8000" style="width:110px" oninput="calcPlt()"/><label>/µL</label></div>
+    <div class="order-bw-row"><label>Target Plt:</label><input type="number" id="pltTarget" value="50000" style="width:110px" oninput="calcPlt()"/><label>/µL</label></div>
+    <div class="order-bw-row"><label>BW:</label><input type="number" id="pltBW" value="60" style="width:80px" oninput="calcPlt()"/><label>kg</label></div>
+    <div style="margin:12px 0 8px;font-size:13px;color:var(--text-dim)">เลือกสถานการณ์:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPltScenario(10000,'Prophylaxis (ไม่มี bleeding)')">Prophylaxis<br><small>target >10,000</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPltScenario(20000,'Fever/Sepsis prophylaxis')">Fever/Sepsis<br><small>target >20,000</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPltScenario(50000,'General surgery / Active bleeding')">Surgery/Bleed<br><small>target >50,000</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPltScenario(100000,'Neurosurgery / Eye surgery')">Neurosurgery<br><small>target >100,000</small></button>
+    </div>
+    <div class="order-result" id="orderResult" style="font-size:14px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="order-note">⚠️ ค่าประมาณ — Expected increment จริงขึ้นกับ spleen size, fever, DIC, alloimmunization</div>
+  `);
+  calcPlt();
+}
+
+function setPltScenario(target, label) {
+  document.getElementById('pltTarget').value = target;
+  calcPlt();
+}
+
+function calcPlt() {
+  const cur = parseFloat(document.getElementById('pltCur')?.value) || 0;
+  const target = parseFloat(document.getElementById('pltTarget')?.value) || 50000;
+  const bw = parseFloat(document.getElementById('pltBW')?.value) || 60;
+  const need = target - cur;
+  const el = document.getElementById('orderResult');
+  if (!el) return;
+
+  if (need <= 0) { el.textContent = '✅ Current platelet ≥ target — ไม่จำเป็นต้องให้ platelet'; return; }
+
+  // Formula: Expected increment (/µL) = Plt_transfused(×10⁹) × CorrectionFactor / BloodVolume(L) × 1000
+  // Correction factor ~0.67 (1/3 splenic pooling)
+  // Blood volume = BW × 70 mL/kg = BW × 0.07 L
+  const bv = bw * 0.07; // blood volume in L
+
+  // LDPPC: 1 unit = 240×10⁹ platelets
+  const incPerLDPPC = Math.round(240 * 0.67 / bv * 1000); // ≈38,000 /µL for 60kg
+  const unitsLDPPC = Math.max(1, Math.ceil(need / incPerLDPPC));
+
+  // SDP (Plateletpheresis): 1 unit = 240×10⁹ (similar to LDPPC)
+  const incPerSDP = Math.round(240 * 0.67 / bv * 1000);
+  const unitsSDP = Math.max(1, Math.ceil(need / incPerSDP));
+
+  // Old pooled RDP: 1 single unit ~55×10⁹ (need 4-6 units = 1 pool)
+  const incPerRDP = Math.round(55 * 0.67 / bv * 1000); // ≈8,800 /µL per single RDP unit
+  const unitsRDP = Math.max(4, Math.ceil(need / incPerRDP));
+  const poolsRDP = Math.ceil(unitsRDP / 6); // 1 pool = 4-6 units
+
+  const scenario = target >= 100000 ? 'Neurosurgery/Eye surgery' : target >= 50000 ? 'Surgery/Active bleeding' : target >= 20000 ? 'Fever/Sepsis prophylaxis' : 'Prophylaxis (ไม่มี bleeding)';
+
+  el.textContent =
+`=== Platelet Dose Calculator ===
+Current Plt: ${cur.toLocaleString()} /µL
+Target Plt: ${target.toLocaleString()} /µL → ต้องเพิ่ม: ${need.toLocaleString()} /µL
+BW: ${bw} kg | Est. blood volume: ${bv.toFixed(1)} L
+สถานการณ์: ${scenario}
+
+--- คำแนะนำ ---
+✅ LDPPC (NBC มาตรฐาน): ${unitsLDPPC} unit
+   (1 unit LDPPC Plt >240×10⁹ → expect +${incPerLDPPC.toLocaleString()}/µL)
+
+✅ LD Plateletpheresis (SDP): ${unitsSDP} unit
+   (1 unit SDP Plt >2.4×10¹¹ → expect +${incPerSDP.toLocaleString()}/µL)
+
+⚠️ Pooled RDP (ถ้าไม่มี LDPPC): ${unitsRDP} units (~${poolsRDP} pool)
+   (1 RDP unit ~55×10⁹ → expect +${incPerRDP.toLocaleString()}/µL per unit)
+
+--- Order ---
+Leukodepleted Pool Platelet Concentrates (LDPPC) ${unitsLDPPC} unit IV drip
+Rate: drip ภายใน 30 นาที
+Check CBC + platelet count 1h post-transfusion (CCI)
+Target: platelet >${target.toLocaleString()}/µL`;
+}
+
+function openPrcCalc() {
+  showCalcPanel('🩸 PRC Dose Calculator', `
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text-dim)">คำนวณจำนวน PRC units ที่ต้องจอง ตาม Hb/Hct ปัจจุบัน</div>
+    <div class="order-bw-row"><label>Current Hb:</label><input type="number" id="prcCurHb" value="6.5" step="0.1" style="width:80px" oninput="calcPrc()"/><label>g/dL</label></div>
+    <div class="order-bw-row"><label>Target Hb:</label><input type="number" id="prcTargetHb" value="8.0" step="0.1" style="width:80px" oninput="calcPrc()"/><label>g/dL</label></div>
+    <div class="order-bw-row"><label>BW:</label><input type="number" id="prcBW" value="60" style="width:80px" oninput="calcPrc()"/><label>kg</label></div>
+    <div style="margin:12px 0 8px;font-size:13px;color:var(--text-dim)">เลือกสถานการณ์:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPrcScenario(7,'Restrictive (ICU/stable)')">Restrictive<br><small>target Hb 7</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPrcScenario(8,'ACS / Cardiac / Elderly')">ACS/Cardiac<br><small>target Hb 8</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPrcScenario(9,'Thalassemia pre-transfusion')">Thalassemia<br><small>target Hb 9-10</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:140px" onclick="setPrcScenario(10,'Symptomatic / Pre-op')">Pre-op<br><small>target Hb 10</small></button>
+    </div>
+    <div class="order-bw-row"><label>ชนิด PRC:</label>
+      <select id="prcType" onchange="calcPrc()" style="padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px">
+        <option value="LDPRC">LDPRC ⭐ (Leukodepleted)</option>
+        <option value="LPRC">LPRC (Leukocyte Poor)</option>
+        <option value="PRC">PRC (Standard)</option>
+        <option value="SDR">SDR (Single Donor/Apheresis)</option>
+      </select>
+    </div>
+    <div class="order-bw-row"><label>Rate:</label>
+      <select id="prcRate" onchange="calcPrc()" style="padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px">
+        <option value="normal">ปกติ (2-4 ชม./unit)</option>
+        <option value="slow">ช้า — CHF (1 mL/kg/hr)</option>
+        <option value="stat">ฉุกเฉิน (pressure bag)</option>
+      </select>
+    </div>
+    <div class="order-result" id="orderResult" style="font-size:14px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="order-note">⚠️ 1 unit PRC เพิ่ม Hb ~1 g/dL (ผู้ใหญ่ 70 kg) — ปรับตาม BW, ongoing bleeding, hemolysis</div>
+  `);
+  calcPrc();
+}
+
+function setPrcScenario(hb, label) {
+  document.getElementById('prcTargetHb').value = hb;
+  calcPrc();
+}
+
+function calcPrc() {
+  const curHb = parseFloat(document.getElementById('prcCurHb')?.value) || 0;
+  const targetHb = parseFloat(document.getElementById('prcTargetHb')?.value) || 7;
+  const bw = parseFloat(document.getElementById('prcBW')?.value) || 60;
+  const prcType = document.getElementById('prcType')?.value || 'LDPRC';
+  const rate = document.getElementById('prcRate')?.value || 'normal';
+  const el = document.getElementById('orderResult');
+  if (!el) return;
+
+  const gap = targetHb - curHb;
+  if (gap <= 0) { el.textContent = '✅ Current Hb ≥ target — ไม่จำเป็นต้องให้ PRC ตอนนี้\n\nพิจารณาหาสาเหตุ anemia: Iron deficiency → IV iron, B12/folate → supplement, CKD → EPO'; return; }
+
+  // 1 unit raises Hb ~1 g/dL in 70kg; adjust by BW
+  const hbPerUnit = 70 / bw; // heavier = less increment
+  const units = Math.max(1, Math.ceil(gap / hbPerUnit));
+
+  const typeNames = { LDPRC:'Leukodepleted Packed Red Cells (LDPRC)', LPRC:'Leukocyte Poor Packed Red Cells (LPRC)', PRC:'Packed Red Cells (PRC)', SDR:'Single Donor Red Cells (SDR)' };
+  const typeNotes = { LDPRC:'WBC <1×10⁶ — ลด febrile rx, CMV, HLA alloimmunization', LPRC:'WBC <1.2×10⁹ — ⚠️ ลด WBC แค่ ~70% (แนะนำ LDPRC ถ้ามี)', PRC:'WBC ไม่ลด — ⚠️ เสี่ยง febrile rx สูง (แนะนำ LDPRC ถ้ามี)', SDR:'Apheresis, WBC <1×10⁶ — สำหรับ phenotype-matched/thalassemia' };
+  const rateText = rate === 'slow' ? `Rate: 1 mL/kg/hr (~${Math.round(bw*4/60)} ชม./unit)\nPre-med: Furosemide 20-40 mg IV (ก่อน/ระหว่างให้)` : rate === 'stat' ? 'Rate: เร็วที่สุด (pressure bag / rapid infuser)\n+ Blood warmer ถ้าให้เร็ว >50 mL/min' : 'Rate: 2-4 ชม./unit';
+
+  el.textContent =
+`=== PRC Dose Calculator ===
+Current Hb: ${curHb} g/dL → Target Hb: ${targetHb} g/dL
+Gap: ${gap.toFixed(1)} g/dL | BW: ${bw} kg
+Expected increment: ~${hbPerUnit.toFixed(1)} g/dL per unit
+
+--- คำแนะนำ ---
+จอง ${typeNames[prcType]}: ${units} unit(s)
+${typeNotes[prcType]}
+
+--- Order ---
+${typeNames[prcType]} ${units > 1 ? units + ' units' : '1 unit'} IV drip
+${rateText}
+${rate === 'slow' ? 'Monitor: vital signs q 1h, SpO2, signs fluid overload' : ''}
+Recheck Hb/Hct หลังให้ ${units > 1 ? 'ทุก 1-2 units' : '1-2 ชม.'}
+${units > 1 ? 'แนะนำ: ให้ 1-2 units → recheck → reassess ก่อนให้ต่อ (single-unit policy)' : ''}`;
+}
+
+// ===== HEMOPHILIA A CALCULATOR =====
+function openHemoACalc() {
+  showCalcPanel('🩸 Hemophilia A — FVIII / Cryo Calculator', `
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text-dim)">คำนวณขนาด FVIII concentrate / Cryoprecipitate / HTFDC สำหรับ Hemophilia A</div>
+    <div class="order-bw-row"><label>BW:</label><input type="number" id="haBW" value="60" style="width:80px" oninput="calcHemoA()"/><label>kg</label></div>
+    <div class="order-bw-row"><label>Current FVIII (%):</label><input type="number" id="haCur" value="1" step="1" style="width:80px" oninput="calcHemoA()"/><label>%</label></div>
+    <div class="order-bw-row"><label>Target FVIII (%):</label><input type="number" id="haTarget" value="100" step="5" style="width:80px" oninput="calcHemoA()"/><label>%</label></div>
+    <div style="margin:12px 0 8px;font-size:13px;color:var(--text-dim)">เลือกสถานการณ์:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setHAScenario(30,50,'Minor bleed (hemarthrosis, oral)')">Minor bleed<br><small>30-50%</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setHAScenario(50,80,'Moderate bleed (muscle, GI)')">Moderate<br><small>50-80%</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setHAScenario(80,100,'Major bleed / ICH / Surgery')">Major/ICH<br><small>80-100%</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setHAScenario(50,80,'Dental extraction')">Dental<br><small>50-80%</small></button>
+    </div>
+    <div class="order-bw-row"><label>Severity:</label>
+      <select id="haSeverity" style="padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px" onchange="calcHemoA()">
+        <option value="severe">Severe (FVIII <1%)</option>
+        <option value="moderate">Moderate (FVIII 1-5%)</option>
+        <option value="mild">Mild (FVIII 5-40%) — พิจารณา DDAVP ก่อน</option>
+      </select>
+    </div>
+    <div class="order-result" id="orderResult" style="font-size:13px;line-height:1.9"><span class="placeholder">กำลังคำนวณ...</span></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="order-note">FVIII 1 U/kg → เพิ่ม FVIII activity 2% | t½ SHL ~8-12h → ให้ซ้ำ q 8-12h | Check peak (30 min) & trough</div>
+  `);
+  calcHemoA();
+}
+
+function setHAScenario(lo, hi, label) {
+  document.getElementById('haTarget').value = hi;
+  calcHemoA();
+}
+
+function calcHemoA() {
+  const bw = parseFloat(document.getElementById('haBW')?.value) || 60;
+  const cur = parseFloat(document.getElementById('haCur')?.value) || 0;
+  const target = parseFloat(document.getElementById('haTarget')?.value) || 100;
+  const sev = document.getElementById('haSeverity')?.value || 'severe';
+  const el = document.getElementById('orderResult');
+  if (!el) return;
+
+  const gap = target - cur;
+  if (gap <= 0) { el.textContent = '✅ Current FVIII ≥ target'; return; }
+
+  // FVIII dose = (target% - current%) × BW / 2
+  const fviiiDose = Math.round(gap * bw / 2);
+  // Maintenance: after t½ (~12h), level drops to ~50% → need half dose
+  const maintDose = Math.round(fviiiDose / 2);
+  // Cryo (NBC): FVIII ≥70 IU/unit
+  const cryoUnits = Math.ceil(fviiiDose / 70);
+  // HTFDC (NBC PDMP): FVIII ≥200 IU/bottle
+  const htfdcBottles = Math.ceil(fviiiDose / 200);
+  // FVIII TRCS (NBC): 250 or 500 IU/vial
+  const vials500 = Math.floor(fviiiDose / 500);
+  const remainder = fviiiDose - (vials500 * 500);
+  const vials250 = remainder > 0 ? Math.ceil(remainder / 250) : 0;
+
+  const scenario = target >= 80 ? 'Major bleed / ICH / Surgery' : target >= 50 ? 'Moderate bleed / Dental' : 'Minor bleed';
+  const duration = target >= 80 ? '7-14 วัน (ICH) หรือ 5-7 วัน (surgery/major bleed)' : target >= 50 ? '3-5 วัน' : '1-3 วัน';
+  const freq = 'q 8-12h (SHL) หรือ q 24-48h (EHL)';
+  const ddavpNote = sev === 'mild' ? '\n\n💡 MILD Hemophilia A (FVIII 5-40%): พิจารณา DDAVP 0.3 mcg/kg IV ก่อน\n   (ทำ DDAVP trial — ถ้า FVIII เพิ่ม >2 เท่า = respond → ไม่ต้อง factor conc.)' : '';
+
+  el.textContent =
+`=== Hemophilia A — FVIII Dose Calculator ===
+BW: ${bw} kg | Current FVIII: ${cur}% | Target FVIII: ${target}%
+Gap: ${gap}% | สถานการณ์: ${scenario}
+Severity: ${sev}
+
+--- สูตร: Dose (IU) = (Target% − Current%) × BW ÷ 2 ---
+Loading dose: ${fviiiDose} IU
+Maintenance: ${maintDose} IU ${freq} (t½ ~12h SHL)
+Duration: ${duration}
+
+=== เลือก Product ===
+
+✅ Option 1: FVIII Concentrate
+   FVIII ${fviiiDose} IU IV push (rate max 3 mL/min) STAT
+   ${vials500 > 0 ? `= ${vials500}×500 IU` : ''}${vials250 > 0 ? ` + ${vials250}×250 IU` : ''} vials
+   Maintenance: ${maintDose} IU IV q 12h
+   Check FVIII peak (30 min post-dose) & trough (pre-next dose)
+
+✅ Option 2: FVIII TRCS (NBC สภากาชาดไทย)
+   FVIII TRCS ${fviiiDose} IU IV push STAT
+   ${vials500 > 0 ? `(${vials500} vial × 500 IU` : '('}${vials250 > 0 ? ` + ${vials250} vial × 250 IU)` : ')'}
+   เก็บ 2-8°C, reconstitute ก่อนให้
+
+✅ Option 3: HTFDC (NBC PDMP) — ≥200 IU/bottle
+   HTFDC ${htfdcBottles} bottle(s) IV push STAT
+   (${htfdcBottles} × 200 = ${htfdcBottles * 200} IU | ต้องการ ${fviiiDose} IU)
+   Reconstitute 50 mL/bottle, เก็บ 2-8°C
+
+⚠️ Option 4: Cryoprecipitate (ถ้าไม่มี concentrate)
+   Cryoprecipitate ${cryoUnits} units IV drip STAT
+   (NBC Cryo ≥70 IU FVIII/unit × ${cryoUnits} = ${cryoUnits * 70} IU)
+   ให้เสร็จภายใน 30 นาทีหลัง thaw${ddavpNote}
+
+--- Monitoring ---
+Check FVIII activity: peak (30 min), trough (pre-next dose)
+Target trough: >${Math.round(target/2)}% (major) หรือ >30% (moderate)
+Screen for inhibitor: ถ้า FVIII ขึ้นน้อยกว่าคาด → Bethesda assay`;
+}
+
+// ===== VON WILLEBRAND DISEASE CALCULATOR =====
+function openVWDCalc() {
+  showCalcPanel('🩸 von Willebrand Disease — Treatment Calculator', `
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text-dim)">คำนวณ DDAVP / FVIII-vWF concentrate / Cryo สำหรับ vWD ตาม type และสถานการณ์</div>
+    <div class="order-bw-row"><label>BW:</label><input type="number" id="vwdBW" value="60" style="width:80px" oninput="calcVWD()"/><label>kg</label></div>
+    <div class="order-bw-row"><label>vWD Type:</label>
+      <select id="vwdType" style="padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px" onchange="calcVWD()">
+        <option value="1">Type 1 (partial quantitative deficiency) — DDAVP first-line</option>
+        <option value="2A">Type 2A (↓ large multimers)</option>
+        <option value="2B">Type 2B (gain-of-function → thrombocytopenia) — ⚠️ ห้าม DDAVP</option>
+        <option value="2M">Type 2M (↓ platelet binding)</option>
+        <option value="2N">Type 2N (↓ FVIII binding)</option>
+        <option value="3">Type 3 (complete deficiency) — ห้าม DDAVP</option>
+      </select>
+    </div>
+    <div style="margin:12px 0 8px;font-size:13px;color:var(--text-dim)">เลือกสถานการณ์:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setVWDScenario('minor')">Minor bleed<br><small>epistaxis, oral, menorrhagia</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setVWDScenario('dental')">Dental extraction<br><small>+ TXA</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setVWDScenario('major')">Major bleed / Surgery<br><small>target vWF:RCo >50-100</small></button>
+      <button class="order-scenario-btn" style="flex:1;min-width:120px" onclick="setVWDScenario('menorrhagia')">Menorrhagia<br><small>TXA ± DDAVP</small></button>
+    </div>
+    <div class="order-result" id="orderResult" style="font-size:13px;line-height:1.9"><span class="placeholder">เลือก type และสถานการณ์...</span></div>
+    <div class="copy-row"><button class="copy-btn copy-btn-main" onclick="copyOrder()">📋 Copy Order</button><button class="copy-btn copy-btn-alt" onclick="copyOrderPlain()">📄 Plain Text</button></div>
+    <div class="order-note">DDAVP ใช้ได้เฉพาะ Type 1 (และบาง 2A, 2M, 2N) — ห้ามใช้ใน Type 2B & Type 3 | ทำ DDAVP trial ก่อนใช้จริง</div>
+  `);
+}
+
+let vwdScenario = 'minor';
+function setVWDScenario(s) { vwdScenario = s; calcVWD(); }
+
+function calcVWD() {
+  const bw = parseFloat(document.getElementById('vwdBW')?.value) || 60;
+  const type = document.getElementById('vwdType')?.value || '1';
+  const el = document.getElementById('orderResult');
+  if (!el) return;
+
+  const ddavpDose = (0.3 * bw).toFixed(1);
+  const ddavpOK = (type === '1' || type === '2A' || type === '2M' || type === '2N');
+  const ddavpContra = (type === '2B' || type === '3');
+
+  // vWF:RCo target: minor 30-50 IU/dL, major 50-100 IU/dL
+  // Dose (IU vWF:RCo) = (target - baseline) × BW / recovery(~1.5-2 for pdvWF)
+  // Approximate: 40-60 IU/kg for major, 20-40 for minor
+  const majorDoseVWF = Math.round(50 * bw); // ~50 IU/kg vWF:RCo
+  const minorDoseVWF = Math.round(30 * bw);
+
+  // Cryo: each unit has vWF ~80-150 IU (avg ~100 IU vWF:RCo)
+  const cryoMinor = Math.ceil(minorDoseVWF / 100);
+  const cryoMajor = Math.ceil(majorDoseVWF / 100);
+
+  // FVIII dose for concurrent FVIII replacement (Type 2N, Type 3)
+  const fviiiDose = Math.round(50 * bw / 2); // target FVIII 50%
+
+  let text = `=== von Willebrand Disease — Treatment Calculator ===\nBW: ${bw} kg | Type: ${type} | สถานการณ์: ${vwdScenario}\n\n`;
+
+  if (vwdScenario === 'minor') {
+    text += `--- Minor Bleed (epistaxis, oral mucosa, small wound) ---\nTarget vWF:RCo: >30 IU/dL\n\n`;
+    if (ddavpOK) {
+      text += `✅ First-line: DDAVP\n`;
+      text += `Desmopressin (DDAVP) ${ddavpDose} mcg + NSS 50 mL IV drip over 30 min\n`;
+      text += `Peak effect: 30-60 min | Duration: 6-8 ชม.\n`;
+      text += `Restrict fluid 1.5 L/24h (เสี่ยง hyponatremia)\n`;
+      text += `Max 2-3 doses ต่อเนื่อง (tachyphylaxis)\n\n`;
+    }
+    if (ddavpContra) {
+      text += `🔴 DDAVP: ห้ามใช้ใน Type ${type}${type==='2B'?' (ทำให้ thrombocytopenia แย่ลง)':' (ไม่มี vWF ให้ปล่อย)'}\n\n`;
+    }
+    text += `✅ Alternative: vWF/FVIII concentrate (Humate-P, Wilate, Vonvendi)\n`;
+    text += `vWF:RCo ${minorDoseVWF} IU (~30 IU/kg) IV push STAT\n`;
+    text += `Repeat q 12-24h x 1-3 วัน\n\n`;
+    text += `⚠️ ถ้าไม่มี concentrate: Cryoprecipitate ${cryoMinor} units IV drip\n`;
+    text += `(~100 IU vWF:RCo/unit × ${cryoMinor} = ${cryoMinor*100} IU)\n`;
+    text += `ให้เสร็จภายใน 30 นาทีหลัง thaw\n`;
+
+  } else if (vwdScenario === 'dental') {
+    text += `--- Dental Extraction ---\nTarget vWF:RCo: >50 IU/dL\n\n`;
+    if (ddavpOK) {
+      text += `✅ DDAVP ${ddavpDose} mcg + NSS 50 mL IV drip over 30 min\n`;
+      text += `   ให้ 1 ชม.ก่อนถอนฟัน\n\n`;
+    }
+    if (ddavpContra) {
+      text += `🔴 DDAVP ห้ามใน Type ${type} → ใช้ vWF/FVIII concentrate\n\n`;
+    }
+    text += `+ Tranexamic acid 1000 mg PO TID (เริ่มก่อนถอนฟัน)\n`;
+    text += `  ให้ต่อ 5-7 วันหลังถอนฟัน\n\n`;
+    text += `Alternative: vWF/FVIII conc. ${minorDoseVWF} IU IV pre-procedure\n`;
+    text += `⚠️ ถ้าไม่มี: Cryo ${cryoMinor} units IV + TXA 1g TID PO\n`;
+
+  } else if (vwdScenario === 'major') {
+    text += `--- Major Bleed / Surgery ---\nTarget vWF:RCo: >50-100 IU/dL | Target FVIII: >50-80%\n\n`;
+    if (ddavpOK && type === '1') {
+      text += `💡 Type 1 minor surgery: ลอง DDAVP ${ddavpDose} mcg IV ก่อน\n`;
+      text += `   ถ้า DDAVP trial respond → อาจไม่ต้อง concentrate\n`;
+      text += `   แต่ major surgery → แนะนำ vWF/FVIII concentrate\n\n`;
+    }
+    if (ddavpContra) {
+      text += `🔴 DDAVP ห้ามใน Type ${type}\n\n`;
+    }
+    text += `✅ First-line: vWF/FVIII concentrate\n`;
+    text += `Loading: vWF:RCo ${majorDoseVWF} IU (~50 IU/kg) IV push STAT\n`;
+    text += `Maintenance: ${Math.round(majorDoseVWF/2)} IU IV q 12-24h\n`;
+    text += `Duration: 5-10 วัน (major surgery) หรือจนหยุดเลือด\n`;
+    text += `Monitor: vWF:RCo, FVIII activity, CBC daily\n`;
+    text += `⚠️ ระวัง FVIII สะสม (vWF stabilize endogenous FVIII → level อาจสูงเกิน → thrombosis risk)\n\n`;
+    text += `${type === '3' || type === '2N' ? `+ ถ้า FVIII ต่ำร่วม: อาจต้องให้ FVIII concentrate เสริม\n  FVIII ${fviiiDose} IU IV (target 50%) → check FVIII level\n\n` : ''}`;
+    text += `⚠️ ถ้าไม่มี concentrate:\n`;
+    text += `Cryoprecipitate ${cryoMajor} units IV drip STAT\n`;
+    text += `(~100 IU vWF:RCo/unit × ${cryoMajor} = ${cryoMajor*100} IU)\n`;
+    text += `Repeat q 12-24h | + TXA 1g IV q 8h\n`;
+
+  } else if (vwdScenario === 'menorrhagia') {
+    text += `--- Menorrhagia ---\n\n`;
+    text += `✅ First-line: Tranexamic acid (TXA)\n`;
+    text += `Tranexamic acid 1300 mg (650 mg × 2 tab) PO TID × 5 วัน\n`;
+    text += `(เริ่มวันแรกของ menstruation)\n\n`;
+    if (ddavpOK) {
+      text += `✅ ถ้า TXA ไม่พอ: เพิ่ม DDAVP\n`;
+      text += `DDAVP (Stimate) intranasal ${bw < 50 ? '150 mcg (1 puff)' : '300 mcg (2 puffs)'}\n`;
+      text += `ให้วันแรกของ menstruation\n`;
+      text += `หรือ DDAVP ${ddavpDose} mcg + NSS 50 mL IV drip over 30 min\n\n`;
+    }
+    if (ddavpContra) {
+      text += `🔴 DDAVP ห้ามใน Type ${type}\n\n`;
+    }
+    text += `✅ ถ้า severe: vWF/FVIII conc. ${minorDoseVWF} IU IV q 24h\n`;
+    text += `หรือ Cryo ${cryoMinor} units IV drip\n\n`;
+    text += `💊 Long-term options:\n`;
+    text += `• Combined OCP (ลด menstrual loss 40-50%)\n`;
+    text += `• LNG-IUS (Mirena) — ลด loss 80-95%\n`;
+    text += `• TXA PO ทุกรอบเดือน\n`;
+  }
+
+  text += `\n--- vWD Type ${type} Summary ---\n`;
+  text += type === '1' ? 'DDAVP เป็น first-line (ถ้า trial respond) → vWF/FVIII conc. → Cryo' :
+          type === '2A' ? 'DDAVP อาจได้ผล (trial ก่อน) แต่ large multimers ไม่ฟื้น → prefer vWF/FVIII conc.' :
+          type === '2B' ? '❌ ห้าม DDAVP (ทำ plt ต่ำลง!) → vWF/FVIII conc. เท่านั้น' :
+          type === '2M' ? 'DDAVP อาจได้ผลบ้าง → prefer vWF/FVIII conc. สำหรับ major' :
+          type === '2N' ? 'DDAVP อาจเพิ่ม FVIII ชั่วคราว → vWF/FVIII conc. สำหรับ major (stabilize FVIII)' :
+          '❌ ห้าม DDAVP (ไม่มี vWF ให้ปล่อย) → vWF/FVIII conc. เท่านั้น + อาจต้อง plt transfusion';
+
+  el.textContent = text;
+}
+
+function calcCCI() {
+  const pre = parseFloat(document.getElementById('cciPre')?.value) || 0;
+  const post = parseFloat(document.getElementById('cciPost')?.value) || 0;
+  const bsa = parseFloat(document.getElementById('cciBSA')?.value) || 1.7;
+  const dose = parseFloat(document.getElementById('cciPltDose')?.value) || 3.3;
+
+  const pi = post - pre;
+  const cci = dose > 0 ? Math.round(pi * bsa / dose) : 0;
+  // Blood volume estimate ~70 mL/kg, use BSA-derived weight approx
+  const estWeight = Math.round(bsa * bsa * 10000 / (36.25 * 36.25)); // rough inverse Mosteller
+  const bv = (estWeight * 0.07); // L
+  const ppr = dose > 0 ? ((pi * bv) / (dose * 1e11) * 1e11 * 100).toFixed(1) : 0;
+  const pprCalc = dose > 0 ? (pi * bv / dose / 100).toFixed(1) : 0;
+
+  const refractory = cci < 5000;
+  const status = refractory
+    ? '🔴 CCI <5,000 → สงสัย Platelet Refractoriness (ต้องเกิด ≥2 ครั้ง ติดต่อกัน)'
+    : '🟢 CCI ≥5,000 → Adequate platelet increment';
+
+  const el = document.getElementById('orderResult');
+  if (!el) return;
+  el.textContent =
+`=== CCI Calculator ===
+Pre-transfusion Plt: ${pre.toLocaleString()} /µL
+Post-transfusion Plt (1h): ${post.toLocaleString()} /µL
+BSA: ${bsa} m²
+Plt transfused: ${dose} ×10¹¹
+
+--- ผลคำนวณ ---
+PI (Posttransfusion Increment): ${pi.toLocaleString()} /µL
+CCI (Corrected Count Increment): ${cci.toLocaleString()} /µL
+
+--- การแปลผล ---
+${status}
+${refractory ? '\nNext step: ตรวจ CCI ซ้ำครั้งถัดไป → ถ้า <5,000 อีกครั้ง → ยืนยัน Platelet Refractoriness\n→ Step 1: ให้ ABO-identical, fresh (<48h) platelet\n→ Step 2: แก้ non-immune cause (fever, sepsis, DIC, drugs, splenomegaly)\n→ Step 3: ส่ง HLA antibody screen → HLA-matched SDP\n→ Step 4: ถ้ายัง fail → Platelet crossmatch หรือ ASP method\n→ Step 5: ตรวจ HPA antibody → HPA-matched platelet' : ''}`;
+}
+
+function autoCalcBSA() {
+  const ht = parseFloat(document.getElementById('cciHt')?.value);
+  const wt = parseFloat(document.getElementById('cciWt')?.value);
+  if (ht > 0 && wt > 0) {
+    const bsa = Math.sqrt((ht * wt) / 3600).toFixed(2); // Mosteller
+    document.getElementById('cciBSA').value = bsa;
+    calcCCI();
+  }
+}
+
+renderCategories();
+renderGrid();
+</script>
+</body>
+</html>
